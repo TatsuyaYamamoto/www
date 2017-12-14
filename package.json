@@ -1,15 +1,27 @@
 {
   "name": "www.sokontokoro-factory.net",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "sokontokoro factory web site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm-run-all --parallel server watch",
+    "clean": "rm -rf dist",
+    "build": "npm run clean & npm run build:pug",
+    "build:pug": "pug src -o dist",
+    "watch": "npm run watch:pug",
+    "watch:pug": "pug src -o dist -w",
+    "server": "live-server dist"
   },
   "repository": {
     "type": "git",
     "url": "github"
   },
   "author": "Tatuya Yamamoto",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "npm-run-all": "^4.1.2",
+    "pug": "^2.0.0-rc.4",
+    "pug-cli": "github:pugjs/pug-cli#master"
+  }
 }
