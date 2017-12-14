@@ -4,12 +4,14 @@
   "description": "sokontokoro factory web site",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel server watch",
+    "start": "npm run build && run-p server watch",
     "clean": "rm -rf dist",
-    "build": "npm run clean & npm run build:pug",
+    "build": "npm run clean && run-p build:*",
     "build:pug": "pug src -o dist",
-    "watch": "npm run watch:pug",
-    "watch:pug": "pug src -o dist -w",
+    "build:sass": "node-sass src/sass/ -o dist/css/ --include-path node_modules --importer=node_modules/node-sass-tilde-importer",
+    "watch": "run-p watch:*",
+    "watch:pug": "npm run build:pug  -- -w",
+    "watch:sass": "npm run build:sass -- --watch",
     "server": "live-server dist"
   },
   "repository": {
@@ -18,8 +20,14 @@
   },
   "author": "Tatuya Yamamoto",
   "license": "MIT",
+  "dependencies": {
+    "material-components-web": "^0.27.0",
+    "normalize.css": "^7.0.0"
+  },
   "devDependencies": {
     "live-server": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "node-sass-tilde-importer": "^1.0.0",
     "npm-run-all": "^4.1.2",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "github:pugjs/pug-cli#master"

@@ -1,7 +1,11 @@
+include include/_toolbar.mixin.pug
+
 doctype html
 html
-    head
-        include include/_head
-    body
-        h1.mdc-typography--display1 Hello, World!
-        button.mdc-button.mdc-button--raised(type="button") Press Me!
+  head
+    include include/_head
+  body
+    +toolbar
+
+    h1.mdc-typography--display1 Hello, World!
+    button.mdc-button.mdc-button--raised(type="button") Press Me!
