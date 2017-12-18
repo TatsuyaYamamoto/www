@@ -1,0 +1,22 @@
+include ../_string
+
+div
+  div.parallax-container
+    div.parallax
+      img(src='http://next.materializecss.com/images/parallax1.jpg')
+
+  div.section.white.center-align
+    div.row.container
+      h2.header #{about_header}
+      div
+        h3 #{about_page_header}
+        p #{about_page_description}
+
+        h3 #{about_owner_header}
+        p #{about_owner_description1}
+          br
+          | #{about_owner_description2}
+
+  div.parallax-container
+    div.parallax
+      img(src='http://next.materializecss.com/images/parallax2.jpg')

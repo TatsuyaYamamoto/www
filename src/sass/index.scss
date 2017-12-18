@@ -1,4 +1,6 @@
-@import "./base";
+@import "base";
+@import "icon-tabs";
 
-@import "~@material/toolbar/mdc-toolbar";
-@import "~@material/button/mdc-button";
+.parallax-container {
+  height: 30px;
+}
