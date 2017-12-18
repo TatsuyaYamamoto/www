@@ -10,6 +10,7 @@
     "build:pug": "pug src -o dist",
     "build:js": "rollup -c",
     "build:sass": "node-sass src/sass/ -o dist/css/ --include-path node_modules --importer=node_modules/node-sass-tilde-importer",
+    "build:image": "imagemin",
     "watch": "run-p watch:*",
     "watch:pug": "npm run build:pug  -- -w",
     "watch:js": "npm run build:js -- -w",
@@ -27,6 +28,7 @@
     "normalize.css": "^7.0.0"
   },
   "devDependencies": {
+    "imagemin-cli": "^3.0.0",
     "live-server": "^1.2.0",
     "node-sass": "^4.7.2",
     "node-sass-tilde-importer": "^1.0.0",

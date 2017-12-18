@@ -12,6 +12,9 @@ export default [
         },
         plugins: [
             nodeResolve()
-        ]
+        ],
+
+        // @see https://github.com/rollup/rollup/wiki/Troubleshooting#this-is-undefined
+        context: 'window'
     }
 })
