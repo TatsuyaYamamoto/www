@@ -2,12 +2,14 @@ include ../_string
 
 nav.nav-extended
   div.nav-wrapper
+    ul.right
+      li:a(href="#")
+        i.material-icons translate
 
   div.nav-content.container
-    div.section
-      div.center-align.logo
-        a(href="/") #{hero_title}
-          img(src="assets/image/hammer.png")
+    div.section.hero.center-align.logo
+      a(href="/") #{hero_title}
+        img(src="assets/image/hammer.png")
 
     ul.tabs.tabs-transparent.tabs-icon
       li.tab
@@ -22,8 +24,4 @@ nav.nav-extended
         a(href="#game")
           i.material-icons.tab-icon games
           span.tab-label #{tabs_game}
-
-      li.tab
-        a(href="#app")
-          i.material-icons.tab-icon apps
-          span.tab-label #{tabs_app}
+          
