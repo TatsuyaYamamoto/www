@@ -8,9 +8,11 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && run-p build:*",
     "build:pug": "pug src -o dist",
+    "build:js": "rollup -c",
     "build:sass": "node-sass src/sass/ -o dist/css/ --include-path node_modules --importer=node_modules/node-sass-tilde-importer",
     "watch": "run-p watch:*",
     "watch:pug": "npm run build:pug  -- -w",
+    "watch:js": "npm run build:js -- -w",
     "watch:sass": "npm run build:sass -- --watch",
     "server": "live-server dist"
   },
@@ -21,7 +23,7 @@
   "author": "Tatuya Yamamoto",
   "license": "MIT",
   "dependencies": {
-    "material-components-web": "^0.27.0",
+    "materialize-css": "next",
     "normalize.css": "^7.0.0"
   },
   "devDependencies": {
@@ -30,6 +32,8 @@
     "node-sass-tilde-importer": "^1.0.0",
     "npm-run-all": "^4.1.2",
     "pug": "^2.0.0-rc.4",
-    "pug-cli": "github:pugjs/pug-cli#master"
+    "pug-cli": "github:pugjs/pug-cli#master",
+    "rollup": "^0.52.1",
+    "rollup-plugin-node-resolve": "^3.0.0"
   }
 }
