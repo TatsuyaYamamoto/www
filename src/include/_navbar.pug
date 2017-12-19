@@ -1,0 +1,13 @@
+include ../_string
+
+mixin navbar()
+  block
+  nav(class=block && "nav-extended")
+    div.nav-wrapper
+      ul.right
+        li:a(href="#")
+          i.material-icons translate
+
+    if block
+      div.nav-content.container
+        +content
