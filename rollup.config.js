@@ -2,7 +2,9 @@ import {resolve} from 'path';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
 export default [
-    "index.js"
+    "index.js",
+    "activity.js",
+    "game.js"
 ].map((fileName) => {
     return {
         input: resolve(`./src/js/${fileName}`),

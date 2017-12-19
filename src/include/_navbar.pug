@@ -1,13 +1,53 @@
 include ../_string
 
-mixin navbar()
+mixin navbar(showHero, isIndex)
   block
-  nav(class=block && "nav-extended")
+  nav.nav-extended
     div.nav-wrapper
+
+      if !showHero
+        div.brand-logo.logo
+          a(href="/") #{hero_title}
+            img(src="assets/image/hammer.png")
+      a(href="#" data-target="mobile-demo").sidenav-trigger
+        i.material-icons menu
+
+      ul.sidenav#mobile-demo
+        li
+          a(href=isIndex ? "/#about" : "/")
+            i.material-icons.tab-icon portrait
+            span.tab-label #{tabs_about}
+        li
+          a(href="./activity.html")
+            i.material-icons.tab-icon timeline
+            span.tab-label #{tabs_activity}
+        li
+          a(href="./game.html")
+            i.material-icons.tab-icon games
+            span.tab-label #{tabs_game}
+
+
       ul.right
         li:a(href="#")
           i.material-icons translate
 
-    if block
-      div.nav-content.container
-        +content
+    div.nav-content.container.hide-on-med-and-down
+
+      if showHero
+        div.section.hero.center-align.logo
+          a(href="/") #{hero_title}
+            img(src="assets/image/hammer.png")
+
+      ul.tabs.tabs-transparent.tabs-icon
+        li.tab
+          a(href=isIndex ? "/#about" : "/")
+            i.material-icons.tab-icon portrait
+            span.tab-label #{tabs_about}
+        li.tab
+          a(href="./activity.html")
+            i.material-icons.tab-icon timeline
+            span.tab-label #{tabs_activity}
+        li.tab
+          a(href="./game.html")
+            i.material-icons.tab-icon games
+            span.tab-label #{tabs_game}

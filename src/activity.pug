@@ -10,8 +10,6 @@ html
   body
     header
       +navbar
-        mixin content
-          include include/_page-tabs
 
     main
       div.container
@@ -60,4 +58,5 @@ html
     footer
       include include/_footer
 
+    script(src=`js/${asset_file_name}.js`)
     script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")

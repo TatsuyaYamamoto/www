@@ -1,2 +1,14 @@
 @import "~normalize.css/normalize";
 @import "~materialize-css/sass/materialize";
+
+@import "icon-tabs";
+@import "pixel_m_plus";
+
+.logo {
+  font-family: "PixelMplus";
+}
+
+.nav-wrapper {
+  padding: 0 30px;
+}
+

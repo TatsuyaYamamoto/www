@@ -1,5 +1,7 @@
 - var asset_file_name = "game";
 
+include include/_navbar
+
 doctype html
 html
   head
@@ -7,7 +9,7 @@ html
     link(rel="stylesheet" href=`css/${asset_file_name}.css`)
   body
     header
-      include include/_toolbar
+      +navbar
 
     main
       p.section

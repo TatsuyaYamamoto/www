@@ -9,10 +9,7 @@ html
     link(rel="stylesheet" href=`css/${asset_file_name}.css`)
   body
     header
-      +navbar
-        mixin content
-          include include/_index-hero
-          include include/_page-tabs
+      +navbar(true, true)
 
     main
       //include include/_promotion_cards
