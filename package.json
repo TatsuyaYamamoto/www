@@ -7,7 +7,7 @@
     "start": "npm run build && run-p server watch",
     "clean": "rm -rf dist",
     "build": "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
-    "build:pug": "pug src -o dist",
+    "build:pug": "pug src/pug -o dist",
     "build:js": "rollup -c",
     "build:sass": "node-sass src/sass/ -o dist/css/ --include-path node_modules --importer=node_modules/node-sass-tilde-importer",
     "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
