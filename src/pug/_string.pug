@@ -1,15 +1,35 @@
-- head_title = "そこんところ工房"
+case `${lang}`
+  when "en"
+    - head_title = "Sokontokoro Factory"
 
-- hero_title = "そこんところ工房"
+    - hero_title = "そこんところ工房"
 
-- tabs_about  = "ここは？"
-- tabs_activity  = "アクティビティ"
-- tabs_game = "ゲーム"
-- tabs_app = "アプリ"
+    - tabs_about  = "About"
+    - tabs_activity  = "Activity"
+    - tabs_game = "Game"
+    - tabs_app = "App"
 
-- about_header  = "About"
-- about_page_header  = "このページは何？"
-- about_page_description  = "T28が(下記)が管理する、趣味垂れ流しのページです。作ったゲームや書いたブログ記事はメニューからどうぞ。"
-- about_owner_header  = "あなたはだれ？"
-- about_owner_description1  = "こんなの↑ "
-- about_owner_description2  = "T28です。プログラミングしたりギター弾いたりします。"
+    - about_header  = "About"
+    - about_page_header  = "This page is ..."
+    - about_page_description  = "T28が(下記)が管理する、趣味垂れ流しのページです。作ったゲームや書いたブログ記事はメニューからどうぞ。"
+    - about_owner_header  = "I'm ..."
+    - about_owner_description1  = "like this. "
+    - about_owner_description2  = "T28です。プログラミングしたりギター弾いたりします。"
+
+  when "ja"
+  default
+    - head_title = "そこんところ工房"
+
+    - hero_title = "そこんところ工房"
+
+    - tabs_about  = "ここは？"
+    - tabs_activity  = "アクティビティ"
+    - tabs_game = "ゲーム"
+    - tabs_app = "アプリ"
+
+    - about_header  = "About"
+    - about_page_header  = "このページは何？"
+    - about_page_description  = "T28が(下記)が管理する、趣味垂れ流しのページです。作ったゲームや書いたブログ記事はメニューからどうぞ。"
+    - about_owner_header  = "あなたはだれ？"
+    - about_owner_description1  = "こんなの↑ "
+    - about_owner_description2  = "T28です。プログラミングしたりギター弾いたりします。"

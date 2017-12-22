@@ -1,4 +1,4 @@
-- var asset_file_name = "index";
+- var page_file_name = "index";
 
 include include/_navbar
 
@@ -6,7 +6,7 @@ doctype html
 html
   head
     include include/_head
-    link(rel="stylesheet" href=`css/${asset_file_name}.css`)
+    link(rel="stylesheet" href=`css/${page_file_name}.css`)
   body
     header
       +navbar(true, true)
@@ -20,4 +20,4 @@ html
     footer
       include include/_footer
 
-    script(src=`js/${asset_file_name}.js`)
+    script(src=`js/${page_file_name}.js`)

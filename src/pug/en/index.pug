@@ -1,0 +1,22 @@
+- var lang = "en";
+- var page_file_name = "index";
+
+include ../include/_navbar
+
+doctype html
+html
+  head
+    include ../include/_head
+    link(rel="stylesheet" href=`/css/${page_file_name}.css`)
+  body
+    header
+      +navbar(true, true)
+
+    main
+      div#about
+        include ../include/_about
+
+    footer
+      include ../include/_footer
+
+    script(src=`/js/${page_file_name}.js`)

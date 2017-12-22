@@ -28,7 +28,7 @@ mixin navbar(showHero, isIndex)
 
 
       ul.right
-        li:a(href="#")
+        li: a(href=`${lang}` === "en" ? `/${page_file_name}.html` : `/en/${page_file_name}.html`)
           i.material-icons translate
 
     div.nav-content.container.hide-on-med-and-down
@@ -36,7 +36,7 @@ mixin navbar(showHero, isIndex)
       if showHero
         div.section.hero.center-align.logo
           a(href="/") #{hero_title}
-            img(src="assets/image/hammer.png")
+            img(src="/assets/image/hammer.png")
 
       ul.tabs.tabs-transparent.tabs-icon
         li.tab
