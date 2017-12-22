@@ -1,4 +1,5 @@
-- var asset_file_name = "activity";
+block vars
+  - var page_file_name = "activity";
 
 include include/_navbar
 
@@ -6,7 +7,7 @@ doctype html
 html
   head
     include include/_head
-    link(rel="stylesheet" href=`css/${asset_file_name}.css`)
+    link(rel="stylesheet" href=`/css/activity.css`)
   body
     header
       +navbar
@@ -19,5 +20,5 @@ html
     footer
       include include/_footer
 
-    script(src=`js/${asset_file_name}.js`)
+    script(src=`/js/activity.js`)
     script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")

@@ -7,14 +7,14 @@ mixin navbar(showHero, isIndex)
 
       if !showHero
         div.brand-logo.logo
-          a(href="/") #{hero_title}
-            img(src="assets/image/hammer.png")
+          a(href="./") #{hero_title}
+            img(src="/assets/image/hammer.png")
       a(href="#" data-target="mobile-demo").sidenav-trigger
         i.material-icons menu
 
       ul.sidenav#mobile-demo
         li
-          a(href=isIndex ? "/#about" : "/")
+          a(href=isIndex ? "./#about" : "./")
             i.material-icons.tab-icon portrait
             span.tab-label #{tabs_about}
         li
@@ -35,12 +35,12 @@ mixin navbar(showHero, isIndex)
 
       if showHero
         div.section.hero.center-align.logo
-          a(href="/") #{hero_title}
+          a(href="./") #{hero_title}
             img(src="/assets/image/hammer.png")
 
       ul.tabs.tabs-transparent.tabs-icon
         li.tab
-          a(href=isIndex ? "/#about" : "/")
+          a(href=isIndex ? "./#about" : "./")
             i.material-icons.tab-icon portrait
             span.tab-label #{tabs_about}
         li.tab
