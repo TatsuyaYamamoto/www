@@ -12,6 +12,7 @@
 }
 
 .connect-icon {
+  @extend .material-icons;
   @extend .medium;
 
   color: #ffffff;
