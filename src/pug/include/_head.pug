@@ -1,9 +1,57 @@
 include ../_string
+include ../_config
+
+- var title = page_name? `${site_name} | ${page_name}` : `${site_name}`;
 
 meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
 meta(name="viewport" content="width=device-width,initial-scale=1")
+meta(name="description" content=`${head_description}`)
 
-title #{head_title}
+title #{title}
 
+
+// Open Graph Protocol
+meta(name="og:title" content=`${title}`)
+meta(name="og:type" content="website")
+meta(name="og:image" content=`${og_image_url}`)
+meta(name="og:description" content=`${head_description}`)
+meta(name="og:site_name" content=`${site_name}`)
+meta(name="“og:locale:alternate" content="ja_JP")
+meta(name="“og:locale:alternate" content="en_US")
+case lang
+  when "en"
+    meta(name="og:url" content=`${alternate_hreflang_en}`)
+  when "ja"
+  default
+    meta(name="og:url" content=`${alternate_hreflang_ja}`)
+
+
+// language
+link(rel="alternate" href="ja" hreflang=`${alternate_hreflang_ja}`)
+link(rel="alternate" href="en" hreflang=`${alternate_hreflang_en}`)
+
+
+// Twitter card
+meta(name="twitter:card" content="summary")
+meta(name="twitter:site" content="@T28_Tatsuya")
+
+
+// DNS Prefetch
+each host in dns_prefetch_hosts
+  link(rel="dns-prefetch" href=`http://${host}/`)
+
+
+// favicon
+link(rel="icon" sizes="32x32" href=`${favicon_url_32x32}`)
+link(rel="icon" sizes="192x192" href=`${favicon_url_192x192}`)
+
+
+// smartphone layout
+meta(name="theme-color" content="#ff00aa")
+meta(name="msapplication-navbutton-color" content="#ff00aa")
+
+
+// stylesheet
 link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")

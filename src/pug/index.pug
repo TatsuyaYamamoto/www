@@ -1,10 +1,11 @@
 block vars
+  - var lang = "ja"
   - var page_file_name = "index";
 
 include include/_navbar
 
 doctype html
-html
+html(lang=`${lang}`)
   head
     include include/_head
     link(rel="stylesheet" href=`/css/${page_file_name}.css`)
