@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GitHubPageとページジェネレーター(HEXO)でブログをやる!!(Hexo編) | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="markdownでブログを書きたい！！と僕は思いました、前回(二期なのでビックリマークは２つ)。
+前回まででGitHubPagesの設定を完了させ、公にウェブページを公開する準備が出来ました。あとはブログを作って、それをデプロイするだけです(だけというボリュームじゃない)。
+今回のブログシステムの第">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="GitHubPageとページジェネレーター(HEXO)でブログをやる!!(Hexo編)"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">GitHubPageとページジェネレーター(HEXO)でブログをやる!!(Hexo編)</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <h1 id="markdownでブログを書きたい！！">markdownでブログを書きたい！！</h1><p>と僕は思いました、<a href="/2015/02/16/introGitHubPages/">前回</a>(二期なのでビックリマークは２つ)。</p>
+<p>前回まででGitHubPagesの設定を完了させ、公にウェブページを公開する準備が出来ました。あとはブログを作って、それをデプロイするだけです<del>(だけというボリュームじゃない)</del>。</p>
+<p>今回のブログシステムの第一要求は</p>
+<h3 id="「MarkDownで記入した記事でブログを公開する」">「MarkDownで記入した記事でブログを公開する」</h3><p>です。</p>
+<p>そのために<strong>HEXO</strong>というサイトジェネレーターを採用しました。</p>
+<p>HEXOの選択の理由はNode.js製のページジェネレータだから。JavaScript超入門者の僕としては、将来的にこれをガンガンいじれるようになったら勉強になるかなという腹底算段。<del>というかRubyとか新しく勉強出来ないよ。</del></p>
+<p>それではHEXOを導入していきます。</p>
+<p><strong>→前の記事</strong><a href="/2015/02/16/introGitHubPages/">GitHubPageとページジェネレーター(HEXO)でブログをやる！(GitHubPages編))</a></p>
+<h2 id="ブログ公開までの流れ">ブログ公開までの流れ</h2><ol>
+<li>GitHubPagesの準備</li>
+<li>公開鍵の設定</li>
+<li>ページジェネレーター(HEXO)の準備　←今日はここから!!</li>
+<li>新しい記事を作成する</li>
+<li>公開用ページ作成、設置</li>
+</ol>
+<h2 id="ページジェネレーター(HEXO)の準備">ページジェネレーター(HEXO)の準備</h2><ol>
+<li><p>nvmのインストール</p>
+<p> Node Version ManagerをGitからインストールします。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git://github.com/creationix/nvm.git ~/.nvm</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>nvmをコマンド</p>
+<p> パスが通っていないので、nvmコマンドを登録します。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p> バージョンを確認してみる</p>
+</li>
+</ol>
+<pre><code><span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm --version&#10;0.23.3</span><br></pre></td></tr></table></figure></span>
+</code></pre><ol>
+<li><p>NodeJSのインストール</p>
+<p> インストールが可能なバージョン確認を確認します。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote&#10;   &#12539;&#12539;&#12539;&#65288;&#30053;&#65289;&#10;v0.11.14&#10;v0.11.15&#10;v0.11.16&#10;v0.12.0&#10;iojs-v1.0.0&#10;iojs-v1.0.1&#10;iojs-v1.0.2&#10;   &#12539;&#12539;&#12539;&#65288;&#30053;&#65289;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>偶数版が安定版らしいので、それをいんすと
+
+
+<span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0.11.16&#10;########################################### 100.0%&#10;Now using node v0.11.16</span><br></pre></td></tr></table></figure></span>
+</code></pre><ol>
+<li><p>HEXOを導入する</p>
+<p> Node Package Managerはnvmのインストールに合わせて導入されます。パスも通されているので、コマンドもすぐ使えます。早速HEXOをインストールしましょう。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>ブログを作成</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init diary&#10;[info] Copying data&#10;[info] You are almost done! Don&#39;t forget to run `npm install` before you start blogging with Hexo!</span><br></pre></td></tr></table></figure>
+<p> 入力した名前のフォルダが作成されるので、管理しやすいディレクトリで打つ。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd diary&#10;$ npm install</span><br></pre></td></tr></table></figure>
+<p> init後のアナウンス通り、忘れずにインストールを行います。（これ何やってるんだ？）やらないと他のhexoコマンドがエラーになります。</p>
+</li>
+</ol>
+<ol>
+<li><p>さっそくブログを確認</p>
+<p> HEXOで作成したブログはローカルサーバー内で確認することが出来ます。コマンドでserverを作動させて</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server&#10;[info] Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+<p> <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>へアクセス！初期テーマファイルと初期ページファイル(markdown)で作成されたページを見られます。</p>
+<p> 確認が終わったら、「ctrl+c」で終了。これでサーバーが停止します。</p>
+</li>
+</ol>
+<h2 id="GitHubPagesへのデプロイの設定">GitHubPagesへのデプロイの設定</h2><ol>
+<li><p>設置先リポジトリの設定</p>
+<p> ページ作成で生成されたsampleBlog/_config.ymlを編集します。<br> Deploymentの項を設置予定ページの情報を記入します()今回はGitHub)。エンコードはUTF-8にしないとエラーが出るみたい。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Deployment&#10;## Docs: http://hexo.io/docs/deployment.html&#10;deploy:&#10;type:</span><br></pre></td></tr></table></figure>
+<p> ↑を</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Deployment&#10;## Docs: http://hexo.io/docs/deployment.html&#10;deploy:&#10;type: github&#10;repo: git@github.com:TatsuyaYamamoto/TatusyaYamamoto.github.io.git&#10;branch: master</span><br></pre></td></tr></table></figure>
+<p> ↑こんな感じにする。</p>
+<p> リポジトリ名はGitHubのページからコピペ。ブランチ名は特にこだわりがない限りmasterでいいでしょう。（仕様上他のがダメかは分かんない）</p>
+</li>
+<li><p>公開鍵の作成、登録</p>
+<p> GitHubへのデプロイに際して必要のようです。pushとかは出来るんだけれど、何故だろう。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen&#10;Generating public/private rsa key pair.</span><br></pre></td></tr></table></figure>
+<p> コマンド入力後に聞かれる質問は適当にenter連打でOK!</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub | pbcopy</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>作成された公開鍵の文字列をコピーして、GitHub内 [<span class="link_label">settings &gt; SSH keys</span>](<span class="link_url">https://github.com/settings/ssh</span>) で登録します。Titleは分かりやすいやつを適当に。
+</code></pre><h2 id="新しい記事を作成する">新しい記事を作成する</h2><p>さっそく新しい記事を作成してみましょう。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new firstArticle</span><br></pre></td></tr></table></figure>
+<p>new以降に書いたものがファイル、記事タイトルになります。ファイル名はそのまま記事のURLとしても使用されるので、英語で書くようにしましょう。記事タイトルはこの後編集します。</p>
+<p>今回作成されたfirstArticle.md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title: firstArticle&#10;date: 2015-02-18 00:30:02&#10;tags:&#10;---</span><br></pre></td></tr></table></figure>
+<ul>
+<li>titleは日本語で書きなおす。</li>
+<li>dateは好きな時間にいじり放題</li>
+<li>tagsには好きなタグを記入します。</li>
+<li>—-以下に記事を書く！</li>
+</ul>
+<h2 id="公開用ページ作成、設置">公開用ページ作成、設置</h2><p>設定も完了し記事も書いたので、早速GitHubPagesへページをデプロイしましょう。</p>
+<p>まずはhtmlファイルを作成します。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>そしてデプロイ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>簡単！やった―！</p>
+<p>ちなみに上記２つのコマンドは「hexo g」「hexo d」省略、または「$ hexo d -g」で一度に行うことも出来る！更にやったー！</p>
+<p>一度ページファイルを削除したい場合は</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>これでdb.jsonとpublicフォルダが削除されます。</p>
+<h2 id="定期的に更新する">定期的に更新する</h2><p>これが一番大変。ｳｵｵｵ</p>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-02-17T12:11:03.000Z"><a href="/2015/02/17/article/">Feb 17 2015</a></time>
+        
+        
+  
+  <a href="/categories/Serialization/">@Serialization</a>
+
+
+        
+  
+  <a href="/tags/Git/">#Git</a>, <a href="/tags/Hexo/">#Hexo</a>, <a href="/tags/software/">#software</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

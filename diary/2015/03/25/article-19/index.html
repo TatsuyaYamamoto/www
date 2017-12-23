@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScriptで東◯的な弾幕ゲームを作るvol.4 | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="目次
+はじめに
+連載バックナンバー
+今日のゴール
+勉強したこと(忘れたことも)
+作ったもの
+紆余曲折
+ソースコード
+
+はじめにプログラミングを勉強している者として何かを作らなければと頭を捻った結果、JavaScriptでゲームを作ることにしました。本連載記事はその徒然なるままの作業記録です。
+参考サイトをテキストに某同人弾幕ゲーム的なものを目指します。どこまで機能を実装出来るかは・・・・未定で。
+参考サイト：javascriptで作るシューティングゲーム的な何か">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScriptで東◯的な弾幕ゲームを作るvol.4"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">JavaScriptで東◯的な弾幕ゲームを作るvol.4</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <h2 id="目次">目次</h2><ul>
+<li>はじめに</li>
+<li>連載バックナンバー</li>
+<li>今日のゴール</li>
+<li>勉強したこと(忘れたことも)</li>
+<li>作ったもの</li>
+<li>紆余曲折</li>
+<li>ソースコード</li>
+</ul>
+<h2 id="はじめに">はじめに</h2><p>プログラミングを勉強している者として何かを作らなければと頭を捻った結果、JavaScriptでゲームを作ることにしました。本連載記事はその徒然なるままの作業記録です。</p>
+<p>参考サイトをテキストに某同人弾幕ゲーム的なものを目指します。どこまで機能を実装出来るかは・・・・未定で。</p>
+<p>参考サイト：<a href="http://qiita.com/doxas/items/9debec7e1f0c19bc8daa" target="_blank" rel="external">javascriptで作るシューティングゲーム的な何か</a></p>
+<a id="more"></a>
+<h2 id="連載バックナンバー">連載バックナンバー</h2><p>タグ：<a href="/tags/EastProject/">EastProject</a></p>
+<p>続きのリンクはこちらで</p>
+<h2 id="今日のゴール">今日のゴール</h2><ul>
+<li>敵キャラクターを作る<ul>
+<li>２種類の敵を作成する</li>
+</ul>
+</li>
+<li>当たり判定を作る<ul>
+<li>敵機に触れたら自機は消える</li>
+<li>ゲームオーバーでついにゲームらしく</li>
+</ul>
+</li>
+</ul>
+<h2 id="新しく勉強したこと(忘れたことも)">新しく勉強したこと(忘れたことも)</h2><ul>
+<li>JavaScript<ul>
+<li>prototype</li>
+</ul>
+</li>
+<li>html</li>
+<li>css</li>
+</ul>
+<h2 id="作ったもの">作ったもの</h2><p><a href=""><del>東◯的弾幕ゲームv4</del></a></p>
+<p>ゲームプログラムversion4を切り出すの忘れました。</p>
+<p><img src="/2015/03/25/article-19/1.png" alt="ゲームオーバーはお手の物"></p>
+<h2 id="ソースコード">ソースコード</h2><ul>
+<li><p>character.js</p>
+<ul>
+<li>敵機コンストラクタを追加しました。<ul>
+<li>構造は自機とほとんど同じですが、初期設定で敵機の個性を出します。</li>
+</ul>
+</li>
+<li><p>自機の生存情報として「alive」プロパティを追加しました。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//&#23450;&#25968;-------------------------------------------&#10;var NORMAL_SPEED = 5;&#10;var SLOW_SPEED = 2;&#10;&#10;var SHOT_SIZE = 3;&#10;var SHOT_SPEED = 20;&#10;&#10;var ENEMY1_SIZE =30;&#10;var ENEMY1_SPEED = 13;&#10;var ENEMY1_FIRST_X = 100;&#10;var ENEMY1_FIRST_Y = 0;&#10;&#10;var ENEMY2_SIZE =20;&#10;var ENEMY2_SPEED = 15;&#10;var ENEMY2_FIRST_X = 180;&#10;var ENEMY2_FIRST_Y = 0;&#10;&#10;//&#33258;&#27231;&#12398;&#12467;&#12531;&#12473;&#12488;&#12521;&#12463;&#12479;-------------------------------------&#10;function Player()&#123;&#10;&#125;&#10;Player.prototype.init = function(size, x, y)&#123;&#10;    this.size = size;&#10;    this.position = new Position();&#10;    this.position.x = x;&#10;    this.position.y = y;&#10;    this.alive = true;&#10;&#125;&#10;&#10;Player.prototype.move = function()&#123;&#10;&#10;    //&#31227;&#21205;&#12473;&#12500;&#12540;&#12489;&#12398;&#25805;&#20316;&#10;    var playerMoveDistance = NORMAL_SPEED;&#10;    if(pressedKey[5])&#123;&#10;        playerMoveDistance = SLOW_SPEED;        &#10;    &#125;&#10;&#10;    //&#25276;&#19979;&#20013;&#12398;&#12461;&#12540;&#12398;&#21028;&#23450;&#12392;&#31227;&#21205;&#21487;&#33021;&#31684;&#22258;&#12398;&#25351;&#23450;&#10;    if(pressedKey[1] &#38;&#38; player.position.y &#62; 0)&#123;&#10;        player.position.y -= playerMoveDistance;&#10;    &#125;&#10;    if(pressedKey[2] &#38;&#38; player.position.y &#60; gameScreen.height)&#123;&#10;        player.position.y += playerMoveDistance;&#10;    &#125;&#10;    if(pressedKey[3] &#38;&#38; player.position.x &#60; gameScreen.width)&#123;&#10;        player.position.x += playerMoveDistance;&#10;    &#125;&#10;    if(pressedKey[4] &#38;&#38; player.position.x &#62; 0)&#123;&#10;        player.position.x -= playerMoveDistance;&#10;    &#125;&#10;&#125;&#10;Player.prototype.shot = function()&#123;&#10;    bulletOfPlayerShot.push(new Shot());&#10;    bulletOfPlayerShot[bulletOfPlayerShot.length-1].init(SHOT_SIZE, SHOT_SPEED, player.position.x, player.position.y)&#10;    shotCount ++;&#10;    shotStatus = true;&#10;&#125;&#10;&#10;//&#24382;&#20024;&#12398;&#12467;&#12531;&#12473;&#12488;&#12521;&#12463;&#12479;-------------------------------------&#10;function Shot()&#123;&#10;&#125;&#10;Shot.prototype.init = function(size, speed, x, y)&#123;&#10;    this.size = size;&#10;    this.speed = speed;&#10;    this.position = new Position();&#10;    this.position.x = x;&#10;    this.position.y = y;&#10;&#125;&#10;Shot.prototype.move = function()&#123;&#10;    this.position.y -= this.speed;&#10;&#125;&#10;//&#25973;&#27231;&#12398;&#12467;&#12531;&#12473;&#12488;&#12521;&#12463;&#12479;-------------------------------------&#10;function Enemy()&#123;&#10;&#125;&#10;Enemy.prototype.init = function(enemyType)&#123;&#10;    if(enemyType == &#34;enemyType1&#34;)&#123;&#10;        this.size = ENEMY1_SIZE;&#10;        this.speed = ENEMY1_SPEED;&#10;        this.position = new Position();&#10;        this.position.x = ENEMY1_FIRST_X;&#10;        this.position.y = ENEMY1_FIRST_Y;&#10;    &#125;&#10;    if(enemyType == &#34;enemyType2&#34;)&#123;&#10;        this.size = ENEMY2_SIZE;&#10;        this.speed = ENEMY2_SPEED;&#10;        this.position = new Position();&#10;        this.position.x = ENEMY2_FIRST_X;&#10;        this.position.y = ENEMY2_FIRST_Y;&#10;    &#125;&#10;&#125;&#10;Enemy.prototype.move = function()&#123;&#10;    this.position.y += this.speed;&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>common.js</p>
+<ul>
+<li>座標管理に、対象オブジェクトとの座標上の距離を計算するメソッドを追加しました。<ul>
+<li>中学三年で習うあれ(a^2+b^2=c^2)です</li>
+</ul>
+</li>
+<li>オブジェクト間の距離を当たり判定の基準に使います。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> //&#24231;&#27161;&#31649;&#29702;&#29992;&#12467;&#12531;&#12473;&#12488;&#12521;&#12463;&#12479;&#10;function Position()&#123;&#10;&#9;this.x = 0;&#10;&#9;this.y = 0;&#10;&#125;&#10;&#10;Position.prototype.distance = function(target)&#123;&#10;&#9;var d = new Position();&#10;&#9;d.x = this.x - target.position.x;&#10;&#9;d.y = this.y - target.position.y;&#10;&#10;&#9;var length = Math.sqrt(Math.pow(d.x, 2) + Math.pow(d.y, 2));&#10;&#9;return length;&#10;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-03-25T14:54:27.000Z"><a href="/2015/03/25/article-19/">Mar 25 2015</a></time>
+        
+        
+
+        
+  
+  <a href="/tags/EastProject/">#EastProject</a>, <a href="/tags/JavaScript/">#JavaScript</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

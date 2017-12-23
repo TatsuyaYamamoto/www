@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GitHubPageとページジェネレーター(HEXO)でブログをやる！(GitHubPages編) | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="markdownでブログを書きたい！と僕は思いました。仕事中に手を出したmarkdown方式もなかなか快適であり、これでエンジニアブログの記事を書きたいと思って調査。無料のブログサービスでは、はてなブログがmarkdownの編集機能を持っていますが、ブラウザでの更新の煩わしさがどうしても拭い切れない・・・。
+―――んで、見つけたのがGithubPagesとHEXOでのブログ運営。MarkDownで書いた記事をhtmlファイルに変換して公開する・・・というものです。これはいいじゃないか！">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="GitHubPageとページジェネレーター(HEXO)でブログをやる！(GitHubPages編)"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">GitHubPageとページジェネレーター(HEXO)でブログをやる！(GitHubPages編)</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <h1 id="markdownでブログを書きたい！">markdownでブログを書きたい！</h1><p>と僕は思いました。仕事中に手を出したmarkdown方式もなかなか快適であり、これでエンジニアブログの記事を書きたいと思って調査。無料のブログサービスでは、はてなブログがmarkdownの編集機能を持っていますが、ブラウザでの更新の煩わしさがどうしても拭い切れない・・・。</p>
+<p>―――んで、見つけたのがGithubPagesとHEXOでのブログ運営。MarkDownで書いた記事をhtmlファイルに変換して公開する・・・というものです。これはいいじゃないか！</p>
+<p><img src="/2015/02/16/article4/1.png" alt="かわ・・いい？"></p>
+<a id="more"></a>
+<p><strong>GitHubPages</strong>とはGitHubのリポジトリに置いたファイルをウェブページとして公開することあが出来るホスティングサービス。ブログ公開用。</p>
+<p><strong>HEXO</strong>とはNode.js製のサイトジェネレーター。ページ作成、htmlへの変換、GitHubへのデプロイがコマンドラインで行うことが出来ます。ブログページ作成(変換)用。</p>
+<p>本当は小耳に挟むWordPress?とか使っちゃって、サーバーも自前で構築しちゃって、本格的にブログを構築・・・なんてしてみたいけれど、そんなものはまだ僕には早い。身の丈あったシステムで、新人エンジニアのそこんとこを書いていきます。</p>
+<p>２回に分けて投稿します。本記事前半はGitHubPagesの設定です。</p>
+<p><strong>→後半投稿しました！<a href="/2015/02/17/introHexo/">GitHubPageとページジェネレーター(HEXO)でブログをやる!!(HEXO編)</a></strong></p>
+<h2 id="ブログ公開までの流れ">ブログ公開までの流れ</h2><ol>
+<li>GitHubPagesの準備</li>
+<li>公開鍵の設定　←今日はここまで!!</li>
+<li>ページジェネレーターの準備</li>
+<li>新しい記事を作成する</li>
+<li>公開用ページ作成、設置</li>
+</ol>
+<h2 id="GitHubPagesの準備">GitHubPagesの準備</h2><p>まずは公開するブログのスペースをGitHubPagesに作ります。<br>GitHubでは「http:// 自分のアカウント名 .github.io」のURLでサイトを公開出来るスペースを貰えます。僕のGitHubアカウントは「TatsuyaYamamoto」なので（長い）、「<a href="http://tatsuyayamamoto.github.io/" target="_blank" rel="external">http://tatsuyayamamoto.github.io/</a>」です。大文字は小文字に置き換わります。</p>
+<ol>
+<li><p>GitHubのアカウントを作成</p>
+<p> <a href="https://github.com/" target="_blank" rel="external">こちら</a>へどうぞ</p>
+</li>
+<li><p>GitHubPages用のリポジトリを作成</p>
+<p> GitHubPagesのスペースを作るには「自分のアカウント名 .github.io」という名前のリポジトリを作成します。これがPagesのURLになります。</p>
+</li>
+</ol>
+<h2 id="公開鍵の設定">公開鍵の設定</h2><p>GitHubにデプロイをするために、手元のPCの公開鍵をGitHubに登録しておきます。</p>
+<p>GitリポジトリへのアクセスにはSSHが使用されているらしく、公開鍵を登録することでpush時にアカウント情報を入力しなく良くなったり、セキュリティが上がるみたい。今回はHEXOによるデプロイ時の要求です。</p>
+<p>仕事先のmacでは公開鍵なんて登録してなくてもpushのとき聞かれていないのは何故だ・・・・。</p>
+<p>今までpushしたりしまくっていたけれど、要求されることはなかったので、今更なこのタイミングで僕は公開鍵を登録することになりました。</p>
+<ol>
+<li><p>公開鍵の作成</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+<p> 色々聞かれますが、<del>特に気にせず</del>enterを叩きまくると・・・</p>
+</li>
+</ol>
+<pre><code><span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+--[ RSA 2048]----+&#10;|         +o+.o.  |&#10;|        . +.+  o |&#10;|         .... + .|&#10;|         . o B . |&#10;|        S o o *  |&#10;|         . + o . |&#10;|          E . .  |&#10;|         .   .   |&#10;|                 |&#10;+-----------------+</span><br></pre></td></tr></table></figure></span>
+
+
+謎の鍵のようなものが表示されます。
+</code></pre><ol>
+<li><p>公開鍵の登録</p>
+<p> あとは鍵の文字列をコピペして、</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub | pbcopy</span><br></pre></td></tr></table></figure>
+<p> GitHubに登録するだけ。</p>
+<p> GitHub &gt; Personal settings &gt; SSH Keys &gt; Add SSH Keys</p>
+</li>
+</ol>
+<p>SSHkeyについては改めて調べることにしましょう・・・。</p>
+<h2 id="続く…">続く…</h2><p><a href="/2015/02/17/introHexo/">GitHubPageとページジェネレーター(HEXO)でブログをやる!!(HEXO編)</a></p>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-02-16T13:12:23.000Z"><a href="/2015/02/16/article/">Feb 16 2015</a></time>
+        
+        
+  
+  <a href="/categories/Serialization/">@Serialization</a>
+
+
+        
+  
+  <a href="/tags/Git/">#Git</a>, <a href="/tags/Hexo/">#Hexo</a>, <a href="/tags/software/">#software</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

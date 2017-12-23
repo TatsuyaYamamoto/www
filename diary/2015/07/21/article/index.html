@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaでMySQLを操作するWebAPIを作る(2) | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="唐突ですが、、、
+目標
+Java製のWebAPIでMySQL
+mavenでビルドとか色々管理する
+JavascriptでWebAPIを呼び出す
+
+今回の目標
+DBドライバーを導入して、select SQLを実行する！">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaでMySQLを操作するWebAPIを作る(2)"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">JavaでMySQLを操作するWebAPIを作る(2)</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <p>唐突ですが、、、</p>
+<h3 id="目標">目標</h3><ul>
+<li>Java製のWebAPIでMySQL</li>
+<li>mavenでビルドとか色々管理する</li>
+<li>JavascriptでWebAPIを呼び出す</li>
+</ul>
+<h3 id="今回の目標">今回の目標</h3><ul>
+<li>DBドライバーを導入して、select SQLを実行する！</li>
+</ul>
+<a id="more"></a>
+<h2 id="今日やったこと">今日やったこと</h2><ol>
+<li>JDBCの準備<ul>
+<li>インストール</li>
+<li>ロード</li>
+</ul>
+</li>
+<li>MySQLの準備<ul>
+<li>mysqlの準備</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>API実装<ul>
+<li>apiからDBのselectの結果を取得</li>
+</ul>
+</li>
+</ul>
+<h2 id="JDBC準備">JDBC準備</h2><ul>
+<li>インストール</li>
+</ul>
+<p>mavenから行うので、pom.xmlに以下を追加します。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;dependency&#62;&#10;  &#60;groupId&#62;mysql&#60;/groupId&#62;&#10;  &#60;artifactId&#62;mysql-connector-java&#60;/artifactId&#62;&#10;  &#60;version&#62;5.1.6&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure>
+<h2 id="MySQLの準備">MySQLの準備</h2><p>test databseに適当な値を入力しておきます</p>
+<ul>
+<li>database</li>
+</ul>
+<p>testを使います。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;&#10;+--------------------+&#10;| Database           |&#10;+--------------------+&#10;| information_schema |&#10;| test               |&#10;+--------------------+&#10;2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>table作成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&#62; create table testTable (column1 int, column2 varchar(20));&#10;Query OK, 0 rows affected (0.04 sec)&#10;&#10;mysql&#62; show tables from test;&#10;+----------------+&#10;| Tables_in_test |&#10;+----------------+&#10;| testTable      |&#10;+----------------+&#10;1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>データ追加</li>
+</ul>
+<p>APIで取得するための適当な値を入力しておきます。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into test.testTable  values (1, &#34;&#12354;&#12356;&#12358;&#12360;&#12362;&#34;), (2, &#34;&#12363;&#12365;&#12367;&#12369;&#12371;&#34;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>データ取得</li>
+</ul>
+<p>今回取得対象のtableはこんな感じ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&#62; select * from test.testTable;                                            +---------+--------------------------------------------------------------+&#10;| column1 | column2                                                      |&#10;+---------+--------------------------------------------------------------+&#10;|       1 | &#12354;&#12356;&#12358;&#12360;&#12362;                                                   |&#10;|       2 | &#12363;&#12365;&#12367;&#12369;&#12371;                                                   |&#10;|       1 | &#12354;&#12356;&#12358;&#12360;&#12362;                                                   |&#10;|       2 | &#12363;&#12365;&#12367;&#12369;&#12371;                                                   |&#10;|       1 | &#12354;&#12356;&#12358;&#12360;&#12362;                                                   |&#10;|       2 | &#12363;&#12365;&#12367;&#12369;&#12371;&#12373;&#12375;&#12377;&#12379;&#12381;&#12383;&#12385;&#12388;&#12390;&#12392;                               |&#10;|       1 | &#12354;&#12356;&#12358;&#12360;&#12362;                                                   |&#10;|       2 | &#12363;&#12365;&#12367;&#12369;&#12371;&#12373;&#12375;&#12377;&#12379;&#12381;&#12383;&#12385;&#12388;&#12390;&#12392;&#12394;&#12395;&#12396;&#12397;&#12398;                     |&#10;|       1 | &#12354;&#12356;&#12358;&#12360;&#12362;                                                   |&#10;|       2 | 12345678901234567890                                         |&#10;+---------+--------------------------------------------------------------+&#10;10 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列数を取得</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&#62; select count(*) from test.testTable;&#10;+----------+&#10;| count(*) |&#10;+----------+&#10;|       10 |&#10;+----------+&#10;1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="API実装">API実装</h2><ul>
+<li>WebAPIでデータ取得</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package net.sokontokoro_factory.webapi;&#10;import javax.ws.rs.GET;&#10;import javax.ws.rs.Path;&#10;import javax.ws.rs.Produces;&#10;import javax.ws.rs.core.MediaType;&#10;&#10;import java.io.*;&#10;import java.sql.*;&#10;&#10;@Path(&#34;/resource&#34;)&#10;public class SampleResource &#123;&#10;    @Path(&#34;/webapi&#34;)&#10;    @GET&#10;    @Produces(MediaType.TEXT_PLAIN + &#34;; charset=UTF-8&#34;)&#10;    public String getItem() &#123;&#10;&#10;    Connection conn = null;&#10;    String url = &#34;jdbc:mysql://localhost/test&#34;;&#10;    String user = &#34;&#34;;&#10;    String password = &#34;&#34;;&#10;&#10;    String msg;&#10;&#9;String[] items = &#123;&#125;;&#10;&#9;int count = 0;&#10;&#10;    try &#123;&#10;&#9;&#9;/*DB setup*/&#10;&#9;&#9;Class.forName(&#34;com.mysql.jdbc.Driver&#34;).newInstance();&#10;&#9;&#9;conn = DriverManager.getConnection(url, user, password);&#10;&#9;&#9;Statement stmt = conn.createStatement();&#10;&#10;&#9;&#9;/*table&#12398;&#21015;&#25968;&#12434;&#21462;&#24471;*/&#10;&#9;&#9;ResultSet rs = stmt.executeQuery(&#34;select count(*) from test.testTable&#34;);&#10;&#9;&#9;rs.next();&#10;&#9;&#9;count = rs.getInt(1);&#10;&#10;&#10;&#9;&#9;/*column2&#12398;&#35201;&#32032;&#12434;&#20840;&#20214;&#21462;&#24471;*/&#10;&#9;&#9;items = new String[count];&#10;&#9;&#9;rs = stmt.executeQuery(&#34;select * from test.testTable&#34;);&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;while(rs.next())&#123;&#10;&#9;&#9;&#9;items[i] = rs.getString(&#34;column2&#34;);&#10;&#9;&#9;&#9;i ++;&#10;&#9;&#9;&#125;&#10;&#10;&#9;&#9;/*DB close*/&#10;&#9;&#9;rs.close();&#10;&#9;&#9;stmt.close();&#10;&#10;    &#125;catch (ClassNotFoundException e)&#123;&#10;&#9;&#9;msg = &#34;ClassNotFoundException:&#34; + e.getMessage();&#10;    &#125;catch (SQLException e)&#123;&#10;&#9;&#9;msg = &#34;SQLException:&#34; + e.getMessage();&#10;    &#125;catch (Exception e)&#123;&#10;&#9;&#9;msg = &#34;Exception:&#34; + e.getMessage();&#10;    &#125;finally&#123;&#10;&#9;&#9;try&#123;&#10;&#9;        if (conn != null)&#123;&#10;&#9;&#9;&#9;&#9;conn.close();&#10;&#9;&#9;&#9;&#9;msg = &#34;&#12487;&#12540;&#12479;&#12505;&#12540;&#12473;&#20999;&#26029;&#12395;&#25104;&#21151;&#12375;&#12414;&#12375;&#12383;&#34;;&#10;&#9;        &#125;else&#123;&#10;&#9;&#9;&#9;&#9;msg = &#34;&#12467;&#12493;&#12463;&#12471;&#12519;&#12531;&#12364;&#12354;&#12426;&#12414;&#12379;&#12435;&#34;;&#10;&#9;&#9;&#9;&#125;&#10;&#9;&#9;&#125;catch (SQLException e)&#123;&#10;&#9;&#9;&#9;msg = &#34;SQLException:&#34; + e.getMessage();&#10;&#9;&#9;&#125;&#10;    &#125;&#10;&#10;&#10;        return &#34;&#32080;&#26524; : &#34; + items[7];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>いいかんじ！</p>
+<p><img src="1.png" alt=""></p>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-07-21T13:11:06.000Z"><a href="/2015/07/21/article/">Jul 21 2015</a></time>
+        
+        
+
+        
+  
+  <a href="/tags/Java/">#Java</a>, <a href="/tags/Server-side/">#Server-side</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

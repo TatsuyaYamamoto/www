@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Canvasを使ってみる(鬼基本、四角描画) | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="仕事先でもたま〜に耳にする「canvas」。JavaScriptベースで図を描くことが出来る、html5の描画機能のことらしい。Javascriptをポチポチやっている者として、少し弄ってみるのもいいかも。
+―――ってことで、書いてみた。
+1//index.htmml&amp;#10;&amp;#10;&amp;#60;h">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Canvasを使ってみる(鬼基本、四角描画)"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">Canvasを使ってみる(鬼基本、四角描画)</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <p>仕事先でもたま〜に耳にする「canvas」。<br>JavaScriptベースで図を描くことが出来る、html5の描画機能のことらしい。Javascriptをポチポチやっている者として、少し弄ってみるのもいいかも。</p>
+<p>―――ってことで、書いてみた。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//index.htmml&#10;&#10;&#60;html lang=&#34;ja&#34;&#62;&#10;&#60;head&#62;&#10;&#9;&#60;title&#62;&#12461;&#12515;&#12531;&#12496;&#12473;&#32244;&#32722;&#65297;&#60;/title&#62;&#10;&#9;&#60;meta charset=&#34;utf-8&#34;&#62;&#10;&#9;&#60;script src=&#34;main.js&#34;&#62;&#60;/script&#62;&#10;&#60;/head&#62;&#10;&#60;body&#62;&#10;&#9;&#60;h1&#62;&#12356;&#12391;&#12424;&#30011;&#20687;&#65281;&#60;/h1&#62;&#10;&#9;//&#12371;&#12371;&#12398;canvas&#12479;&#12464;&#12391;&#35373;&#32622;&#12290;&#10;&#9;&#60;canvas id=&#34;myCanvas&#34; width=&#34;300&#34; height=&#34;300&#34;&#62;&#60;/canvas&#62;&#10;&#60;/body&#62;&#10;&#60;/html&#62;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//main.js&#10;&#10;//canvas&#12479;&#12464;&#20869;&#12398;id&#12395;&#23550;&#24540;&#12373;&#12379;&#12390;&#12289;&#10;var cnvs = document.getElementById(&#34;myCanvas&#34;);&#10;//getContext&#12391;&#28310;&#20633;&#23436;&#20102;&#12290;&#10;var cntxt = cnvs.getContext(&#39;2d&#39;);&#10;&#10;//canvas&#12479;&#12464;&#20869;&#12398;&#32294;&#27178;&#12434;&#21560;&#12387;&#12390;&#10;var w = cnvs.width;&#10;var h = cnvs.height;&#10;&#10;//&#10;cntxt.fillStyle = &#34;#ff0000&#34;;&#10;cntxt.fillRect(w * 0.1, h * 0.1, w * 0.8, h * 0.8);</span><br></pre></td></tr></table></figure>
+<p>どれどれ・・・・？</p>
+<p><img src="/2015/2/28/article14/1.png" alt="失敗"></p>
+<p>ふぉ？！！</p>
+<p>全く表示されていない・・・スペルミスもない、はず。</p>
+<p>safariでエラーの詳細を見てみると、「TypeError: null is not an object (evaluating ‘cnvs.getContext’)」とのこと。つまり、main.jsの最初で宣言した変数”cnvs”がnullなので、２行目のgetContexrメソッドが使えないそうです。</p>
+<p>はて、どういうことだ。canvasタグの要素をしっかり吸えていないということ・・・・？</p>
+<p>〜〜〜〜１時間半悩む〜〜〜〜〜</p>
+<p>あ、もしや・・・・。</p>
+<p><img src="2.png" alt="成功"></p>
+<p>出来た・・・・。どうやらCanvasタグの要素からJavascriptでオブジェクトを作るには、先にタグをブラウザが読み込んでからじゃないと行え見たいらしいです。</p>
+<p>（canvasだけじゃない・・・？今の私にはまだ分かりません(白目）)</p>
+<p>canvasタグが読み込まれたあとで、JavaScript内のgetElementByIdメソッドを走らせるために、イベントハンドラを使います(さっき名前を覚えた)。</p>
+<p>onloadでbody内を読み込み完了してから、そのメソッド内の処理(今回は四角の描写のコード)を行うようにすることで、無事成功しました。</p>
+<p>あぁ、超入門でこの調子は、先が思いやられます。</p>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-02-28T13:46:06.000Z"><a href="/2015/02/28/article/">Feb 28 2015</a></time>
+        
+        
+
+        
+  
+  <a href="/tags/canvas/">#canvas</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

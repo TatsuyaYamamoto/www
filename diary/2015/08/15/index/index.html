@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RESTful Java with JAX-RS 読んでる(1) | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="読んでいる本RESTful Java with JAX-RS
+目次(原文ママじゃない)
+RESTとは
+RESTfulサービスデザイン
+サンプルJAX-RSサービスの紹介
+アノテーション１（URIとHTTPメソッド）
+アノテーション２(インジェクション)
+コンテンツハンドラ
+レスポンスと例外処理
+Conneg
+RESTのHATEOASについて
+アプリケーションスケール
+デプロイと統合
+セキュア
+クライアント
+実装
+
+この他に、各章に合わせたサンプルコードがある
+ノートバックナンバー
+今回のノート第１章　RESTとは第２章　RESTfulサービスデザイン">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="RESTful Java with JAX-RS 読んでる(1)"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">RESTful Java with JAX-RS 読んでる(1)</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <h2 id="読んでいる本">読んでいる本</h2><p><a href="http://www.oreilly.co.jp/books/9784873114675/" target="_blank" rel="external">RESTful Java with JAX-RS</a></p>
+<h3 id="目次(原文ママじゃない)">目次(原文ママじゃない)</h3><ol>
+<li>RESTとは</li>
+<li>RESTfulサービスデザイン</li>
+<li>サンプルJAX-RSサービスの紹介</li>
+<li>アノテーション１（URIとHTTPメソッド）</li>
+<li>アノテーション２(インジェクション)</li>
+<li>コンテンツハンドラ</li>
+<li>レスポンスと例外処理</li>
+<li>Conneg</li>
+<li>RESTのHATEOASについて</li>
+<li>アプリケーションスケール</li>
+<li>デプロイと統合</li>
+<li>セキュア</li>
+<li>クライアント</li>
+<li>実装</li>
+</ol>
+<p>この他に、各章に合わせたサンプルコードがある</p>
+<p><a href="/tags/RESTful_Java_with_JAX-RS/">ノートバックナンバー</a></p>
+<h2 id="今回のノート">今回のノート</h2><p>第１章　RESTとは<br>第２章　RESTfulサービスデザイン</p>
+<a id="more"></a>
+<h2 id="第１章_RESTとは">第１章　RESTとは</h2><h3 id="RESTとHTTP">RESTとHTTP</h3><ul>
+<li>REST自体は特定のプロトコルのものではないけれど、基本的には”REST over HTTP”で使われるよ</li>
+<li>HTTPはリクエストメッセージを送って、レスポンスメッセージを受け取る</li>
+</ul>
+<h3 id="RESTfulの5大原則">RESTfulの5大原則</h3><ul>
+<li>アドレス可能性<ul>
+<li>システム内のオブジェクト、リソースの場所は一意なURIで全て表せられるよ</li>
+</ul>
+</li>
+<li>制約された統一インターフェイス<ul>
+<li>URIはリソースのみを表すから「何をするか」のアクションの定義が必要だよ<ul>
+<li>GET, PUT, DELETE, POST, HEAD, OPTION</li>
+</ul>
+</li>
+<li>HTTPメソッドに限らせることで、開発側が気にすればいいのはデータフォーマットだけになるよ</li>
+<li>明確な定義上では予測可能な範囲での振る舞いになるから、GETメソッドではキャッシュとかが使えるよ</li>
+</ul>
+</li>
+<li>表現指向<ul>
+<li>いろんなデータフォーマットのやりとりが考えられるから、”Content-Typeヘッダ”を使おう！</li>
+<li>MIMEでデータフォーマットを指定だ</li>
+</ul>
+</li>
+<li>ステートレスな通信<ul>
+<li>クライアントセッションデータがサーバに格納されないよ</li>
+<li>サーバは自分自身が公開するリソースの記録と管理のみ</li>
+<li>セッションデータはクライアントが保持するよ</li>
+</ul>
+</li>
+<li>HATEOAS<ul>
+<li>レスポンスのXML内に別リソースのURIを埋め込むことで、システム内の対話の次の行き先を示してあげる</li>
+<li>正直よくわからなかった</li>
+</ul>
+</li>
+</ul>
+<h2 id="第２章_RESTfulサービスデザイン">第２章　RESTfulサービスデザイン</h2><p>eコマースシステムを作る流れで、必要な(大雑把な)設計や概要の説明</p>
+<h3 id="オブジェクト">オブジェクト</h3><ul>
+<li>本章のサンプルシステムのオブジェクト紹介<ul>
+<li>Order</li>
+<li>Customer</li>
+<li>LineItem</li>
+<li>Product</li>
+</ul>
+</li>
+</ul>
+<h3 id="URIモデル化">URIモデル化</h3><ul>
+<li>次にオブジェクトのエンドポイントの設計が必要</li>
+</ul>
+<h3 id="データフォーマット">データフォーマット</h3><ul>
+<li>やりとりの中身であるXMLファイルの構造を決める</li>
+<li>このXMLファイルは”読み取り、更新”と”作成”で構造が違う</li>
+</ul>
+<h3 id="HTTPメソッド">HTTPメソッド</h3><ul>
+<li>利用するメソッドとそれぞれの役割を決める</li>
+<li>全件取得<ul>
+<li>GETを使えばOK!</li>
+<li>でも、全件取得は重すぎる場合がある、、、</li>
+<li>その時はパラメータークエリでインデックスをつけてあげよう</li>
+</ul>
+</li>
+<li>各情報の取得<ul>
+<li>idのパラメーターをつけたURIでのアクセス</li>
+<li>これはGETで問題なし</li>
+</ul>
+</li>
+<li>リソースの作成<ul>
+<li>PUTとPOSTどっちを使おう？<ul>
+<li>PUTはidをパスに含める、POSTは含めない</li>
+<li>idはクライアント側が決めるものだけれど、サーバーが決めた方が好ましい</li>
+<li>ので、新規作成はPOST(idなしのリソース)でやりましょ</li>
+</ul>
+</li>
+<li>成功したら201(Created)を返す</li>
+<li>レスポンスヘッダかボディにLocationを返してあげよう</li>
+</ul>
+</li>
+<li>リソースの更新、削除<ul>
+<li>更新はPUT, 削除はDELETE。それぞれidでここのリソースをクライアント側が指定する</li>
+<li>レスポンスボディあり：200</li>
+<li>ボディなし：204</li>
+</ul>
+</li>
+<li>キャンセル、パージ<ul>
+<li>これがよくわからなかった。</li>
+<li>状態を保存する(キャンセルはリソースを削除しない)ためにはPUTで状態を更新させる</li>
+<li>操作がリソースの状態の場合、データフォーマット内でモデル化する</li>
+</ul>
+</li>
+</ul>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-08-15T11:51:33.000Z"><a href="/2015/08/15/index/">Aug 15 2015</a></time>
+        
+        
+  
+  <a href="/categories/study-note/">@study_note</a>
+
+
+        
+  
+  <a href="/tags/API/">#API</a>, <a href="/tags/Java/">#Java</a>, <a href="/tags/RESTful-Java-with-JAX-RS/">#RESTful_Java_with_JAX-RS</a>, <a href="/tags/Server-side/">#Server-side</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>

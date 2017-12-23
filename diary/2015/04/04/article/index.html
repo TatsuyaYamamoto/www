@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScriptで東◯的な弾幕ゲームを作るvol.6 | 新米SWエンジニアのそこんところ</title>
+  <meta name="author" content="Tatsuya Yamamoto">
+  
+  <meta name="description" content="目次
+はじめに
+連載バックナンバー
+今日のゴール
+勉強したこと(忘れたことも)
+作ったもの
+紆余曲折
+ソースコード
+
+はじめにプログラミングを勉強している者として何かを作らなければと頭を捻った結果、JavaScriptでゲームを作ることにしました。本連載記事はその徒然なるままの作業記録です。
+参考サイトをテキストに(最初だけ)某同人弾幕ゲーム的なものを目指します。どこまで機能を実装出来るかは・・・・未定で。
+参考サイト：javascriptで作るシューティングゲーム的な何か">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScriptで東◯的な弾幕ゲームを作るvol.6"/>
+  <meta property="og:site_name" content="新米SWエンジニアのそこんところ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="新米SWエンジニアのそこんところ" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <script src="//upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.6.2.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/">
+    <img class="circle" src="/img/top.jpg" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/">新米SWエンジニアのそこんところ</a>
+  </h1>
+</div>
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>いつまでがツヤツヤのお米なのか</p>
+</div>
+<nav class="menu-navigation-container">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav>
+<div class="widget">
+  
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://sokontokoro-factory.net/" target="_blank">そこんところ工房</a>
+    </li>
+    <li>
+      <a href="http://sokontokoro-factory.net/#games" target="_blank">ゲーム</a>
+    </li>
+  </ul>
+</nav>
+
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:diary.sokontokoro-factory.net">
+  </form>
+</nav>
+
+  
+<nav class="categories">
+  <h3 class="title">Categories</h3>
+  <ul>
+  
+    <li><a href="/categories/Article/">Article</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/categories/Production/">Production</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/Serialization/">Serialization</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/categories/article/">article</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/categories/project/">project</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/categories/study-note/">study_note</a>&nbsp;<small>(4)</small></li>
+  
+  </ul>
+</nav>
+
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/tags/API/">API</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/Apache/">Apache</a>&nbsp;<small>(6)</small></li>
+  
+    <li><a href="/tags/CentOS/">CentOS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/ChatServer-project/">ChatServer-project</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/CreateJS/">CreateJS</a>&nbsp;<small>(11)</small></li>
+  
+    <li><a href="/tags/Database/">Database</a>&nbsp;<small>(4)</small></li>
+  
+    <li><a href="/tags/EaselJS/">EaselJS</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/EastProject/">EastProject</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Git/">Git</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/HEXO/">HEXO</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Hexo-blog-framework/">Hexo(blog framework)</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Http/">Http</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Java/">Java</a>&nbsp;<small>(10)</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a>&nbsp;<small>(20)</small></li>
+  
+    <li><a href="/tags/Javascript/">Javascript</a>&nbsp;<small>(14)</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/Network/">Network</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Node-js/">Node.js</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/RESTful-Java-with-JAX-RS/">RESTful_Java_with_JAX-RS</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/SAStruts/">SAStruts</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Server-side/">Server-side</a>&nbsp;<small>(16)</small></li>
+  
+    <li><a href="/tags/Sever/">Sever</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Shellscript/">Shellscript</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/ShoesBox/">ShoesBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Tomcat/">Tomcat</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Twitter/">Twitter</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/Unix-Linux/">Unix/Linux</a>&nbsp;<small>(8)</small></li>
+  
+    <li><a href="/tags/Vagrant/">Vagrant</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/VirtualBox/">VirtualBox</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/Virtualization/">Virtualization</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/WebAPI-The-Good-Parts/">WebAPI_The_Good_Parts</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/android/">android</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/bash/">bash</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/bug/">bug</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/canvas/">canvas</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/command/">command</a>&nbsp;<small>(2)</small></li>
+  
+    <li><a href="/tags/etc/">etc</a>&nbsp;<small>(3)</small></li>
+  
+    <li><a href="/tags/mac/">mac</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/package/">package</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/tags/software/">software</a>&nbsp;<small>(5)</small></li>
+  
+    <li><a href="/tags/ほのCar！/">ほのCar！</a>&nbsp;<small>(7)</small></li>
+  
+  </ul>
+</nav>
+
+
+</div></header>
+    <section id="content" class="blog">
+      <article class="post">
+  <header>
+    
+  
+    <h1 class="title">JavaScriptで東◯的な弾幕ゲームを作るvol.6</h1>
+  
+
+    
+      <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+    
+  </header>
+  <section class="entry">
+    
+      <h2 id="目次">目次</h2><ul>
+<li>はじめに</li>
+<li>連載バックナンバー</li>
+<li>今日のゴール</li>
+<li>勉強したこと(忘れたことも)</li>
+<li>作ったもの</li>
+<li>紆余曲折</li>
+<li>ソースコード</li>
+</ul>
+<h2 id="はじめに">はじめに</h2><p>プログラミングを勉強している者として何かを作らなければと頭を捻った結果、JavaScriptでゲームを作ることにしました。本連載記事はその徒然なるままの作業記録です。</p>
+<p>参考サイトをテキストに(最初だけ)某同人弾幕ゲーム的なものを目指します。どこまで機能を実装出来るかは・・・・未定で。</p>
+<p>参考サイト：<a href="http://qiita.com/doxas/items/9debec7e1f0c19bc8daa" target="_blank" rel="external">javascriptで作るシューティングゲーム的な何か</a></p>
+<a id="more"></a>
+<h2 id="連載バックナンバー">連載バックナンバー</h2><p>タグ：<a href="/tags/EastProject/">EastProject</a></p>
+<p>続きのリンクはこちらで</p>
+<h2 id="今日のゴール">今日のゴール</h2><ul>
+<li>ゲーム画面を切り替えられるようにする。<ul>
+<li>流れは、「TOP→ゲーム→ゲームオーバー→ゲーム→・・・・」</li>
+<li>今までのリロードを促すのはダサいので、、、</li>
+<li>ゲーム状態を管理するStateMachineを作成する。</li>
+</ul>
+</li>
+</ul>
+<h2 id="新しく勉強したこと(忘れたことも)">新しく勉強したこと(忘れたことも)</h2><ul>
+<li>JavaScript</li>
+<li>html</li>
+<li>css</li>
+</ul>
+<h2 id="作ったもの">作ったもの</h2><p><a href="https://tatsuyayamamoto.github.io/EastProject/history/EastProject_v6/" target="_blank" rel="external">東◯的弾幕ゲームv6</a></p>
+<p><img src="/2015/04/04/article/1.png" alt="ゲームトップ"></p>
+<p><img src="/2015/04/04/article/2.png" alt="ゲーム"></p>
+<p><img src="/2015/04/04/article/3.png" alt="ゲームオーバー"></p>
+<h2 id="ソースコード">ソースコード</h2><ul>
+<li><p>stateMachine.js</p>
+<ul>
+<li>本更新の一番のミソ、これで良いのかは分からない！！</li>
+<li>ゲーム画面の状態を管理するStateMachineを作りました。</li>
+<li>top,game,gameoverで現在３つの状態があります。</li>
+<li>各状態の大まかな処理を記述し、具体的な処理は別のjsファイルでそれぞれ記述します。</li>
+<li><p>stateの処理は大きく分けて２つ。最初に１度行うものと、アニメーションにするために何度も行う処理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//&#12466;&#12540;&#12512;&#30011;&#38754;&#12473;&#12486;&#12540;&#12479;&#12473;---------------------------------------&#10;function gameState()&#123;&#10;    //&#21021;&#26399;&#21270;&#10;    gameInit();&#10;&#10;    //&#12450;&#12491;&#12513;&#12540;&#12471;&#12519;&#12531;Machine&#10;    (function()&#123;&#10;&#10;        //&#33258;&#27231;&#29983;&#23384;&#30906;&#35469;&#10;        checkPlayerAlive();&#10;&#10;        if(player.alive)&#123;&#10;&#10;            //&#12466;&#12540;&#12512;&#25551;&#30011;&#10;            drawGameScreen();&#10;            drawInfoScreen();&#10;&#10;            //&#29694;&#22312;&#23455;&#34892;&#12375;&#12390;&#12356;&#12427;&#38306;&#25968;&#12434;&#20877;&#23455;&#34892;&#10;            setTimeout(arguments.callee, FPS);&#10;            //&#12501;&#12524;&#12540;&#12512;&#25968;&#22679;&#21152;&#10;            frameCount++;            &#10;        &#125;else&#123;&#10;            gameOverState();&#10;        &#125;&#10;&#10;    &#125;)();&#10;&#125;&#10;//TOP&#30011;&#38754;&#12473;&#12486;&#12540;&#12479;&#12473;---------------------------------------&#10;function topState()&#123;&#10;    // screen&#21066;&#38500;&#10;    screenContext.clearRect(0, 0, gameScreen.width, gameScreen.height);&#10;    //&#12450;&#12490;&#12454;&#12531;&#12473;&#25551;&#30011;&#10;    screenContext.textAlign = &#34;center&#34;;&#10;    screenContext.font = &#34;bold 40px &#39;&#65325;&#65331; &#65328;&#12468;&#12471;&#12483;&#12463;&#39;&#34;;&#10;    screenContext.fillText(&#34;EAST PROJECT&#34;, gameScreen.width/2, gameScreen.height/2);&#10;    screenContext.font = &#34;15px &#39;&#65325;&#65331; &#65328;&#12468;&#12471;&#12483;&#12463;&#39;&#34;;&#10;    screenContext.fillText(&#39;PLEASE PRESS &#34;ENTER KEY&#34; FOR START&#39;, gameScreen.width/2, gameScreen.height/2+50);&#10;&#10;    //&#12450;&#12491;&#12513;&#12540;&#12471;&#12519;&#12531;&#10;    (function()&#123;&#10;&#10;         if(pressedKey[7])&#123;&#10;            gameState();&#10;&#10;        &#125; else &#123;&#10;            //&#29694;&#22312;&#23455;&#34892;&#12375;&#12390;&#12356;&#12427;&#38306;&#25968;&#12434;&#20877;&#23455;&#34892;&#10;            setTimeout(arguments.callee, FPS);&#10;        &#125;&#10;    &#125;)();&#10;&#125;&#10;&#10;&#10;//GameOver&#30011;&#38754;&#12473;&#12486;&#12540;&#12479;&#12473;---------------------------------------&#10;function gameOverState()&#123;&#10;    // screen&#21066;&#38500;&#10;    screenContext.clearRect(0, 0, gameScreen.width, gameScreen.height);&#10; &#10;    //&#12466;&#12540;&#12512;&#12458;&#12540;&#12496;&#12540;&#12450;&#12490;&#12454;&#12531;&#12473;&#25551;&#30011;&#10;    screenContext.textAlign = &#34;center&#34;;&#10;&#10;    screenContext.font = &#34;bold 20px &#39;&#65325;&#65331; &#65328;&#12468;&#12471;&#12483;&#12463;&#39;&#34;;&#10;    screenContext.fillText(&#39;YOUR HIT COUNT IS &#34;&#39; + hitCount + &#39;&#34;!!&#39;, gameScreen.width/2, gameScreen.height/2-50);&#10;&#10;    screenContext.font = &#34;bold 40px &#39;&#65325;&#65331; &#65328;&#12468;&#12471;&#12483;&#12463;&#39;&#34;;&#10;    screenContext.fillText(&#34;GAME OVER&#34;, gameScreen.width/2, gameScreen.height/2);&#10;    screenContext.font = &#34;15px &#39;&#65325;&#65331; &#65328;&#12468;&#12471;&#12483;&#12463;&#39;&#34;;&#10;    screenContext.fillText(&#39;PLEASE PRESS &#34;ENTER KEY&#34; FOR RETRY&#39;, gameScreen.width/2, gameScreen.height/2+50);&#10;&#10;    //&#12450;&#12491;&#12513;&#12540;&#12471;&#12519;&#12531;&#10;    (function()&#123;&#10;&#10;         if(pressedKey[7])&#123;&#10;            gameState();&#10;&#10;        &#125; else &#123;&#10;            //&#29694;&#22312;&#23455;&#34892;&#12375;&#12390;&#12356;&#12427;&#38306;&#25968;&#12434;&#20877;&#23455;&#34892;&#10;            setTimeout(arguments.callee, FPS);&#10;        &#125;&#10;    &#125;)();&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>main.js</p>
+<ul>
+<li>今までmainに書いていたアニメーション処理はstateMachineへ。また、ゲームの処理に関してはgameEngineに移動したので、こちらはシンプルになりました。</li>
+<li><p>ロード完了後に最初に行う処理「canvas」「イベント」「最初のゲームステータス(TOP)」のみを行っています。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.onload = function()&#123;&#10;&#10;    // &#12473;&#12463;&#12522;&#12540;&#12531;&#12398;&#21021;&#26399;&#21270;&#12289;canvas2d&#12467;&#12531;&#12486;&#12461;&#12473;&#12488;&#12398;&#30331;&#37682;&#10;    gameScreen = document.getElementById(&#39;screen&#39;);&#10;    screenContext = gameScreen.getContext(&#34;2d&#34;);&#10;&#10;    //&#12452;&#12505;&#12531;&#12488;&#12398;&#30331;&#37682;&#10;    window.addEventListener(&#34;keydown&#34;, keyDown, true);&#10;    window.addEventListener(&#34;keyup&#34;, keyUp, true);&#10;&#10;    //&#12488;&#12483;&#12503;&#30011;&#38754;&#12398;&#12473;&#12486;&#12540;&#12479;&#12473;&#12395;&#12377;&#12427;&#10;    topState();&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>gameEngine.js</p>
+<ul>
+<li>具体的なゲームの処理を記述しています。</li>
+<li><p>「オブジェクト、変数の初期化」、「各関数s」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//&#21021;&#26399;&#21270;-----------------------------------------&#10;function gameInit()&#123;&#10;&#10;//&#33258;&#27231;&#12398;&#21021;&#26399;&#21270;(&#12469;&#12452;&#12474;&#12289;&#21021;&#26399;x&#36600;&#20301;&#32622;&#12289;&#21021;&#26399;y&#36600;&#20301;&#32622;)&#10;player = new Player();&#10;player.init(10, 180, 450);&#10;&#10;bulletOfPlayerShot = [];&#10;enemy = [];&#10;&#10;&#10;keyCode = &#34;no&#34;;&#10;pressedKey = [];&#10;shotStatus = false;&#10;shotCount = 0;&#10;hitCount = 0;&#10;frameCount = 0;&#10;&#10;&#125;&#10;&#10;//&#38306;&#25968;----------------------------------------------------&#10;&#10;function drawInfoScreen()&#123;&#10;    // information&#34920;&#35352;&#10;    document.getElementById(&#34;info_coordinates&#34;).innerHTML =  &#34;coordinates of point : &#34;+player.position.x + &#34; : &#34; +player.position.y ;&#10;    document.getElementById(&#34;info_keyCode&#34;).innerHTML = &#34;KeyCode pushing : &#34;+keyCode;&#10;    document.getElementById(&#34;info_shotCount&#34;).innerHTML = &#34;ShotCount : &#34;+shotCount;&#10;    document.getElementById(&#34;info_hitCount&#34;).innerHTML = &#34;HitCount : &#34;+hitCount;&#10;    document.getElementById(&#34;info_frameCount&#34;).innerHTML = &#34;FrameCount : &#34;+frameCount;&#10;&#125;&#10;&#10;function drawGameScreen()&#123;&#10;    // screen&#21066;&#38500;&#10;    screenContext.clearRect(0, 0, gameScreen.width, gameScreen.height);&#10;&#10;    //&#33258;&#27231;&#31649;&#29702;&#10;    player.move();&#10;    playerDraw();&#10;&#10;    //Shot&#12377;&#12427;=Shot&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;&#12434;&#20316;&#25104;&#12377;&#12427;&#10;    if(pressedKey[6] &#38;&#38; (frameCount % SHOT_SPEED == 0))&#123;&#10;        player.shot();&#10;    &#125;&#10;    //shot&#31649;&#29702;&#10;    for(i = 0; i&#60; bulletOfPlayerShot.length; i++)&#123;&#10;        bulletOfPlayerShot[i].move();&#10;        shotDraw(i);&#10;        if(bulletOfPlayerShot[i].position.y &#60; 0)&#123;&#10;            bulletOfPlayerShot.splice(i, 1);&#10;        &#125;&#10;    &#125;&#10;&#10;    //&#25973;&#27231;&#31649;&#29702;&#10;    if(frameCount != 0 &#38;&#38; frameCount%150 == 0)&#123;&#10;        enemyType = &#34;enemyType1&#34;;&#10;        enemy.push(new Enemy());&#10;        enemy[enemy.length-1].init(enemyType);&#10;    &#125;&#10;&#10;    if(frameCount != 0 &#38;&#38; frameCount%100 == 0)&#123;&#10;        enemyType = &#34;enemyType2&#34;;&#10;        enemy.push(new Enemy());&#10;        enemy[enemy.length-1].init(enemyType);&#10;    &#125;&#10;&#10;    //&#25973;&#27231;&#25551;&#30011;&#10;    for(i = 0; i &#60; enemy.length; i++)&#123;&#10;        checkEnemyAlive(i);&#10;        if(!enemy[i].alive)&#123;&#10;            enemy.splice(i, 1);&#10;            //&#12498;&#12483;&#12488;&#25968;&#22679;&#21152;&#10;            hitCount++;&#10;        &#125;&#10;        else if(enemy[i].position.y &#62; 480)&#123;&#10;            enemy.splice(i, 1);&#10;        &#125;else&#123;&#10;            enemy[i].move();&#10;            enemyDraw(i);&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function playerDraw()&#123;&#10;    // &#12497;&#12473;&#12398;&#35373;&#23450;&#12434;&#38283;&#22987;&#10;    screenContext.beginPath();&#10;    // &#20870;&#12398;&#33394;&#12434;&#35373;&#23450;&#12377;&#12427;&#10;    screenContext.fillStyle = &#34;rgba(0, 0, 255, 0.75)&#34;;&#10;    // &#20870;&#12434;&#25551;&#12367;&#12497;&#12473;&#12434;&#35373;&#23450;&#10;    screenContext.arc(player.position.x, player.position.y,player.size , 0, Math.PI * 2, false);&#10;    // &#20870;&#12434;&#25551;&#12367;&#10;    screenContext.fill();&#10;&#125;&#10;function shotDraw(i)&#123;&#10;    screenContext.beginPath();&#10;    screenContext.fillStyle = &#34;rgba(0, 255, 0, 0.75)&#34;;&#10;    screenContext.arc(bulletOfPlayerShot[i].position.x, bulletOfPlayerShot[i].position.y, bulletOfPlayerShot[i].size , 0, Math.PI * 2, false);&#10;    screenContext.fill();&#10;&#125;&#10;function enemyDraw(i)&#123;&#10;    screenContext.beginPath();&#10;    screenContext.fillStyle = &#34;rgba(255, 0, 0, 0.75)&#34;;&#10;    screenContext.arc(enemy[i].position.x, enemy[i].position.y, enemy[i].size , 0, Math.PI * 2, false);&#10;    screenContext.fill();&#10;&#125;&#10;function checkPlayerAlive()&#123;&#10;&#10;    for(i = 0; i &#60; enemy.length; i++)&#123;&#10;        var length = player.position.distance(enemy[i]);&#10;        if(length &#60; player.size + enemy[i].size)&#123;&#10;            player.alive = false;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function checkEnemyAlive(i)&#123;&#10;    for(t = 0; t &#60; bulletOfPlayerShot.length; t++)&#123;&#10;        var length = enemy[i].position.distance(bulletOfPlayerShot[t]);&#10;        if(length &#60; enemy[i].size + bulletOfPlayerShot[t].size)&#123;&#10;            enemy[i].alive = false;&#10;        &#125;&#10;    &#125;  &#10;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="widget">
+        
+          <time datetime="2015-04-04T09:33:30.000Z"><a href="/2015/04/04/article/">Apr 4 2015</a></time>
+        
+        
+
+        
+  
+  <a href="/tags/EastProject/">#EastProject</a>, <a href="/tags/JavaScript/">#JavaScript</a>
+
+
+        
+      </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+  &copy; 2015 Tatsuya Yamamoto
+  
+</div>
+<div class="clearfix"></div></footer>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
+})(jQuery);
+</script>
+
+</body>
+</html>
