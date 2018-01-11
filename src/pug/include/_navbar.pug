@@ -21,33 +21,25 @@ mixin navbar(showHero, isIndex)
           a(href="./activity.html")
             i.material-icons.tab-icon timeline
             span.tab-label #{tabs_activity}
-        //li
-        //  a(href="./game.html")
-        //    i.material-icons.tab-icon games
-        //    span.tab-label #{tabs_game}
-
 
       ul.right
         li: a(href=`${lang}` === "en" ? `/${page_file_name}.html` : `/en/${page_file_name}.html`)
           i.material-icons translate
 
-    div.nav-content.container.hide-on-med-and-down
+    div.nav-content.container
 
       if showHero
         div.section.hero.center-align.logo
           a(href="./") #{hero_title}
             img(src="/assets/image/hammer.png")
 
-      ul.tabs.tabs-transparent.tabs-icon
-        li.tab
-          a(href=isIndex ? "./#about" : "./")
-            i.material-icons.tab-icon portrait
-            span.tab-label #{tabs_about}
-        li.tab
-          a(href="./activity.html")
-            i.material-icons.tab-icon timeline
-            span.tab-label #{tabs_activity}
-        //li.tab
-        //  a(href="./game.html")
-        //    i.material-icons.tab-icon games
-        //    span.tab-label #{tabs_game}
+      div.hide-on-med-and-down
+        ul.tabs.tabs-transparent.tabs-icon
+          li.tab
+            a(href=isIndex ? "./#about" : "./")
+              i.material-icons.tab-icon portrait
+              span.tab-label #{tabs_about}
+          li.tab
+            a(href="./activity.html")
+              i.material-icons.tab-icon timeline
+              span.tab-label #{tabs_activity}
