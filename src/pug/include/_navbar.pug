@@ -1,6 +1,6 @@
 include ../_string
 
-mixin navbar(showHero, isIndex)
+mixin navbar(showHero)
   block
   nav.nav-extended
     div.nav-wrapper
@@ -14,7 +14,7 @@ mixin navbar(showHero, isIndex)
 
       ul.sidenav#mobile-demo
         li
-          a(href=isIndex ? "./#about" : "./")
+          a(href="./")
             i.material-icons.tab-icon portrait
             span.tab-label #{tabs_about}
         li
@@ -36,7 +36,7 @@ mixin navbar(showHero, isIndex)
       div.hide-on-med-and-down
         ul.tabs.tabs-transparent.tabs-icon
           li.tab
-            a(href=isIndex ? "./#about" : "./")
+            a(href="./")
               i.material-icons.tab-icon portrait
               span.tab-label #{tabs_about}
           li.tab
