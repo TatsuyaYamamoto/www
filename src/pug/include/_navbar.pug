@@ -1,45 +1,64 @@
 include ../_string
 
-mixin navbar(showHero)
-  block
+- var BASE_PATH = `${lang}` === "en" ? `/en/` : `/`;
+- var TRANSLATE_BASE_PATH = `${lang}` === "en" ? `/` : `/en/`;
+
+mixin _menu_tabs
+  ul.tabs.tabs-transparent.tabs-icon
+    li.tab
+      a(href=`${BASE_PATH}`)
+        i.material-icons.tab-icon home
+        span.tab-label #{tabs_home}
+
+    li.tab
+      a(href=`${BASE_PATH}#about`)
+        i.material-icons.tab-icon portrait
+        span.tab-label #{tabs_about}
+
+    li.tab
+      a(href=`${BASE_PATH}activity.html`)
+        i.material-icons.tab-icon timeline
+        span.tab-label #{tabs_activity}
+
+
+
+mixin _navbarWithHero
   nav.nav-extended
     div.nav-wrapper
 
-      if !showHero
-        div.brand-logo.logo
-          a(href="./") #{hero_title}
-            img(src="/assets/image/hammer.png")
-      a(href="#" data-target="mobile-demo").sidenav-trigger
-        i.material-icons menu
-
-      ul.sidenav#mobile-demo
-        li
-          a(href="./")
-            i.material-icons.tab-icon portrait
-            span.tab-label #{tabs_about}
-        li
-          a(href="./activity.html")
-            i.material-icons.tab-icon timeline
-            span.tab-label #{tabs_activity}
-
       ul.right
-        li: a(href=`${lang}` === "en" ? `/${page_file_name}.html` : `/en/${page_file_name}.html`)
+        li: a(href=`${TRANSLATE_BASE_PATH}${page_file_name}.html`)
           i.material-icons translate
 
     div.nav-content.container
 
-      if showHero
-        div.section.hero.center-align.logo
-          a(href="./") #{hero_title}
-            img(src="/assets/image/hammer.png")
+      div.section.hero.center-align.logo
+        a(href=`${BASE_PATH}`) #{hero_title}
+          img(src="/assets/image/hammer.png")
 
-      div.hide-on-med-and-down
-        ul.tabs.tabs-transparent.tabs-icon
-          li.tab
-            a(href="./")
-              i.material-icons.tab-icon portrait
-              span.tab-label #{tabs_about}
-          li.tab
-            a(href="./activity.html")
-              i.material-icons.tab-icon timeline
-              span.tab-label #{tabs_activity}
+      +_menu_tabs
+
+
+
+mixin _navbar
+  nav.nav-extended
+    div.nav-wrapper
+
+      div.brand-logo.center
+        a.brand-logo(href="/")
+          img(src="/assets/image/hammer.png")
+
+      ul.right
+        li: a(href=`${TRANSLATE_BASE_PATH}${page_file_name}.html`)
+          i.material-icons translate
+
+    div.nav-content.container
+      +_menu_tabs
+
+
+
+mixin navbar(showHero)
+  if showHero
+    +_navbarWithHero
+  else
+    +_navbar
