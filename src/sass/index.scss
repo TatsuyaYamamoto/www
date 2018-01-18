@@ -3,6 +3,15 @@
 .hero {
   height: 150px;
   line-height: 150px;
+  font-size: 30px;
+  font-family: "PixelMplus";
+
+  .logo-icon {
+    vertical-align: middle;
+  }
+  .logo-text {
+    vertical-align: middle;
+  }
 }
 
 .parallax-container {

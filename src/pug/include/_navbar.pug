@@ -32,9 +32,10 @@ mixin _navbarWithHero
 
     div.nav-content.container
 
-      div.section.hero.center-align.logo
-        a(href=`${BASE_PATH}`) #{hero_title}
-          img(src="/assets/image/hammer.png")
+      div.section.hero.center-align
+        a(href=`${BASE_PATH}`)
+          span.logo-text #{hero_title}
+          img(src="/assets/image/hammer.png").logo-icon
 
       +_menu_tabs
 
