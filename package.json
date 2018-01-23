@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && run-p server watch",
     "clean": "rm -rf dist",
-    "version": "NODE_ENV=production npm run build && rm -r docs/* && cp -r dist/* docs/ && git add docs",
+    "version": "NODE_ENV=production npm run build && rm -rf public/* && cp -r dist/* public/ && git add public",
     "build": "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
     "build:pug": "pug src/pug -o dist",
     "build:js": "rollup -c",
