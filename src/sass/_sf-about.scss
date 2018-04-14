@@ -1,0 +1,17 @@
+.sf-about {
+  background-color: white;
+
+  &__content {
+    @extend %page-element;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-top: 32px;
+    padding-bottom: 24px;
+    height: 100%;
+
+    text-align: center;
+  }
+}

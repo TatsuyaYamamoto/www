@@ -1,26 +1,15 @@
-include ../_string
-
-div
-  div.parallax-container
-    div.parallax
-      img(src='http://next.materializecss.com/images/parallax1.jpg')
-
-  div.section.center
-    div.row.container
-      h3.header #{about_header}
+div.sf-about
+  div.sf-about__content
+    div.mdc-typography--headline #{about_header}
+    div
       div
-        div
-          i.material-icons
-          h4 #{about_page_header}
-          p #{about_page_description}
+        div.mdc-typography--title #{about_page_header}
+        div.mdc-typography--body1 #{about_page_description}
 
-        div
-          h4 #{about_owner_header}
-          img(src="/assets/image/tatsuya.gif")
-          p #{about_owner_description1}
-            br
-            | #{about_owner_description2}
-
-  div.parallax-container
-    div.parallax
-      img(src='http://next.materializecss.com/images/parallax2.jpg')
+      div
+        div.mdc-typography--title #{about_owner_header}
+        img(src="/assets/image/tatsuya.gif")
+        div.mdc-typography--body1
+          | #{about_owner_description1}
+          br
+          | #{about_owner_description2}

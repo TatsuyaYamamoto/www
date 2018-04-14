@@ -1,0 +1,31 @@
+.sf-activity {
+  .twitter-tweet {
+    margin: 0 !important;
+  }
+
+  &__year-section {
+    margin-bottom: 30px;
+
+    &--label {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 50px;
+      color: whitesmoke;
+      text-shadow: 1px 1px 0 #000;
+    }
+  }
+
+  &__info {
+    &--content {
+      @extend .mdc-typography--body1;
+      padding: 17.5px 17.5px 10.15px;
+    }
+
+    &--media-activity_2018_1 {
+      @extend .mdc-card__media;
+      @extend .mdc-card__media--16-9;
+
+      background-image: url("../assets/image/activity_2018_1.png")
+    }
+  }
+}

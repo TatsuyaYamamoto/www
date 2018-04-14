@@ -1,0 +1,44 @@
+.sf-footer {
+  background-color: $mdc-theme-primary;
+
+  padding-top: 20px;
+  padding-bottom: 50px;
+
+  &__content {
+    @extend %page-element;
+  }
+
+  &__brand {
+    color: #ffffff;
+    text-decoration: none;
+
+    &--title {
+      @extend .mdc-typography--title;
+    }
+
+    &--subtitle {
+      @extend .mdc-typography--caption;
+    }
+  }
+
+  &__connect-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    ul {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--icon {
+      color: #ffffff;
+      font-size: 40px;
+      margin: 10px;
+    }
+  }
+}

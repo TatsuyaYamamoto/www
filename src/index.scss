@@ -1,19 +1,13 @@
 @import "sass/base";
+@import "sass/sf-toolbar";
+@import "sass/sf-about";
+@import "sass/sf-footer";
+@import "sass/sf-blank";
 
-.hero {
-  height: 150px;
-  line-height: 150px;
-  font-size: 30px;
-  font-family: "PixelMplus";
+@import "~@material/toolbar/mdc-toolbar";
+@import "~@material/tabs/mdc-tabs";
+@import "~@material/card/mdc-card";
+@import "~@material/button/mdc-button";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "~@material/typography/mdc-typography";
 
-  .logo-icon {
-    vertical-align: middle;
-  }
-  .logo-text {
-    vertical-align: middle;
-  }
-}
-
-.parallax-container {
-  height: 200px;
-}

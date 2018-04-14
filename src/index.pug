@@ -1,25 +1,26 @@
+include _string
+include _config
+
 block vars
   - var lang = "ja"
-  - var page_file_name = "index";
-
-include components/_navbar
+  - var fileName = "index"
 
 doctype html
 html(lang=`${lang}`)
   head
     include components/_head
-    link(rel="stylesheet" href=`/assets/css/${page_file_name}.css`)
-  body
+  body.mdc-typography
+
     header
-      +navbar(true, true)
+      include components/_toolbar-with-hero
 
     main
-      //include include/_promotion_cards
 
-      div#about
-        include components/_about
+      section.sf-blank
+
+      include components/_about
+
+      section.sf-blank
 
     footer
       include components/_footer
-
-    script(src=`/assets/js/${page_file_name}.js`)

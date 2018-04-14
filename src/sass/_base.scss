@@ -1,19 +1,69 @@
-@import "theme";
+@import "~reset-css/reset";
 
-@import "~normalize.css/normalize";
-@import "~materialize-css/sass/materialize";
-@import "icon-tabs";
+// theme
+@import "~@material/theme/color-palette";
+
+$mdc-theme-primary: $material-color-orange-700 !default;
+$mdc-theme-secondary: #018786 !default;
+
+//@import "~materialize-css/sass/components/color-variables";
+//
+//// Theme color
+//// @see materialize-css/sass/components/variables
+//$primary-color: color("orange", "darken-2");
+//$primary-color-light: lighten($primary-color, 15%);
+//$primary-color-dark: darken($primary-color, 15%);
+//
+//$secondary-color: color("pink", "accent-2");
+//$success-color: color("green", "base");
+//$error-color: color("red", "base");
+//$link-color: color("light-blue", "darken-1");
+
+
 @import "pixel_m_plus";
 
-.connect-icon {
-  @extend .material-icons;
-  @extend .medium;
-
-  color: #ffffff;
-  margin: 0 10px;
+body {
+  background: url('../assets/image/bg.jpg') no-repeat fixed;
+  background-size: cover;
 }
 
-blockquote {
-  margin-start: 0px;
-  margin-end: 0px;
+$content-width: 1280px;
+$media-small-max: 720px;
+$media-medium-min: $media-small-max + 1px;
+$media-medium-max: 1280px;
+
+@mixin breakpoint($min: 0, $max: 0) {
+  @if $min != 0 and $max != 0 {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min != 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $max != 0 {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @error "$min or $max must be specified";
+  }
+}
+
+@mixin page-content-width($padding) {
+  max-width: $content-width + 2 * $padding;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+
+%page-element {
+  @include page-content-width(16px);
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @include breakpoint($min: $media-medium-min, $max: $media-medium-max + (2 * 16px)) {
+    @include page-content-width(60px);
+  }
 }

@@ -1,17 +1,16 @@
-footer.page-footer
-  .container
-    .row
-      div.col.l8.s12
-        h5.white-text そこんところ工房
-        p.grey-text.text-lighten-4 Something around me.
-    div.row.center
-      a(href="mailto:sokontokoro.factory@gmail.com")
-        i.fa.fa-envelope.connect-icon
-      a(href="https://twitter.com/T28_tatsuya" target="_blank")
-        i.fa.fa-twitter.connect-icon
-      a(href="https://github.com/TatsuyaYamamoto/" target="_blank")
-        i.fa.fa-github.connect-icon
-
-  .footer-copyright
-    .container
-      .right ©2015-2017 そこんところ工房
+div.sf-footer
+  div.sf-footer__content
+    a(href=`${hosting_origin}`).sf-footer__brand
+      div.sf-footer__brand--title そこんところ工房
+      div.sf-footer__brand--subtitle Something around me.
+    div.sf-footer__connect-icons
+      ul
+        li
+          a(href="mailto:sokontokoro.factory@gmail.com").sf-footer__connect-icons--icon
+            i.fa.fa-envelope.sf-footer__connect-icon
+        li
+          a(href="https://twitter.com/T28_tatsuya" target="_blank").sf-footer__connect-icons--icon
+            i.fa.fa-twitter.connect-icon.sf-footer__connect-icon
+        li
+          a(href="https://github.com/TatsuyaYamamoto/" target="_blank").sf-footer__connect-icons--icon
+            i.fa.fa-github.connect-icon.sf-footer__connect-icon

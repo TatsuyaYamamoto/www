@@ -4,20 +4,14 @@
   "description": "sokontokoro factory web site",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && run-p server watch",
+    "start": "npm run build && npm run build:pug -- -w & webpack-dev-server -w",
     "clean": "rm -rf dist",
     "version": "NODE_ENV=production npm run build && rm -rf public/* && cp -r dist/* public/ && git add public",
     "build": "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
     "build:pug": "pug src/ -o dist",
-    "build:js": "rollup -c",
-    "build:sass": "node-sass src/ -o dist/assets/css/ --include-path node_modules --importer=node_modules/node-sass-tilde-importer",
+    "build:js": "webpack",
     "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
-    "imagemin": "imagemin dist/assets/image/* --out-dir=dist/assets/image",
-    "watch": "run-p watch:*",
-    "watch:pug": "npm run build:pug  -- -w",
-    "watch:js": "npm run build:js -- -w",
-    "watch:sass": "npm run build:sass -- --watch",
-    "server": "live-server dist"
+    "imagemin": "imagemin dist/assets/image/* --out-dir=dist/assets/image"
   },
   "repository": {
     "type": "git",
@@ -26,19 +20,26 @@
   "author": "Tatuya Yamamoto",
   "license": "MIT",
   "dependencies": {
-    "materialize-css": "next",
-    "normalize.css": "^7.0.0"
+    "material-components-web": "^0.34.1",
+    "reset-css": "^3.0.0"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
+    "css-loader": "^0.28.11",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^1.1.11",
     "imagemin-cli": "^3.0.0",
     "live-server": "^1.2.0",
-    "node-sass": "^4.7.2",
-    "node-sass-tilde-importer": "^1.0.0",
+    "node-sass": "^4.8.3",
     "npm-run-all": "^4.1.2",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "github:pugjs/pug-cli#master",
-    "rollup": "^0.52.1",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "pug-loader": "^2.4.0",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
   }
 }

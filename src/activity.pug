@@ -2,27 +2,21 @@ include _string
 
 block vars
   - var lang = "ja"
-  - var page_file_name = "activity";
-  - var page_name = "アクティビティ";
-
-include components/_navbar
+  - var fileName = "activity"
 
 doctype html
 html(lang=`${lang}`)
   head
     include components/_head
-    link(rel="stylesheet" href=`/assets/css/activity.css`)
+    script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")
   body
+
     header
-      +navbar
+      include components/_toolbar
 
     main
-      div.container
-
-        include components/activity/_activity-list
+      include components/_activity-list
 
     footer
       include components/_footer
 
-    script(src=`/assets/js/activity.js`)
-    script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")
