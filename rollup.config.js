@@ -7,9 +7,9 @@ export default [
     "game.js"
 ].map((fileName) => {
     return {
-        input: resolve(`./src/js/${fileName}`),
+        input: resolve(`./src/${fileName}`),
         output: {
-            file: `dist/js/${fileName}`,
+            file: `dist/assets/js/${fileName}`,
             format: "iife"
         },
         plugins: [

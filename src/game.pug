@@ -1,12 +1,12 @@
 - var asset_file_name = "game";
 
-include include/_navbar
+include components/_navbar
 
 doctype html
 html
   head
-    include include/_head
-    link(rel="stylesheet" href=`css/${asset_file_name}.css`)
+    include components/_head
+    link(rel="stylesheet" href=`/assets/css/${asset_file_name}.css`)
   body
     header
       +navbar
@@ -16,4 +16,4 @@ html
         | In progress... Please see 
         a(href="/activity.html") activity
 
-    script(src=`js/${asset_file_name}.js`)
+    script(src=`/assets/js/${asset_file_name}.js`)

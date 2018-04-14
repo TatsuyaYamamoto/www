@@ -5,13 +5,13 @@ block vars
   - var page_file_name = "activity";
   - var page_name = "アクティビティ";
 
-include include/_navbar
+include components/_navbar
 
 doctype html
 html(lang=`${lang}`)
   head
-    include include/_head
-    link(rel="stylesheet" href=`/css/activity.css`)
+    include components/_head
+    link(rel="stylesheet" href=`/assets/css/activity.css`)
   body
     header
       +navbar
@@ -19,10 +19,10 @@ html(lang=`${lang}`)
     main
       div.container
 
-        include include/activity/_activity-list
+        include components/activity/_activity-list
 
     footer
-      include include/_footer
+      include components/_footer
 
-    script(src=`/js/activity.js`)
+    script(src=`/assets/js/activity.js`)
     script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")

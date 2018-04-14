@@ -1,0 +1,25 @@
+block vars
+  - var lang = "ja"
+  - var page_file_name = "index";
+
+include components/_navbar
+
+doctype html
+html(lang=`${lang}`)
+  head
+    include components/_head
+    link(rel="stylesheet" href=`/assets/css/${page_file_name}.css`)
+  body
+    header
+      +navbar(true, true)
+
+    main
+      //include include/_promotion_cards
+
+      div#about
+        include components/_about
+
+    footer
+      include components/_footer
+
+    script(src=`/assets/js/${page_file_name}.js`)
