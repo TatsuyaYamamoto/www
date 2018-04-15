@@ -2,6 +2,11 @@
   .twitter-tweet {
     margin: 0 !important;
   }
+  blockquote {
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px 20px 11.6px;
+  }
 
   &__year-section {
     margin-bottom: 30px;
@@ -18,7 +23,7 @@
   &__info {
     &--content {
       @extend .mdc-typography--body1;
-      padding: 17.5px 17.5px 10.15px;
+      padding: 20px 20px 11.6px;
     }
 
     &--media-activity_2018_1 {
