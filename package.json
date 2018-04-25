@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && npm run build:pug -- -w & webpack-dev-server -w",
     "clean": "rm -rf dist",
-    "version": "NODE_ENV=production npm run build && rm -rf public/* && cp -r dist/* public/ && git add public",
+    "version": "NODE_ENV=production npm run build",
     "build": "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
     "build:pug": "pug src/ -o dist",
     "build:js": "webpack",
