@@ -19,11 +19,10 @@ $mdc-theme-secondary: #018786 !default;
 //$error-color: color("red", "base");
 //$link-color: color("light-blue", "darken-1");
 
-
 @import "pixel_m_plus";
 
 body {
-  background: url('../assets/image/bg.jpg') no-repeat fixed;
+  background: url("../assets/image/bg.jpg") no-repeat fixed;
   background-size: cover;
 }
 
@@ -56,14 +55,16 @@ $media-medium-max: 1280px;
   padding-right: $padding;
 }
 
-
 %page-element {
   @include page-content-width(16px);
 
   margin-left: auto;
   margin-right: auto;
 
-  @include breakpoint($min: $media-medium-min, $max: $media-medium-max + (2 * 16px)) {
+  @include breakpoint(
+    $min: $media-medium-min,
+    $max: $media-medium-max + (2 * 16px)
+  ) {
     @include page-content-width(60px);
   }
 }
