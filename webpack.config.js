@@ -1,14 +1,15 @@
-const {resolve} = require("path");
+const { resolve } = require("path");
 
 const config = {
   entry: {
     index: "./src/index.js",
     activity: "./src/activity.js",
     game: "./src/game.js",
+    music: "./src/music.js"
   },
   output: {
-    filename: '[name].bundle.js',
-    path: resolve(__dirname, "dist"),
+    filename: "[name].bundle.js",
+    path: resolve(__dirname, "dist")
   },
   module: {
     rules: [
@@ -16,53 +17,51 @@ const config = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].bundle.css',
-            },
-          },
-          {loader: 'extract-loader'},
-          {
-            loader: 'css-loader',
-            options: {
-              root: '.'
+              name: "[name].bundle.css"
             }
           },
-          {loader: "resolve-url-loader"},
+          { loader: "extract-loader" },
           {
-            loader: 'sass-loader',
+            loader: "css-loader",
             options: {
-              includePaths: [
-                resolve(__dirname, 'node_modules')
-              ],
-              sourceMap: true, // Require to resolve relative url in css.
+              root: "."
             }
           },
+          { loader: "resolve-url-loader" },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [resolve(__dirname, "node_modules")],
+              sourceMap: true // Require to resolve relative url in css.
+            }
+          }
         ]
       },
       {
         test: /\.(woff|jpg|png|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
               name: "[name].[ext]",
               useRelativePath: true,
-              emitFile: false,
+              emitFile: false
             }
           }
         ]
-      },
+      }
     ]
   },
   optimization: {
     splitChunks: {
       name: "vendor",
-      chunks: "initial",
+      chunks: "initial"
     }
   },
   devServer: {
-    contentBase: resolve(__dirname, "dist"),
+    contentBase: resolve(__dirname, "dist")
   }
 };
 
