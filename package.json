@@ -9,7 +9,7 @@
     "version": "NODE_ENV=production npm run build",
     "build":
       "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
-    "build:pug": "pug src/ -o dist",
+    "build:pug": "pug src/ --out dist --obj package.json",
     "build:js": "webpack",
     "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
     "imagemin": "imagemin dist/assets/image/* --out-dir=dist/assets/image",
