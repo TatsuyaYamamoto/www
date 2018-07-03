@@ -1,0 +1,41 @@
+div#my-mdc-tab-bar-scroller.mdc-tab-bar-scroller
+  div.mdc-tab-bar-scroller__indicator.mdc-tab-bar-scroller__indicator--back
+    a.mdc-tab-bar-scroller__indicator__inner(href="#")
+      i.material-icons navigate_before
+
+  div.mdc-tab-bar-scroller__scroll-frame
+    nav.mdc-tab-bar.mdc-tab-bar-scroller__scroll-frame__tabs.mdc-tab-bar--icons-with-text
+
+      a.mdc-tab.mdc-tab--with-icon-and-text(
+        href=`${BASE_PATH}`,
+        class={"mdc-tab--active": pageName === "index"}
+      )
+        i.material-icons.mdc-tab__icon home
+        span.mdc-tab__icon-text #{tabs_home}
+
+      a.mdc-tab.mdc-tab--with-icon-and-text(
+        href=`${BASE_PATH}activity.html`,
+        class={"mdc-tab--active": pageName === "activity"}
+      )
+        i.material-icons.mdc-tab__icon timeline
+        span.mdc-tab__icon-text #{tabs_activity}
+
+      a.mdc-tab.mdc-tab--with-icon-and-text(
+        href=`${BASE_PATH}game.html`,
+        class={"mdc-tab--active": pageName === "game"}
+      )
+        i.material-icons.mdc-tab__icon gamepad
+        span.mdc-tab__icon-text #{tabs_game}
+
+      a.mdc-tab.mdc-tab--with-icon-and-text(
+        href=`${BASE_PATH}music.html`,
+        class={"mdc-tab--active": pageName === "music"}
+      )
+        i.material-icons.mdc-tab__icon music_note
+        span.mdc-tab__icon-text #{tabs_music}
+
+      span.mdc-tab-bar__indicator
+
+  div.mdc-tab-bar-scroller__indicator.mdc-tab-bar-scroller__indicator--forward
+    a.mdc-tab-bar-scroller__indicator__inner(href="#")
+      i.material-icons navigate_next

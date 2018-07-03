@@ -8,31 +8,8 @@ div.mdc-toolbar.mdc-elevation--z2.sf-toolbar
         img(src="/assets/image/hammer.png").mdc-toolbar__title.logo-icon
 
     div.mdc-toolbar__section.mdc-toolbar__section--align-end
-      a(href=`${TRANSLATE_BASE_PATH}${fileName}.html`).sf-toolbar__menu-icon
+      a(href=`${TRANSLATE_BASE_PATH}${pageName}.html`).sf-toolbar__menu-icon
         i.material-icons.mdc-toolbar__menu-icon translate
 
   div.mdc-toolbar__row
-    nav.mdc-tab-bar.mdc-tab-bar--icons-with-text
-
-      a.mdc-tab.mdc-tab--with-icon-and-text.mdc-tab--activea(href=`${BASE_PATH}`)
-        i.material-icons.mdc-tab__icon home
-        span.mdc-tab__icon-text #{tabs_home}
-
-      a.mdc-tab.mdc-tab--with-icon-and-text(href=`${BASE_PATH}#about`)
-        i.material-icons.mdc-tab__icon portrait
-        span.mdc-tab__icon-text #{tabs_about}
-
-      a.mdc-tab.mdc-tab--with-icon-and-text(href=`${BASE_PATH}activity.html`)
-        i.material-icons.mdc-tab__icon timeline
-        span.mdc-tab__icon-text #{tabs_activity}
-      span.mdc-tab-bar__indicator
-
-      a.mdc-tab.mdc-tab--with-icon-and-text(href=`${BASE_PATH}game.html`)
-        i.material-icons.mdc-tab__icon gamepad
-        span.mdc-tab__icon-text #{tabs_game}
-      span.mdc-tab-bar__indicator
-
-      a.mdc-tab.mdc-tab--with-icon-and-text(href=`${BASE_PATH}music.html`)
-        i.material-icons.mdc-tab__icon music_note
-        span.mdc-tab__icon-text #{tabs_music}
-      span.mdc-tab-bar__indicator
+    include _tab-menu
