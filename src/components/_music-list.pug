@@ -1,0 +1,147 @@
+mixin MusicListItem(title, thumbImageUrl, comment, niconicoUrl, youtubeUrl)
+  div.mdc-card
+    div.mdc-card__primary-action
+      div.mdc-card__media.mdc-card__media--16-9(style=`background-image: url('${thumbImageUrl}');`)
+
+    div.sf-card__content
+      h1.mdc-typography--title #{title}
+
+      if comment
+        p.mdc-typography--body1 #{comment}
+
+    div.mdc-card__actions
+      if niconicoUrl
+        div.mdc-card__action-buttons
+          button.mdc-button.mdc-card__action.mdc-card__action--button(
+            onclick=`window.open("${niconicoUrl}")`
+          ) Niconico
+
+      if youtubeUrl
+        div.mdc-card__action-buttons
+          button.mdc-button.mdc-card__action.mdc-card__action--button(
+          onclick=`window.open("${youtubeUrl}")`
+          ) YouTube
+
+div.mdc-layout-grid
+  div.mdc-layout-grid__inner
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+        "(T28＾ω＾つぼくだってパーティーしたいじゃない？【ジングルベル】",
+        "http://tn.smilevideo.jp/smile?i=30292183",
+        "",
+        "http://www.nicovideo.jp/watch/sm30292183",
+        "https://www.youtube.com/watch?v=eIMIxFKIv3M"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+        "(T28＾ω＾つSUNNY DAY SONG",
+        "http://tn.smilevideo.jp/smile?i=28545676",
+        "",
+        "http://www.nicovideo.jp/watch/sm28545676"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+        "(T28＾ω＾つもう１度振り返る前回のラブライブ！【それ僕】",
+        "http://tn.smilevideo.jp/smile?i=26488387",
+        "",
+        "http://www.nicovideo.jp/watch/sm26488387"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ私はだれでしょ？【そるげ】",
+      "http://tn.smilevideo.jp/smile?i=25797977",
+      "",
+      "http://www.nicovideo.jp/watch/sm25797977"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ僕は毎日が告白日和【、です！】",
+      "http://tn.smilevideo.jp/smile?i=25365030",
+      "",
+      "http://www.nicovideo.jp/watch/sm25365030"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ呼ばれてないけど走っていきますよ【ワンダーゾーン】",
+      "http://tn.smilevideo.jp/smile?i=24455762",
+      "",
+      "http://www.nicovideo.jp/watch/sm24455762"
+    )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つなかなか来ないことりちゃんとのフェスタvol.1【まめふぇす１",
+      "http://tn.smilevideo.jp/smile?i=24311111",
+      "",
+      "http://www.nicovideo.jp/watch/sm24311111"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ西木野さんのバックバンドやりました(ｽﾀｧ【ばんざい】",
+      "http://tn.smilevideo.jp/smile?i=23366215",
+      null,
+      "http://www.nicovideo.jp/watch/sm23366215"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ新社畜が振り返る前回のラブライブ！【僕今】",
+      "http://tn.smilevideo.jp/smile?i=23232659",
+      "",
+      "http://www.nicovideo.jp/watch/sm23232659"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つもぎゅっと“ことりちゃん”に接近中!",
+      "http://tn.smilevideo.jp/smile?i=22892714",
+      "",
+      "http://www.nicovideo.jp/watch/sm22892714"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ　ロ　ー　ド　オ　ブ　じ　ゃ　な　い　に　こ　に　ー",
+      "http://tn.smilevideo.jp/smile?i=22826206",
+      "",
+      "http://www.nicovideo.jp/watch/sm22826206"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つクリスマスにことりちゃんをバンドに誘いました【ｽﾉﾊﾚ】",
+      "http://tn.smilevideo.jp/smile?i=22526652",
+      "",
+      "http://www.nicovideo.jp/watch/sm22526652"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つチケット落ちたのでμ'sのバックバンドしました【ﾉｰﾁｪﾝ",
+      "http://tn.smilevideo.jp/smile?i=22418748",
+      "",
+      "http://www.nicovideo.jp/watch/sm22418748"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ ことりちゃんとまたバンドを組んでみました【ぶるべり】",
+      "http://tn.smilevideo.jp/smile?i=21811790",
+      "",
+      "http://www.nicovideo.jp/watch/sm21811790"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ ことりちゃんとバンドを組んでみました【僕らのLIVE君とのLIFE",
+      "http://tn.smilevideo.jp/smile?i=21507624",
+      "",
+      "http://www.nicovideo.jp/watch/sm21507624"
+      )
