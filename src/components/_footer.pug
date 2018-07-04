@@ -1,8 +1,9 @@
 div.sf-footer
   div.sf-footer__content
-    a(href=`${hosting_origin}`).sf-footer__brand
-      div.sf-footer__brand--title そこんところ工房 Website v#{version}
-      div.sf-footer__brand--subtitle Something around me.
+    div.sf-footer__brand--title
+      a(href=`${hosting_origin}`).sf-footer__brand そこんところ工房 Website
+    div.sf-footer__brand--subtitle Something around me.
+
     div.sf-footer__connect-icons
       ul
         li
@@ -14,3 +15,11 @@ div.sf-footer
         li
           a(href="https://github.com/TatsuyaYamamoto/" target="_blank").sf-footer__connect-icons--icon
             i.fa.fa-github.connect-icon.sf-footer__connect-icon
+
+div.sf-copyright
+  div.sf-copyright__content
+    | © 2014-
+    script(type="text/javascript") document.write(new Date().getFullYear());
+    | Sokontokoro Factory, All rights reserved.
+
+    a(href="https://github.com/TatsuyaYamamoto/www") Currently v#{version}

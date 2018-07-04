@@ -1,5 +1,6 @@
 .sf-footer {
   background-color: $mdc-theme-primary;
+  color: #ffffff;
 
   padding-top: 20px;
   padding-bottom: 50px;
@@ -39,6 +40,25 @@
       color: #ffffff;
       font-size: 40px;
       margin: 10px;
+    }
+  }
+}
+
+.sf-copyright {
+  background-color: $material-color-orange-800;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &__content {
+    @extend %page-element;
+    @extend .mdc-typography--caption;
+    color: #ffffff;
+
+    > a {
+      color: #ffffff;
+      float: right;
+      text-decoration: none;
     }
   }
 }
