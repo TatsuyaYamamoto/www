@@ -1,6 +1,10 @@
 const { resolve } = require("path");
 
+const production = process.env.NODE_ENV === "production";
+const mode = production ? "production" : "development";
+
 const config = {
+  mode,
   entry: {
     index: "./src/index.js",
     activity: "./src/activity.js",
