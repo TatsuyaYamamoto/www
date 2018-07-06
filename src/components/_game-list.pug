@@ -1,11 +1,57 @@
-nav.mdc-drawer.mdc-drawer--permanent.mdc-typography
-  div.mdc-drawer__toolbar-spacer
-  div.mdc-drawer__content
-    nav#icon-with-text-demo.mdc-list
-      a.mdc-list-item.mdc-list-item--activated(href="#")
-        i.material-icons.mdc-list-item__graphic(aria-hidden="true") inbox
-          | Inbox
-      a.mdc-list-item(href="#")
-        i.material-icons.mdc-list-item__graphic(aria-hidden="true") star
-          | Star
-div Toolbar and page content go inside here.
+mixin GameListItem(title, comment, thumbImageUrl, url)
+  div.mdc-card
+    div.mdc-card__primary-action
+      div.mdc-card__media.mdc-card__media--16-9(style=`background-image: url('${thumbImageUrl}');`)
+
+    div.sf-card__content
+      h1.mdc-typography--title #{title}
+      p.mdc-typography--body1 #{comment}
+
+    div.mdc-card__actions
+      div.mdc-card__action-buttons
+        button.mdc-button.mdc-card__action.mdc-card__action--button(
+        onclick=`window.open("${url}")`
+        ) Go!
+
+div.mdc-layout-grid
+  div.mdc-layout-grid__inner
+
+    div.mdc-layout-grid__cell--span-4
+      +GameListItem(
+      "おいものみきり！",
+      "まるの\"おいも\"を狙って、次々と敵が襲いかかる！合図が出たら素早くタップして、おいもを守ろう！",
+      "https://pbs.twimg.com/media/DRNzFMqU8AAdqDb.jpg",
+      "https://games.sokontokoro-factory.net/oimo/"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +GameListItem(
+      "やみどり！",
+      "ことりちゃんの\"あの\"お鍋を阻止するゲームです！画面の左右から出てくることりちゃんをタップして、ケーキを取り上げよう",
+      "https://pbs.twimg.com/media/DJdHP7-VYAEeZLb.jpg",
+      "https://games.sokontokoro-factory.net/yamidori/"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +GameListItem(
+      "まるてん！",
+      "はなまるがよしこを堕天させるゲームです！画面をスライドさせてよしこに黒い羽を当てよう！",
+      "https://pbs.twimg.com/media/CsmUpAeUkAAgyGh.jpg",
+      "http://games.sokontokoro-factory.net/maruten/"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +GameListItem(
+      "しゃかりん！",
+      "マラカスを持った凛ちゃんをひたすらシャカシャカさせるゲームです！",
+      "https://pbs.twimg.com/media/CXmsUq2UsAEYh6h.jpg",
+      "https://games.sokontokoro-factory.net/shakarin/"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +GameListItem(
+      "ほのCar！",
+      "ススメ→トゥモロウをバックにホノカチャンがひたすら車を避けるゲームです！",
+      "https://pbs.twimg.com/media/CJYd0RHUYAAUpPv.jpg",
+      "https://games.sokontokoro-factory.net/honocar/"
+      )

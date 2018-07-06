@@ -10,3 +10,9 @@
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/list/mdc-list";
 @import "~@material/typography/mdc-typography";
+
+.sf-card {
+  &__content {
+    padding: 1rem;
+  }
+}
