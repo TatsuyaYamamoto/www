@@ -6,10 +6,13 @@
   "scripts": {
     "start": "npm run build && npm run build:pug -- -w & webpack-dev-server -w",
     "clean": "rm -rf dist",
-    "version": "NODE_ENV=production npm run build",
+    "deploy":
+      "    yarn build     && gsutil -m rsync -d -r dist/ gs://www-dev.sokontokoro-factory.net/",
+    "deploy:pro":
+      "yarn build:pro && gsutil -m rsync -d -r dist/ gs://www.sokontokoro-factory.net/",
     "build":
-      "npm run clean && run-p build:* && npm run copy-assets && npm run imagemin",
-    "build-pro": "NODE_ENV=production npm run build",
+      "yarn clean && yarn build:pug && yarn build:js && npm run copy-assets && npm run imagemin",
+    "build:pro": "NODE_ENV=production npm run build",
     "build:pug": "pug src/ --out dist --obj package.json",
     "build:js": "webpack",
     "copy-assets": "cpx \"src/assets/**/*\" dist/assets",
