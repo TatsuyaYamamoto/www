@@ -1,6 +1,6 @@
 {
   "name": "www.sokontokoro-factory.net",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "sokontokoro factory web site",
   "main": "index.js",
   "scripts": {
