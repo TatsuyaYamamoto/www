@@ -24,11 +24,19 @@ mixin MusicListItem(title, thumbImageUrl, comment, niconicoUrl, youtubeUrl)
 
 div.mdc-layout-grid
   div.mdc-layout-grid__inner
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つ今週のwkwk決まったかな【Waku-Waku-Week!】",
+      "http://i.ytimg.com/vi/aj99WR-uKRA/mqdefault.jpg",
+      "",
+      "https://www.nicovideo.jp/watch/sm34284700",
+      "https://www.youtube.com/watch?v=kOywGc4JW8Q"
+      )
 
     div.mdc-layout-grid__cell--span-4
       +MusicListItem(
       "(T28＾ω＾つ僕も海岸通りで待ってる【よ】",
-      "http://tn.smilevideo.jp/smile?i=33619021",
+      "http://i.ytimg.com/vi/kOywGc4JW8Q/mqdefault.jpg",
       "",
       "http://www.nicovideo.jp/watch/sm33619021",
       "https://www.youtube.com/watch?v=kOywGc4JW8Q"
@@ -37,7 +45,7 @@ div.mdc-layout-grid
     div.mdc-layout-grid__cell--span-4
       +MusicListItem(
         "(T28＾ω＾つぼくだってパーティーしたいじゃない？【ジングルベル】",
-        "http://tn.smilevideo.jp/smile?i=30292183",
+      "http://i.ytimg.com/vi/eIMIxFKIv3M/mqdefault.jpg",
         "",
         "http://www.nicovideo.jp/watch/sm30292183",
         "https://www.youtube.com/watch?v=eIMIxFKIv3M"
