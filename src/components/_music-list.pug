@@ -24,6 +24,25 @@ mixin MusicListItem(title, thumbImageUrl, comment, niconicoUrl, youtubeUrl)
 
 div.mdc-layout-grid
   div.mdc-layout-grid__inner
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つぼくは函館へ行こう【Awaken the power】",
+      "http://i.ytimg.com/vi/ooKG_LTfSDM/mqdefault.jpg",
+      "",
+      "https://www.nicovideo.jp/watch/sm34370822",
+      "https://www.youtube.com/watch?v=ooKG_LTfSDM"
+      )
+
+    div.mdc-layout-grid__cell--span-4
+      +MusicListItem(
+      "(T28＾ω＾つクリスマスにことりちゃんをバンドに誘いました【Snow halation】",
+      "http://i.ytimg.com/vi/D6HZrIEa-nc/mqdefault.jpg",
+      "",
+      "https://www.nicovideo.jp/watch/sm22526652",
+      "https://www.youtube.com/watch?v=D6HZrIEa-nc"
+      )
+
     div.mdc-layout-grid__cell--span-4
       +MusicListItem(
       "(T28＾ω＾つ今週のwkwk決まったかな【Waku-Waku-Week!】",
@@ -129,14 +148,6 @@ div.mdc-layout-grid
       "http://tn.smilevideo.jp/smile?i=22826206",
       "",
       "http://www.nicovideo.jp/watch/sm22826206"
-      )
-
-    div.mdc-layout-grid__cell--span-4
-      +MusicListItem(
-      "(T28＾ω＾つクリスマスにことりちゃんをバンドに誘いました【ｽﾉﾊﾚ】",
-      "http://tn.smilevideo.jp/smile?i=22526652",
-      "",
-      "http://www.nicovideo.jp/watch/sm22526652"
       )
 
     div.mdc-layout-grid__cell--span-4
