@@ -1,0 +1,113 @@
+//-
+  広告や、なにがしかのリンクからのランディングページ
+  2019/03/22時点では、QRコードからの遷移のみを想定している
+
+  CAUTION: 遷移元を把握するために、クエリを添えたURLを配布するように！
+
+include _string
+include _config
+
+block vars
+  - var lang = "ja"
+  - var pageName = "landing"
+
+doctype html
+html(lang=`${lang}`)
+  head
+    // ランディングページは検索結果に表示させない
+    meta(name="robots" content="noindex")
+
+    - var title = page_name? `${site_name} | ${page_name}` : `${site_name}`;
+    - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="description" content=`${head_description}`)
+
+    title #{title}
+
+    // GA
+    script(async src=`https://www.googletagmanager.com/gtag/js?${gaCode}`)
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', "#{gaCode}");
+
+    // Open Graph Protocol
+    // は、いらないかなー
+
+    // language
+    link(rel="alternate" href="ja" hreflang=`${alternate_hreflang_ja}`)
+    link(rel="alternate" href="en" hreflang=`${alternate_hreflang_en}`)
+
+
+    // Twitter card
+    meta(name="twitter:card" content="summary")
+    meta(name="twitter:site" content="@T28_Tatsuya")
+
+
+    // DNS Prefetch
+    each host in dns_prefetch_hosts
+      link(rel="dns-prefetch" href=`http://${host}/`)
+
+
+    // favicon
+    link(rel="icon" sizes="32x32" href=`${favicon_url_32x32}`)
+    link(rel="icon" sizes="192x192" href=`${favicon_url_192x192}`)
+
+
+    // smartphone layout
+    meta(name="theme-color" content="#f57c00")
+    meta(name="msapplication-navbutton-color" content="#f57c00")
+
+
+    // stylesheet
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+
+    link(rel="stylesheet" href=`/${pageName}.bundle.css`)
+    script(src=`/vendor.bundle.js`)
+    script(src=`/${pageName}.bundle.js`)
+
+  body.mdc-typography
+
+    main
+      div.sf-landing__hero
+        span.sf-toolbar__hero--title Welcome
+        br
+        span.sf-landing__hero--title-sf そこんところ工房
+        img(src="/assets/image/hammer.png").logo-icon
+
+      div
+        ul.sf-landing__links
+          li
+            button.mdc-button.mdc-button--raised
+              a(href="https://www.sokontokoro-factory.net").sf-landing__links--button ホームページTOP
+          li
+            button.mdc-button.mdc-button--raised
+              a(href="https://twitter.com/T28_tatsuya").sf-landing__links--button Twitter
+          li
+            button.mdc-button.mdc-button--raised
+              a(href="https://www.youtube.com/channel/UCf-Z2GqqJs6-Sy7rpy0GHsg").sf-landing__links--button Youtubeチャンネル
+          li
+            button.mdc-button.mdc-button--raised
+              a(href="https://www-dev.sokontokoro-factory.net/game.html").sf-landing__links--button ゲームページ
+          li
+            button.mdc-button.mdc-button--raised
+              a(href="https://www-dev.sokontokoro-factory.net/afterword.html").sf-landing__links--button CDのあとがき
+
+      div.sf-landing__announcement
+        div.balloon
+          | アクセスしてくれて...
+          br
+          | ありがとう....
+          br
+          br
+          | 気になるページを見てみてね......
+
+        div.dairi
+          img(src="/assets/image/hammer.png")

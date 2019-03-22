@@ -9,7 +9,8 @@ const config = {
     index: "./src/index.js",
     activity: "./src/activity.js",
     game: "./src/game.js",
-    music: "./src/music.js"
+    music: "./src/music.js",
+    landing: "./src/landing.js"
   },
   output: {
     filename: "[name].bundle.js",

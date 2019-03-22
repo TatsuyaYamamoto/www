@@ -1,0 +1,106 @@
+@import "sass/base";
+@import "sass/sf-toolbar";
+@import "sass/sf-about";
+@import "sass/sf-footer";
+@import "sass/sf-blank";
+@import "~@material/toolbar/mdc-toolbar";
+@import "~@material/tabs/mdc-tabs";
+@import "~@material/card/mdc-card";
+@import "~@material/list/mdc-list";
+@import "~@material/button/mdc-button";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "~@material/typography/mdc-typography";
+
+.sf-landing {
+  &__hero {
+    font-size: 30px;
+
+    margin: 20px;
+
+    &--title {
+      color: white;
+      text-decoration: none;
+
+      text-shadow: 5px 5px 1px #999999, -5px -5px 1px #999999;
+    }
+
+    &--title-sf {
+      color: white;
+      font-family: "PixelMplus";
+    }
+  }
+
+  &__links {
+    text-align: center;
+    margin-top: 50px;
+
+    li {
+      margin: 10px;
+    }
+
+    &--button {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &__announcement {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    animation: fadeIn 2s ease 0s 1 normal;
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .dairi {
+      position: relative;
+      bottom: 0;
+    }
+
+    /* 吹き出し本体 */
+    .balloon {
+      $balloon-color: whitesmoke;
+
+      position: relative;
+      bottom: 0;
+      left: 80px;
+
+      padding: 20px;
+      background-color: $balloon-color;
+      border-radius: 30px;
+      width: 100px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        border-radius: 50%;
+        background-color: $balloon-color;
+        left: -35px;
+        bottom: 15px;
+        width: 30px;
+        height: 30px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        border-radius: 50%;
+        background-color: $balloon-color;
+        left: -55px;
+        bottom: 10px;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
