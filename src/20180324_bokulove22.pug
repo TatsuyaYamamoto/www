@@ -1,0 +1,44 @@
+
+include _string
+include _config
+
+block vars
+  - var lang = "ja"
+  - var pageName = "20180324_bokulove22"
+html
+  head
+    // ランディングページは検索結果に表示させない
+    meta(name="robots" content="noindex")
+
+    - var title = page_name? `${site_name} | ${page_name}` : `${site_name}`;
+    - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="description" content=`${head_description}`)
+
+    title #{title}
+
+    // GA
+    script(async src=`https://www.googletagmanager.com/gtag/js?${gaCode}`)
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', "#{gaCode}");
+      
+  body
+    main#viewer
+    div#content(style={display: "none"}).
+      # 僕ラブ22 あとがき
+      作成中〜（・８・）< おそくてすまん
+
+    script(src="https://cdn.jsdelivr.net/npm/marked/marked.min.js")
+    script.
+      var content = document.getElementById("content").innerHTML;
+      var viewer = document.getElementById("viewer");
+
+      viewer.innerHTML = marked(content);
