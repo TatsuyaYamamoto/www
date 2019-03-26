@@ -27,17 +27,19 @@ meta(name="og:description" content=`${head_description}`)
 meta(name="og:site_name" content=`${site_name}`)
 meta(name="“og:locale:alternate" content="ja_JP")
 meta(name="“og:locale:alternate" content="en_US")
-case lang
-  when "en"
-    meta(name="og:url" content=`${alternate_hreflang_en}`)
-  when "ja"
-  default
-    meta(name="og:url" content=`${alternate_hreflang_ja}`)
+
+// TODO: fix!
+//case lang
+//  when "en"
+//    meta(name="og:url" content=`${alternate_hreflang_en}`)
+//  when "ja"
+//  default
+//    meta(name="og:url" content=`${alternate_hreflang_ja}`)
 
 
 // language
-link(rel="alternate" href="ja" hreflang=`${alternate_hreflang_ja}`)
-link(rel="alternate" href="en" hreflang=`${alternate_hreflang_en}`)
+//link(rel="alternate" href="ja" hreflang=`${alternate_hreflang_ja}`) TODO: fix!
+//link(rel="alternate" href="en" hreflang=`${alternate_hreflang_en}`) TODO: fix!
 
 
 // Twitter card
@@ -64,6 +66,5 @@ meta(name="msapplication-navbutton-color" content="#f57c00")
 link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
 
-link(rel="stylesheet" href=`/${pageName}.bundle.css`)
-script(src=`/vendor.bundle.js`)
-script(src=`/${pageName}.bundle.js`)
+link(rel="stylesheet" href=`./assets/css/index.scss`)
+script(src=`./assets/js/index.js`)

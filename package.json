@@ -3,6 +3,12 @@
   "version": "1.14.0",
   "description": "sokontokoro factory web site",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "github"
+  },
+  "author": "Tatuya Yamamoto",
+  "license": "MIT",
   "scripts": {
     "start": "npm run build && npm run build:pug -- -w & webpack-dev-server -w",
     "clean": "rm -rf dist",
@@ -17,12 +23,11 @@
     "format": "prettier 'src/**/*.{js,scss}' --write",
     "precommit": "pretty-quick --staged"
   },
-  "repository": {
-    "type": "git",
-    "url": "github"
+  "sass": {
+    "includePaths": [
+      "./node_modules"
+    ]
   },
-  "author": "Tatuya Yamamoto",
-  "license": "MIT",
   "dependencies": {
     "material-components-web": "^0.34.1",
     "reset-css": "^3.0.0"

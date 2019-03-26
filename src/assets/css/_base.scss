@@ -1,7 +1,7 @@
-@import "~reset-css/reset.css";
+@import "~reset-css/_reset.scss";
 
 // theme
-@import "~@material/theme/color-palette";
+@import "~@material/theme/color-palette.scss";
 
 $mdc-theme-primary: $material-color-orange-700 !default;
 $mdc-theme-secondary: #018786 !default;
