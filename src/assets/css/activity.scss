@@ -3,11 +3,11 @@
 @import "sf-activity";
 @import "sf-footer";
 
-@import "../../../node_modules/@material/toolbar/mdc-toolbar";
-@import "../../../node_modules/@material/tabs/mdc-tabs";
-@import "../../../node_modules/@material/card/mdc-card";
-@import "../../../node_modules/@material/button/mdc-button";
-@import "../../../node_modules/@material/layout-grid/mdc-layout-grid";
-@import "../../../node_modules/@material/elevation/mdc-elevation";
-@import "../../../node_modules/@material/list/mdc-list";
-@import "../../../node_modules/@material/typography/mdc-typography";
+@import "~@material/toolbar/mdc-toolbar";
+@import "~@material/tabs/mdc-tabs";
+@import "~@material/card/mdc-card";
+@import "~@material/button/mdc-button";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/list/mdc-list";
+@import "~@material/typography/mdc-typography";
