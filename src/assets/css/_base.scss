@@ -1,7 +1,7 @@
-@import "~reset-css/reset";
+@import "../../../node_modules/reset-css/reset.css";
 
 // theme
-@import "~@material/theme/color-palette";
+@import "../../../node_modules/@material/theme/color-palette";
 
 $mdc-theme-primary: $material-color-orange-700 !default;
 $mdc-theme-secondary: #018786 !default;
@@ -22,7 +22,7 @@ $mdc-theme-secondary: #018786 !default;
 @import "pixel_m_plus";
 
 body {
-  background: url("../assets/image/bg.jpg") no-repeat fixed;
+  background: url("../image/bg.jpg") no-repeat fixed;
   background-size: cover;
 }
 

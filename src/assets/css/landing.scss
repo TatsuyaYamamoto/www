@@ -1,15 +1,15 @@
-@import "sass/base";
-@import "sass/sf-toolbar";
-@import "sass/sf-about";
-@import "sass/sf-footer";
-@import "sass/sf-blank";
-@import "~@material/toolbar/mdc-toolbar";
-@import "~@material/tabs/mdc-tabs";
-@import "~@material/card/mdc-card";
-@import "~@material/list/mdc-list";
-@import "~@material/button/mdc-button";
-@import "~@material/layout-grid/mdc-layout-grid";
-@import "~@material/typography/mdc-typography";
+@import "base";
+@import "sf-toolbar";
+@import "sf-about";
+@import "sf-footer";
+@import "sf-blank";
+@import "../../../node_modules/@material/toolbar/mdc-toolbar";
+@import "../../../node_modules/@material/tabs/mdc-tabs";
+@import "../../../node_modules/@material/card/mdc-card";
+@import "../../../node_modules/@material/list/mdc-list";
+@import "../../../node_modules/@material/button/mdc-button";
+@import "../../../node_modules/@material/layout-grid/mdc-layout-grid";
+@import "../../../node_modules/@material/typography/mdc-typography";
 
 .sf-landing {
   &__hero {
