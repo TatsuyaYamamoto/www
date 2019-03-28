@@ -9,8 +9,9 @@ html(lang=`${lang}`)
   head
     include components/_head
 
-    link(rel="stylesheet" href=`/assets/css/game.scss`)
-    script(src=`/assets/js/game.js`)
+    block dependency
+      link(rel="stylesheet" href=`./assets/css/game.scss`)
+      script(src=`./assets/js/game.js`)
 
   body
 
