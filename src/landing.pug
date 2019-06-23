@@ -98,7 +98,13 @@ html(lang=`${lang}`)
               a(href=`./game.pug`).sf-landing__links--button ゲームページ
           li
             button.mdc-button.mdc-button--raised
-              a(href=`./assets/md/20180324_bokulove22.md`).sf-landing__links--button CDのあとがき
+              a(href=`./md/20180324_bokulove22.pug`).sf-landing__links--button 僕ラブ22のあとがき
+          li
+            button.mdc-button.mdc-button--raised
+              a(href=`./md/20180623_numalove6.pug`).sf-landing__links--button 沼ラブ6のあとがき
+
+      // TODO: スマホの場合、下のballoonが上のボタンと重なってしまうため、高さ稼ぎ、、、、、、
+      div(style={height: "250px"})
 
       div.sf-landing__announcement
         div.balloon
