@@ -1,4 +1,4 @@
-import "./index.scss";
+import "../css/index.scss";
 
 import { MDCTabBarScroller } from "@material/tabs";
 

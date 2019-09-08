@@ -8,7 +8,13 @@ doctype html
 html(lang=`${lang}`)
   head
     include components/_head
+
     script(async src="https://platform.twitter.com/widgets.js" charset="utf-8")
+
+    block dependency
+      link(rel="stylesheet" href=`./assets/css/activity.scss`)
+      script(src=`./assets/js/activity.js`)
+
   body
 
     header

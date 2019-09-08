@@ -8,6 +8,11 @@ doctype html
 html(lang=`${lang}`)
   head
     include components/_head
+
+    block dependency
+      link(rel="stylesheet" href=`./assets/css/music.scss`)
+      script(src=`./assets/js/music.js`)
+
   body.mdc-typography
 
     header

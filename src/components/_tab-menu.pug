@@ -13,22 +13,25 @@ div#my-mdc-tab-bar-scroller.mdc-tab-bar-scroller
         i.material-icons.mdc-tab__icon home
         span.mdc-tab__icon-text #{tabs_home}
 
+      // TODO fix path
       a.mdc-tab.mdc-tab--with-icon-and-text(
-        href=`${BASE_PATH}activity.html`,
+        href=`${BASE_PATH}activity.pug`,
         class={"mdc-tab--active": pageName === "activity"}
       )
         i.material-icons.mdc-tab__icon timeline
         span.mdc-tab__icon-text #{tabs_activity}
 
+      // TODO fix path
       a.mdc-tab.mdc-tab--with-icon-and-text(
-        href=`${BASE_PATH}game.html`,
+        href=`${BASE_PATH}game.pug`,
         class={"mdc-tab--active": pageName === "game"}
       )
         i.material-icons.mdc-tab__icon gamepad
         span.mdc-tab__icon-text #{tabs_game}
 
+      // TODO fix path
       a.mdc-tab.mdc-tab--with-icon-and-text(
-        href=`${BASE_PATH}music.html`,
+        href=`${BASE_PATH}music.pug`,
         class={"mdc-tab--active": pageName === "music"}
       )
         i.material-icons.mdc-tab__icon music_note

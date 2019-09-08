@@ -1,4 +1,4 @@
-import "./landing.scss";
+import "../css/landing.scss";
 
 function init() {}
 

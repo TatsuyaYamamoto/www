@@ -1,0 +1,46 @@
+//
+  あとがきぺーじ、、、、だけど、そもそもこのディレクトリ設計はなんなん？
+
+include ../_string
+include ../_config
+
+block vars
+  - var lang = "ja"
+  - var pageName = "landing"
+  - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
+
+doctype html
+html(lang=`${lang}`)
+  head
+    // ランディングページは検索結果に表示させない
+    meta(name="robots" content="noindex")
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+
+    title あとがき
+
+    // GA
+    script(async src=`https://www.googletagmanager.com/gtag/js?${gaCode}`)
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', "#{gaCode}");
+
+    // favicon
+    link(rel="icon" sizes="32x32" href=`${favicon_url_32x32}`)
+    link(rel="icon" sizes="192x192" href=`${favicon_url_192x192}`)
+
+
+    // smartphone layout
+    meta(name="theme-color" content="#f57c00")
+    meta(name="msapplication-navbutton-color" content="#f57c00")
+
+  body.mdc-typography
+    main
+      include:markdown-it ./20180324_bokulove22.md
+

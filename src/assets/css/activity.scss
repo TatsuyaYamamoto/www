@@ -1,6 +1,7 @@
-@import "sass/base";
-@import "sass/sf-toolbar";
-@import "sass/sf-footer";
+@import "base";
+@import "sf-toolbar";
+@import "sf-activity";
+@import "sf-footer";
 
 @import "~@material/toolbar/mdc-toolbar";
 @import "~@material/tabs/mdc-tabs";
@@ -10,9 +11,3 @@
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/list/mdc-list";
 @import "~@material/typography/mdc-typography";
-
-.sf-card {
-  &__content {
-    padding: 1rem;
-  }
-}
