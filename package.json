@@ -13,7 +13,7 @@
     "start": "parcel serve src/{index,landing,404}.pug",
     "clean": "rm -rf dist",
     "deploy": "    yarn clean && yarn build     && yarn imagemin && gsutil -m rsync -d -r dist/ gs://www-dev.sokontokoro-factory.net/",
-    "deploy:pro": "yanr clean && yarn build:pro && yarn imagemin && gsutil -m rsync -d -r dist/ gs://www.sokontokoro-factory.net/",
+    "deploy:pro": "yarn clean && yarn build:pro && yarn imagemin && gsutil -m rsync -d -r dist/ gs://www.sokontokoro-factory.net/",
     "build": "    NODE_ENV=development yarn parcel build src/{index,landing,404}.pug",
     "build:pro": "NODE_ENV=production  yarn parcel build src/{index,landing,404}.pug",
     "imagemin": "imagemin dist/assets/image/* --out-dir=dist/assets/image",
