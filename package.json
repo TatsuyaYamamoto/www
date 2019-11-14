@@ -10,7 +10,7 @@
   "author": "Tatuya Yamamoto",
   "license": "MIT",
   "scripts": {
-    "start": "parcel serve src/{index,landing,404}.pug",
+    "start": "parcel serve src/{index,landing,404,special/cafe-aqours/index}.pug",
     "clean": "rm -rf dist",
     "deploy": "    yarn clean && yarn build     && yarn imagemin && gsutil -m rsync -d -r dist/ gs://www-dev.sokontokoro-factory.net/",
     "deploy:pro": "yarn clean && yarn build:pro && yarn imagemin && gsutil -m rsync -d -r dist/ gs://www.sokontokoro-factory.net/",

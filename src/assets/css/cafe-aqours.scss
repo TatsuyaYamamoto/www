@@ -1,0 +1,280 @@
+@import "base";
+@import "sf-footer";
+
+@import "~@material/typography/mdc-typography";
+
+@font-face {
+  font-family: "KTEGAKI";
+  src: url(../../assets/font/KTEGAKI.ttf);
+}
+
+body {
+  background: none;
+}
+
+.cafe-aqours-container {
+}
+
+.hero {
+}
+
+.hero-logo {
+  color: #ffffff;
+  font-family: "Liu Jian Mao Cao", cursive;
+
+  &__series-title {
+    font-size: 80px;
+  }
+
+  &__series-description {
+    margin-top: 30px;
+    margin-left: 30px;
+
+    font-size: 30px;
+  }
+}
+
+.scroll-prompt {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(0, -50%);
+
+  color: white;
+  text-decoration: none;
+  font-family: "KTEGAKI", serif;
+
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    display: inline-block;
+    position: relative;
+    left: -50%;
+
+    font-size: 30px;
+
+    margin-top: 50px;
+  }
+
+  &__arrow {
+    display: inline-block;
+    position: relative;
+    left: -12px;
+
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+
+    //margin-left: -12px;
+
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+    transform-origin: center;
+
+    animation: arrow-animation 1.5s infinite;
+  }
+
+  @keyframes arrow-animation {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+      opacity: 0;
+    }
+  }
+}
+
+.sticky-container {
+  position: sticky;
+
+  top: 0;
+
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  &__contents {
+    position: absolute;
+    top: 300px;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    max-width: 1000px;
+  }
+
+  %__background {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  &__background {
+    @extend %__background;
+
+    &--noizy {
+      @extend %__background;
+
+      filter: sepia(30%) blur(1px);
+    }
+  }
+}
+
+.disc-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.disc-detail {
+  font-family: "KTEGAKI", serif;
+
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .disc-title {
+    font-size: 35px;
+    text-shadow: 2px 2px 1px #ffffff;
+  }
+
+  .track-list {
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #ffffff;
+  }
+}
+
+.artwork {
+  max-width: 400px;
+
+  padding: 7px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #fff;
+
+  @media screen and (max-width: 559px) {
+    width: 80%;
+  }
+}
+
+.track-list {
+}
+
+.disc-links {
+}
+.link-button {
+  padding: 0.5em;
+  margin: 10px 0;
+  display: block;
+  color: #fff !important;
+  background: #ff8300;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link-button.youtube:before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: -3px 0 0 5px;
+  background: url("../../assets/image/youtube_social_icon_red.png") no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+}
+.link-button:hover {
+  background: #ffce71;
+}
+
+.footer-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.footer-info-title {
+  color: #ffffff;
+  font-size: 80px;
+  font-family: "Liu Jian Mao Cao", cursive;
+}
+
+.footer-help {
+  margin-top: 50px;
+}
+
+.footer-actions {
+  margin-top: 50px;
+}
+
+.owner-info {
+  font-family: "KTEGAKI", serif;
+
+  position: absolute;
+  bottom: 50px;
+
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  text-align: center;
+}
+
+.cp_qa *,
+.cp_qa *:after,
+.cp_qa *:before {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+.cp_qa {
+  padding: 1em 1em 0.5em 1em;
+  background: rgb(225, 245, 254, 0.3);
+}
+
+.cp_qa dl {
+  margin-top: 20px;
+}
+.cp_qa dt {
+  margin-bottom: 0.5em;
+  padding: 0.2em 0.5em 0.5em 2em;
+  border-radius: 0.2em;
+  background: #ffb74d;
+}
+.cp_qa dd {
+  margin-bottom: 1em;
+  margin-left: 0;
+  padding: 0.5em 1em 1.5em 3em;
+}
+/* QAアイコン */
+.cp_qa dt::before,
+.cp_qa dd::before {
+  font-size: 1.5em;
+  color: #ffffff;
+}
+.cp_qa dt::before {
+  margin: 0.3em 0.3em 0 -1em;
+  content: "Q";
+}
+.cp_qa dd::before {
+  margin: 0 0.5em 0 -2em;
+  padding: 0.2em 0.4em;
+  content: "A";
+  border-radius: 0.2em;
+  background: #00bcd4;
+}
