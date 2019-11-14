@@ -79,7 +79,7 @@ html(lang=`${lang}`)
     link(rel="stylesheet" href=`../../assets/css/cafe-aqours.scss`)
 
   body
-    main.cafe-aqours-container
+    main.cafe-aqours-container#top
       section.hero.sticky-container
         img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
 
@@ -90,11 +90,11 @@ html(lang=`${lang}`)
             div.hero-logo__series-description
               span Aqours no kyoku wo cafe demo kikitai.
 
-        a(href="#").scroll-prompt
+        div#scroll-prompt.scroll-prompt
           span.scroll-prompt__text Scroll
           span.scroll-prompt__arrow
 
-      section.sticky-container
+      section.sticky-container#vol-1
         img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol1.jpg`)
 
         article.sticky-container__contents
@@ -117,7 +117,7 @@ html(lang=`${lang}`)
                 li
                   a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button Boothでmp3を購入する
 
-      section.sticky-container
+      section.sticky-container#vol-2
         img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol2.jpg`)
 
         article.sticky-container__contents
@@ -140,7 +140,7 @@ html(lang=`${lang}`)
                 li
                   a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button Boothでmp3を購入する
 
-      footer.sticky-container
+      footer.sticky-container#help
         img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
 
         div.footer-info.sticky-container__contents
