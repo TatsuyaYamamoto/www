@@ -37,7 +37,8 @@
   },
   "dependencies": {
     "material-components-web": "^0.34.1",
-    "reset-css": "^3.0.0"
+    "reset-css": "^3.0.0",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.1",

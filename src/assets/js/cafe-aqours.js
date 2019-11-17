@@ -1,3 +1,6 @@
+import { polyfill as smoothscroll } from "smoothscroll-polyfill";
+smoothscroll();
+
 (() => {
   const scrollPromptButton = document.getElementById("scroll-prompt");
   const vol1Container = document.getElementById("vol-1");
