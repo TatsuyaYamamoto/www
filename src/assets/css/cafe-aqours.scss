@@ -213,25 +213,57 @@ body {
   padding: 0.5em;
   margin: 10px 0;
   display: block;
-  color: #fff !important;
-  background: #ff8300;
+  color: #fff;
   font-weight: bold;
   font-size: 16px;
   border-radius: 3px;
   text-align: center;
   text-decoration: none;
+
+  &.vol1 {
+    background: #e8822a;
+  }
+
+  &.vol2 {
+    background: #add8e6;
+  }
+
+  &.youtube:before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    background: url("../../assets/image/youtube_social_icon_red.png") no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+  }
+
+  // https://www.melonbooks.co.jp/user_data/link.php
+  &.mellon:before {
+    content: "🍈";
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // https://booth.pm/banners
+  // https://www.pixiv.co.jp/news/press-kit/
+  &.booth:before {
+    content: "🐪";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    vertical-align: middle;
+  }
 }
 
-.link-button.youtube:before {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  margin: -3px 0 0 5px;
-  background: url("../../assets/image/youtube_social_icon_red.png") no-repeat;
-  background-size: contain;
-  vertical-align: middle;
-}
 .link-button:hover {
   background: #ffce71;
 }
