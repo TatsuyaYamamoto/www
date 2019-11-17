@@ -2,10 +2,10 @@ block vars
   - var lang = "ja"
   - var pageName = "cafe-aqours"
   - var assetPath = "../../assets/";
-  - var title = "Cafe Aqours | そこんところ工房"
-  - var head_description = "Cafe Aqours | そこんところ工房"
+  - var title = "Cafe Aqours 特設サイト | そこんところ工房"
+  - var description = `"Cafe Aqours"は「カフェでクールにAqoursの曲が聞きたいぜ」というあなたの希望をかなえる、アコースティック・インストアレンジ音源です!`
   - var site_name = "Cafe Aqours | そこんところ工房"
-  - var og_image_url = "https://www.sokontokoro-factory.net/assets/image/cafe_aqours_artwork_vol1.jpg"
+  - var ogImageUrl = "https://www.sokontokoro-factory.net/___ogp/cafe-aqours.jpg"
   - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
   - var urlAc1YouTube = "https://www.youtube.com/watch?v=IKrST1ZwIvE&list=PLGCO2ueWMpn6FS2Cs3YzHXhrUWZLi7LRk"
   - var urlAc1Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561154"
@@ -26,7 +26,7 @@ html(lang=`${lang}`)
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width,initial-scale=1")
-    meta(name="description" content=`${head_description}`)
+    meta(name="description" content=`${description}`)
 
     title #{title}
 
@@ -43,8 +43,8 @@ html(lang=`${lang}`)
     // Open Graph Protocol
     meta(name="og:title" content=`${title}`)
     meta(name="og:type" content="website")
-    meta(name="og:image" content=`${og_image_url}`)
-    meta(name="og:description" content=`${head_description}`)
+    meta(name="og:image" content=`${ogImageUrl}`)
+    meta(name="og:description" content=`${description}`)
     meta(name="og:site_name" content=`${site_name}`)
     meta(name="“og:locale:alternate" content="ja_JP")
     meta(name="“og:locale:alternate" content="en_US")
