@@ -19,6 +19,9 @@ body {
 }
 
 .hero-logo {
+  position: absolute;
+  top: 30vh;
+
   color: #ffffff;
   font-family: "Liu Jian Mao Cao", cursive;
 
@@ -31,6 +34,18 @@ body {
     margin-left: 30px;
 
     font-size: 30px;
+  }
+
+  @media screen and (max-width: 559px) {
+    top: 10vh;
+
+    &__series-title {
+      font-size: 60px;
+    }
+
+    &__series-description {
+      font-size: 20px;
+    }
   }
 }
 
@@ -67,8 +82,6 @@ body {
     height: 24px;
     box-sizing: border-box;
 
-    //margin-left: -12px;
-
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
     transform: rotate(-45deg);
@@ -101,21 +114,31 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 
   &__contents {
-    position: absolute;
-    top: 300px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    position: relative;
 
+    min-height: 100vh;
     max-width: 1000px;
+    margin: auto;
   }
 
   %__background {
-    position: relative;
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    z-index: -1;
+
     text-align: center;
     left: 50%;
     transform: translate(-50%, 0);
+
+    height: 100%;
+
+    @media (min-aspect-ratio: 1200/800) {
+      width: 100%;
+      height: auto;
+    }
   }
   &__background {
     @extend %__background;
@@ -129,9 +152,8 @@ body {
 }
 
 .disc-info {
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  margin-top: 20px;
+
   width: 100%;
 
   display: flex;
@@ -156,6 +178,16 @@ body {
     font-size: 20px;
     text-shadow: 2px 2px 1px #ffffff;
   }
+
+  @media screen and (max-width: 559px) {
+    .disc-title {
+      font-size: 25px;
+    }
+
+    .track-list {
+      font-size: 12px;
+    }
+  }
 }
 
 .artwork {
@@ -167,7 +199,8 @@ body {
   background: #fff;
 
   @media screen and (max-width: 559px) {
-    width: 80%;
+    width: 50%;
+    height: 50%;
   }
 }
 
@@ -204,37 +237,30 @@ body {
 }
 
 .footer-info {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-
-.footer-info-title {
-  color: #ffffff;
-  font-size: 80px;
-  font-family: "Liu Jian Mao Cao", cursive;
-}
-
-.footer-help {
-  margin-top: 50px;
-}
-
-.footer-actions {
-  margin-top: 50px;
+  &__help {
+    margin-top: 50px;
+  }
 }
 
 .owner-info {
   font-family: "KTEGAKI", serif;
+  color: #000000;
 
-  position: absolute;
-  bottom: 50px;
+  margin-top: 200px;
 
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
 
   text-align: center;
+
+  &__version {
+    text-decoration: none;
+    color: #000000;
+  }
 }
 
 .cp_qa *,

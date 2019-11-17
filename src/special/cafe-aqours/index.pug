@@ -6,6 +6,13 @@ block vars
   - var pageName = "game"
   - var title = page_name? `${site_name} | ${page_name}` : `${site_name}`;
   - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
+  - var urlAc1YouTube = ""
+  - var urlAc1Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561154"
+  - var urlAc1Booth = "https://sokontokoro.booth.pm/items/1670408"
+  - var urlAc2YouTube = ""
+  - var urlAc2Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561155"
+  - var urlAc2Booth = "https://sokontokoro.booth.pm/items/1677699"
+
 
 doctype html
 html(lang=`${lang}`)
@@ -22,7 +29,9 @@ html(lang=`${lang}`)
     script(async src=`https://www.googletagmanager.com/gtag/js?${gaCode}`)
     script.
       window.dataLayer = window.dataLayer || [];
-      function gtag () {dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('js', new Date());
       gtag('config', "#{gaCode}");
 
@@ -81,8 +90,6 @@ html(lang=`${lang}`)
   body
     main.cafe-aqours-container#top
       section.hero.sticky-container
-        img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
-
         article.sticky-container__contents
           div.hero-logo
             div.hero-logo__series-title
@@ -94,9 +101,9 @@ html(lang=`${lang}`)
           span.scroll-prompt__text Scroll
           span.scroll-prompt__arrow
 
-      section.sticky-container#vol-1
-        img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol1.jpg`)
+        img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
 
+      section.sticky-container#vol-1
         article.sticky-container__contents
           div.disc-info
             img.artwork(src=`../../assets/image/cafe_aqours_artwork_vol1.jpg`)
@@ -111,14 +118,14 @@ html(lang=`${lang}`)
                   span 3. Aqours☆HEROES
               ul.disc-links
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button YouTubeで視聴する
+                  a(href=`${urlAc1YouTube}` target="__blank").link-button YouTubeで視聴する
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button メロンブックスでダウンロードカードを購入する
+                  a(href=`${urlAc1Mellon}` target="__blank").link-button メロンブックスでDLカードを購入する
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button Boothでmp3を購入する
+                  a(href=`${urlAc1Booth}` target="__blank").link-button Boothでmp3を購入する
+        img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol1.jpg`)
 
       section.sticky-container#vol-2
-        img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol2.jpg`)
 
         article.sticky-container__contents
           div.disc-info
@@ -134,18 +141,19 @@ html(lang=`${lang}`)
                   span 3. 届かない星だとしても
               ul.disc-links
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button.youtube YouTubeで視聴する
+                  a(href=`${urlAc2YouTube}` target="__blank").link-button YouTubeで視聴する
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button メロンブックスでダウンロードカードを購入する
+                  a(href=`${urlAc2Mellon}` target="__blank").link-button メロンブックスでDLカードを購入する
                 li
-                  a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button Boothでmp3を購入する
+                  a(href=`${urlAc2Booth}` target="__blank").link-button Boothでmp3を購入する
+        img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_vol2.jpg`)
 
       footer.sticky-container#help
         img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
 
         div.footer-info.sticky-container__contents
 
-          div.cp_qa.footer-help
+          div.cp_qa.footer-info__help
             dl
               dt 「メロンブックスで購入できるダウンロードカード」とは何ですか？
               dd.
@@ -163,24 +171,13 @@ html(lang=`${lang}`)
                   Aqours・Webページ・購入方法などなど、お気軽にどうぞ。=>
                 a(href="https://docs.google.com/forms/d/e/1FAIpQLSe5bSPvJ5XQM0IACqZ9NKoHuRUAcC_V1an16JGwHh6HeGd-oQ/viewform") Google Form
 
-          div.footer-actions
-            ul
-              li
-                a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button.youtube YouTubeでプレイリストを視聴する
-              li
-                a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button メロンブックスでダウンロードカードを購入する
-              li
-                a(href="https://www.melonbooks.co.jp/detail/detail.php?product_id=561154" target="__blank").link-button Boothでmp3を購入する
+          div.owner-info
+            | © 2014-
+            script(type="text/javascript") document.write(new Date().getFullYear());
+            | #{" "}Sokontokoro Factory, All rights reserved.
 
-          div.footer-info-title
-            span Cafe Aqours
-
-        div.owner-info
-          | © 2014-
-          script(type="text/javascript") document.write(new Date().getFullYear());
-          | Sokontokoro Factory, All rights reserved.
-
-          a(href="https://github.com/TatsuyaYamamoto/www") Currently v#{version}
+            a(href="https://github.com/TatsuyaYamamoto/www").owner-info__version
+              | #{" "}Currently v#{version}
 
       div#player
 
