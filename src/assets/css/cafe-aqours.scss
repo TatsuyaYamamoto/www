@@ -164,19 +164,29 @@ body {
     transform: translate(-50%, 0);
 
     height: 100%;
+  }
+  &__background {
+    @extend %__background;
 
     @media (min-aspect-ratio: 1200/800) {
       width: 100%;
       height: auto;
     }
-  }
-  &__background {
-    @extend %__background;
 
     &--noizy {
       @extend %__background;
 
       filter: sepia(30%) blur(1px);
+      @media (min-aspect-ratio: 1200/800) {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    // TODO: css 再設計...
+    // 最下層のコンテナは内容に合わせてheightが伸縮するため、強制的にheight 100%にする
+    &--footer {
+      @extend %__background;
     }
   }
 }
@@ -358,6 +368,7 @@ body {
 }
 
 .owner-info {
+  width: 100vw;
   margin-top: 200px;
 }
 

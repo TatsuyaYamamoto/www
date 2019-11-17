@@ -168,8 +168,6 @@ html(lang=`${lang}`)
         img.sticky-container__background--noizy(src=`${assetPath}image/cafe_aqours_background_vol2.jpg`)
 
       div.sticky-container#help
-        img.sticky-container__background(src=`${assetPath}image/cafe_aqours_hero.jpg`)
-
         div.footer-info.sticky-container__contents
 
           div.cp_qa.footer-info__help
@@ -187,8 +185,10 @@ html(lang=`${lang}`)
                 span #{cafeaqours_help_4_a2}
                 a(href=`${urlTwitter}` target="__blank").footer-info__help-link Twitter
                 span #{cafeaqours_help_4_a3}
+        footer.owner-info
+          include ../../components/_footer
 
-          div.owner-info
-            include ../../components/_footer
+        img.sticky-container__background--footer(src=`${assetPath}image/cafe_aqours_hero.jpg`)
+
 
     script(src=`${assetPath}js/cafe-aqours.js`)
