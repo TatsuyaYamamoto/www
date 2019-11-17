@@ -32,5 +32,12 @@
 
       background-image: url("../image/activity_2018_1.png");
     }
+
+    &--media-activity_2019_1 {
+      @extend .mdc-card__media;
+      @extend .mdc-card__media--16-9;
+
+      background-image: url("../image/cafe_aqours_artwork_vol1.jpg");
+    }
   }
 }
