@@ -2,6 +2,7 @@
 @import "sf-footer";
 
 @import "~@material/typography/mdc-typography";
+@import "~@material/button/mdc-button";
 
 @font-face {
   font-family: "KTEGAKI";
@@ -151,6 +152,47 @@ body {
   }
 }
 
+.about {
+  font-family: "KTEGAKI", serif;
+  color: white;
+
+  max-width: 600px;
+  margin: 30px auto 0;
+
+  border-radius: 20px;
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__description {
+    font-size: 20px;
+
+    white-space: pre-wrap;
+  }
+
+  &__link {
+    color: black;
+    background: white;
+
+    text-align: right;
+
+    padding: 0.5em;
+    margin: 10px 0;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  &__link:hover {
+    background: lightgray;
+  }
+}
+
 .disc-info {
   margin-top: 20px;
 
@@ -224,8 +266,16 @@ body {
     background: #e8822a;
   }
 
+  &.vol1:hover {
+    background: #ffce71;
+  }
+
   &.vol2 {
     background: #add8e6;
+  }
+
+  &.vol2:hover {
+    background: #7fd8e6;
   }
 
   &.youtube:before {
@@ -264,11 +314,9 @@ body {
   }
 }
 
-.link-button:hover {
-  background: #ffce71;
-}
-
 .footer-info {
+  max-width: 600px;
+
   &__help {
     margin-top: 50px;
   }

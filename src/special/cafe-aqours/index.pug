@@ -6,12 +6,13 @@ block vars
   - var pageName = "game"
   - var title = page_name? `${site_name} | ${page_name}` : `${site_name}`;
   - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
-  - var urlAc1YouTube = ""
+  - var urlAc1YouTube = "https://www.youtube.com/watch?v=IKrST1ZwIvE&list=PLGCO2ueWMpn6FS2Cs3YzHXhrUWZLi7LRk"
   - var urlAc1Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561154"
   - var urlAc1Booth = "https://sokontokoro.booth.pm/items/1670408"
-  - var urlAc2YouTube = ""
+  - var urlAc2YouTube = "https://www.youtube.com/watch?v=IKrST1ZwIvE&list=PLGCO2ueWMpn6FS2Cs3YzHXhrUWZLi7LRk"
   - var urlAc2Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561155"
   - var urlAc2Booth = "https://sokontokoro.booth.pm/items/1677699"
+  - var urlGoogleForm = "https://docs.google.com/forms/d/e/1FAIpQLSe5bSPvJ5XQM0IACqZ9NKoHuRUAcC_V1an16JGwHh6HeGd-oQ/viewform"
 
 
 doctype html
@@ -104,6 +105,16 @@ html(lang=`${lang}`)
 
         img.sticky-container__background(src=`../../assets/image/cafe_aqours_hero.jpg`)
 
+      section.sticky-container#about
+        article.sticky-container__contents
+          div.about
+            div.about__title Cafe Aqours?
+            |<div class="about__description">
+            |"Cafe Aqours"は「カフェでクールにAqoursの曲が聞きたいぜ」というあなたの希望をかなえる、アコースティック・インストアレンジ音源です!
+            |
+            |↓にスクロールすると、リリース済みの作品を確認できます。YouTubeで視聴動画を配信していますので、コーヒーを片手にどうぞ。
+        img.sticky-container__background--noizy(src=`../../assets/image/cafe_aqours_background_about.jpg`)
+
       section.sticky-container#vol-1
         article.sticky-container__contents
           div.disc-info
@@ -170,7 +181,7 @@ html(lang=`${lang}`)
               dd
                 span.
                   Aqours・Webページ・購入方法などなど、お気軽にどうぞ。=>
-                a(href="https://docs.google.com/forms/d/e/1FAIpQLSe5bSPvJ5XQM0IACqZ9NKoHuRUAcC_V1an16JGwHh6HeGd-oQ/viewform") Google Form
+                a(href=`${urlGoogleForm}`) Google Form
 
           div.owner-info
             | © 2014-
