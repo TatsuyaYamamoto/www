@@ -1,0 +1,196 @@
+block vars
+  - var lang = "ja"
+  - var pageName = "cafe-aqours"
+  - var assetPath = "../../assets/";
+  - var title = "Cafe Aqours 特設サイト | そこんところ工房"
+  - var description = `"Cafe Aqours"は「カフェでクールにAqoursの曲が聞きたいぜ」というあなたの希望をかなえる、アコースティック・インストアレンジ音源です!`
+  - var site_name = "Cafe Aqours | そこんところ工房"
+  - var ogImageUrl = "https://www.sokontokoro-factory.net/___ogp/cafe-aqours.jpg"
+  - var gaCode = process.env.NODE_ENV === "production"? "UA-127664761-3" : "UA-127664761-4";
+  - var urlAc1YouTube = "https://www.youtube.com/watch?v=IKrST1ZwIvE&list=PLGCO2ueWMpn6FS2Cs3YzHXhrUWZLi7LRk"
+  - var urlAc1Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561154"
+  - var urlAc1Booth = "https://sokontokoro.booth.pm/items/1670408"
+  - var urlAc2YouTube = "https://www.youtube.com/watch?v=IKrST1ZwIvE&list=PLGCO2ueWMpn6FS2Cs3YzHXhrUWZLi7LRk"
+  - var urlAc2Mellon = "https://www.melonbooks.co.jp/detail/detail.php?product_id=561155"
+  - var urlAc2Booth = "https://sokontokoro.booth.pm/items/1677699"
+  - var urlGoogleForm = "https://docs.google.com/forms/d/e/1FAIpQLSe5bSPvJ5XQM0IACqZ9NKoHuRUAcC_V1an16JGwHh6HeGd-oQ/viewform"
+  - var urlTwitter = "https://twitter.com/T28_tatsuya"
+
+include ../../_string
+include ../../_config
+
+doctype html
+html(lang=`${lang}`)
+  head
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="description" content=`${description}`)
+
+    title #{title}
+
+    // GA
+    script(async src=`https://www.googletagmanager.com/gtag/js?${gaCode}`)
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', "#{gaCode}");
+
+    // Open Graph Protocol
+    meta(name="og:title" content=`${title}`)
+    meta(name="og:type" content="website")
+    meta(name="og:image" content=`${ogImageUrl}`)
+    meta(name="og:description" content=`${description}`)
+    meta(name="og:site_name" content=`${site_name}`)
+    meta(name="“og:locale:alternate" content="ja_JP")
+    meta(name="“og:locale:alternate" content="en_US")
+
+    // TODO: fix!
+    //case lang
+    //  when "en"
+    //    meta(name="og:url" content=`${alternate_hreflang_en}`)
+    //  when "ja"
+    //  default
+    //    meta(name="og:url" content=`${alternate_hreflang_ja}`)
+
+
+    // language
+    //link(rel="alternate" href="ja" hreflang=`${alternate_hreflang_ja}`) TODO: fix!
+    //link(rel="alternate" href="en" hreflang=`${alternate_hreflang_en}`) TODO: fix!
+
+
+    // Twitter card
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:site" content="@T28_Tatsuya")
+
+
+    // DNS Prefetch
+    each host in dns_prefetch_hosts
+      link(rel="dns-prefetch" href=`http://${host}/`)
+
+
+    // favicon
+    link(rel="icon" sizes="32x32" href=`${favicon_url_32x32}`)
+    link(rel="icon" sizes="192x192" href=`${favicon_url_192x192}`)
+
+
+    // smartphone layout
+    meta(name="theme-color" content="#3c93da")
+    meta(name="msapplication-navbutton-color" content="#3c93da")
+    meta(name="apple-mobile-web-app-status-bar-style" content="#3c93da")
+
+
+    // stylesheet
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+
+
+    <link href="//fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+
+    link(rel="stylesheet" href=`${assetPath}css/cafe-aqours.scss`)
+
+  body
+    a(href=`${TRANSLATE_BASE_PATH}special/cafe-aqours/index.pug`).translate-button#translate-button
+      i.material-icons.mdc-toolbar__menu-icon translate
+
+    main.cafe-aqours-container
+      section.hero.sticky-container#top
+        article.sticky-container__contents
+          div.hero-logo
+            div.hero-logo__series-title
+              span Cafe Aqours
+            div.hero-logo__series-description
+              span Aqours no kyoku wo cafe demo kikitai.
+
+        div#scroll-prompt.scroll-prompt
+          span.scroll-prompt__text Scroll
+          span.scroll-prompt__arrow
+
+        img.sticky-container__background(src=`${assetPath}image/cafe_aqours_hero.jpg`)
+
+      section.sticky-container#about
+        article.sticky-container__contents
+          div.about
+            div.about__title Cafe Aqours?
+            | <div class="about__description">
+            | #{cafeaqours_about1}
+            |
+            | #{cafeaqours_about2}
+        img.sticky-container__background--noizy(src=`${assetPath}image/cafe_aqours_background_about.jpg`)
+
+      section.sticky-container#vol-1
+        article.sticky-container__contents
+          div.disc-info
+            img.artwork(src=`${assetPath}image/cafe_aqours_artwork_vol1.jpg`)
+            div.disc-detail
+              div.disc-title Cafe Aqours Vol.1 君のこころは輝いてるかい?
+              ul.track-list
+                li.track-item
+                  span 1. 君のこころは輝いてるかい?
+                li.track-item
+                  span 2. Step! ZERO to ONE
+                li.track-item
+                  span 3. Aqours☆HEROES
+              ul.disc-links
+                li
+                  a(href=`${urlAc1YouTube}` target="__blank").link-button.vol1.youtube #{cafeaqours_link_label_youtube}
+                li
+                  a(href=`${urlAc1Mellon}` target="__blank").link-button.vol1.mellon #{cafeaqours_link_label_mellon}
+                li
+                  a(href=`${urlAc1Booth}` target="__blank").link-button.vol1.booth #{cafeaqours_link_label_booth}
+        img.sticky-container__background--noizy(src=`${assetPath}image/cafe_aqours_background_vol1.jpg`)
+
+      section.sticky-container#vol-2
+
+        article.sticky-container__contents
+          div.disc-info
+            img.artwork(src=`${assetPath}image/cafe_aqours_artwork_vol2.jpg`)
+            div.disc-detail
+              div.disc-title Cafe Aqours Vol.2 恋になりたいAQUARIUM
+              ul.track-list
+                li.track-item
+                  span 1. 恋になりたいAQUARIUM
+                li.track-item
+                  span 2. 待ってて愛のうた
+                li.track-item
+                  span 3. 届かない星だとしても
+              ul.disc-links
+                li
+                  a(href=`${urlAc2YouTube}` target="__blank").link-button.vol2.youtube #{cafeaqours_link_label_youtube}
+                li
+                  a(href=`${urlAc2Mellon}` target="__blank").link-button.vol2.mellon #{cafeaqours_link_label_mellon}
+                li
+                  a(href=`${urlAc2Booth}` target="__blank").link-button.vol2.booth #{cafeaqours_link_label_booth}
+        img.sticky-container__background--noizy(src=`${assetPath}image/cafe_aqours_background_vol2.jpg`)
+
+      div.sticky-container#help
+        div.footer-info.sticky-container__contents
+
+          div.cp_qa.footer-info__help
+            dl
+              dt #{cafeaqours_help_1_q}
+              dd #{cafeaqours_help_1_a}
+              dt #{cafeaqours_help_2_q}
+              dd #{cafeaqours_help_2_a}
+              dt #{cafeaqours_help_3_q}
+              dd #{cafeaqours_help_3_a}
+              dt #{cafeaqours_help_4_q}
+              dd
+                span #{cafeaqours_help_4_a1}
+                a(href=`${urlGoogleForm}` target="__blank").footer-info__help-link Google Form
+                span #{cafeaqours_help_4_a2}
+                a(href=`${urlTwitter}` target="__blank").footer-info__help-link Twitter
+                span #{cafeaqours_help_4_a3}
+              dt #{cafeaqours_help_5_q}
+              dd #{cafeaqours_help_5_a}
+        footer.owner-info
+          include ../../components/_footer
+
+        img.sticky-container__background--footer(src=`${assetPath}image/cafe_aqours_hero.jpg`)
+
+
+    script(src=`${assetPath}js/cafe-aqours.js`)

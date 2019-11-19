@@ -1,0 +1,416 @@
+@import "base";
+@import "sf-footer";
+
+@import "~@material/typography/mdc-typography";
+@import "~@material/button/mdc-button";
+
+@font-face {
+  font-family: "KTEGAKI";
+  src: url(../../assets/font/KTEGAKI.ttf);
+}
+
+body {
+  background: none;
+}
+
+.cafe-aqours-container {
+}
+
+.translate-button {
+  position: fixed;
+  z-index: 10;
+  top: 20px;
+  right: 10px;
+
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: #00bcd4;
+  border-radius: 20px;
+
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0px rgba(0, 0, 0, 0.14), 0 1px 18px 0px rgba(0, 0, 0, 0.12);
+
+  text-decoration: none;
+
+  transition: all 0.5s;
+
+  &--hide {
+    right: -50px;
+  }
+}
+
+.hero {
+}
+
+.hero-logo {
+  position: absolute;
+  top: 30vh;
+
+  color: #ffffff;
+  font-family: "Liu Jian Mao Cao", cursive;
+
+  &__series-title {
+    font-size: 80px;
+  }
+
+  &__series-description {
+    margin-top: 30px;
+    margin-left: 30px;
+
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 559px) {
+    top: 10vh;
+
+    &__series-title {
+      font-size: 60px;
+    }
+
+    &__series-description {
+      font-size: 20px;
+    }
+  }
+}
+
+.scroll-prompt {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(0, -50%);
+
+  color: white;
+  text-decoration: none;
+  font-family: "KTEGAKI", serif;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    display: inline-block;
+    position: relative;
+    left: -50%;
+
+    font-size: 30px;
+
+    margin-top: 50px;
+  }
+
+  &__arrow {
+    display: inline-block;
+    position: relative;
+    left: -12px;
+
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+    transform-origin: center;
+
+    animation: arrow-animation 1.5s infinite;
+  }
+
+  @keyframes arrow-animation {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+      opacity: 0;
+    }
+  }
+}
+
+.sticky-container {
+  position: sticky;
+
+  top: 0;
+
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+  &__contents {
+    position: relative;
+
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  %__background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    z-index: -1;
+
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    height: 100%;
+  }
+  &__background {
+    @extend %__background;
+
+    @media (min-aspect-ratio: 1200/800) {
+      width: 100%;
+      height: auto;
+    }
+
+    &--noizy {
+      @extend %__background;
+
+      filter: sepia(30%) blur(1px);
+      @media (min-aspect-ratio: 1200/800) {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    // TODO: css 再設計...
+    // 最下層のコンテナは内容に合わせてheightが伸縮するため、強制的にheight 100%にする
+    &--footer {
+      @extend %__background;
+    }
+  }
+}
+
+.about {
+  font-family: "KTEGAKI", serif;
+  color: white;
+
+  max-width: 600px;
+  margin: 30px auto 0;
+
+  border-radius: 20px;
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__description {
+    font-size: 20px;
+
+    white-space: pre-wrap;
+  }
+
+  &__link {
+    color: black;
+    background: white;
+
+    text-align: right;
+
+    padding: 0.5em;
+    margin: 10px 0;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  &__link:hover {
+    background: lightgray;
+  }
+}
+
+.disc-info {
+  margin-top: 20px;
+
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.disc-detail {
+  font-family: "KTEGAKI", serif;
+
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .disc-title {
+    font-size: 35px;
+    text-shadow: 2px 2px 1px #ffffff;
+  }
+
+  .track-list {
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #ffffff;
+  }
+
+  @media screen and (max-width: 559px) {
+    .disc-title {
+      font-size: 25px;
+    }
+
+    .track-list {
+      font-size: 12px;
+    }
+  }
+}
+
+.artwork {
+  max-width: 400px;
+
+  padding: 7px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #fff;
+
+  @media screen and (max-width: 559px) {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.track-list {
+}
+
+.disc-links {
+}
+.link-button {
+  padding: 0.5em;
+  margin: 10px 0;
+  display: block;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+
+  &.vol1 {
+    background: #e8822a;
+  }
+
+  &.vol1:hover {
+    background: #ffce71;
+  }
+
+  &.vol2 {
+    background: #add8e6;
+  }
+
+  &.vol2:hover {
+    background: #7fd8e6;
+  }
+
+  &.youtube:before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    background: url("../../assets/image/youtube_social_icon_red.png") no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+  }
+
+  // https://www.melonbooks.co.jp/user_data/link.php
+  &.mellon:before {
+    content: "🍈";
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // https://booth.pm/banners
+  // https://www.pixiv.co.jp/news/press-kit/
+  &.booth:before {
+    content: "🐪";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+
+    vertical-align: middle;
+  }
+}
+
+.footer-info {
+  max-width: 600px;
+
+  white-space: pre-wrap;
+
+  &__help {
+    margin-top: 50px;
+  }
+
+  &__help-link {
+    color: black;
+  }
+}
+
+.owner-info {
+  width: 100vw;
+  margin-top: 200px;
+}
+
+.cp_qa *,
+.cp_qa *:after,
+.cp_qa *:before {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+.cp_qa {
+  padding: 1em 1em 0.5em 1em;
+  background: rgba(225, 245, 254, 0.6);
+}
+
+.cp_qa dl {
+  margin-top: 20px;
+}
+.cp_qa dt {
+  margin-bottom: 0.5em;
+  padding: 0.2em 0.5em 0.5em 2em;
+  border-radius: 0.2em;
+  background: #ffb74d;
+}
+.cp_qa dd {
+  margin-bottom: 1em;
+  margin-left: 0;
+  padding: 0.5em 1em 1.5em 3em;
+}
+/* QAアイコン */
+.cp_qa dt::before,
+.cp_qa dd::before {
+  font-size: 1.5em;
+  color: #ffffff;
+}
+.cp_qa dt::before {
+  margin: 0.3em 0.3em 0 -1em;
+  content: "Q";
+}
+.cp_qa dd::before {
+  margin: 0 0.5em 0 -2em;
+  padding: 0.2em 0.4em;
+  content: "A";
+  border-radius: 0.2em;
+  background: #00bcd4;
+}
