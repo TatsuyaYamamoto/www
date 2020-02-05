@@ -21,3 +21,15 @@ $ npm version {major,minor,patch}
 // But, it will be executed before commit automatically.
 $ format
 ```
+
+## Note
+
+### Firebase Targeting
+
+```bash
+$ firebase target:apply hosting www-dev w3-dev-sokontokoro-factory
+```
+
+_Why is the target name and hosting identifier "w3" instead of "www"?_
+
+=> www を含む文字列を firebase hosting の識別子に使えなかったから...
