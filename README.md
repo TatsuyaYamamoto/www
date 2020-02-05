@@ -27,7 +27,8 @@ $ format
 ### Firebase Targeting
 
 ```bash
-$ firebase target:apply hosting www-dev w3-dev-sokontokoro-factory
+$ firebase target:apply hosting w3-dev  w3-dev-sokontokoro-factory
+$ firebase target:apply hosting api-dev api-dev-sokontokoro-factory
 ```
 
 _Why is the target name and hosting identifier "w3" instead of "www"?_
