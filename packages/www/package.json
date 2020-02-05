@@ -1,0 +1,34 @@
+{
+  "name": "www",
+  "version": "1.19.0",
+  "description": "sokontokoro factory web site",
+  "private": true,
+  "scripts": {
+    "start": "parcel serve src/{index,landing,404}.pug",
+    "clean": "rm -rf dist",
+    "deploy": "    yarn clean && yarn build     && yarn copy:ogp && firebase deploy --only hosting:w3-dev --project sokontokoro-factory-develop",
+    "deploy:pro": "yarn clean && yarn build:pro && yarn copy:ogp && firebase deploy --only hosting:w3     --project sokontokoro-factory",
+    "build": "    NODE_ENV=development yarn parcel build src/{index,landing,404}.pug",
+    "build:pro": "NODE_ENV=production  yarn parcel build src/{index,landing,404}.pug",
+    "copy:ogp": "mkdir -p dist/__ogp && cp src/assets/__ogp/* dist/__ogp"
+  },
+  "sass": {
+    "includePaths": [
+      "../../node_modules"
+    ]
+  },
+  "dependencies": {
+    "material-components-web": "^0.34.1",
+    "reset-css": "^3.0.0",
+    "smoothscroll-polyfill": "^0.4.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.1",
+    "jstransformer-markdown-it": "^2.1.0",
+    "marked": "^0.6.2",
+    "node-sass": "^4.13.1",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1",
+    "pug": "^2.0.3"
+  }
+}
