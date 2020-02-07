@@ -1,5 +1,4 @@
-import * as functions from "firebase-functions";
+import { https } from "firebase-functions";
+import _httpsApp from "./https";
 
-export const app = functions.https.onRequest((request, response) => {
-  response.send("Hello from Firebase!");
-});
+export const httpsApp = https.onRequest(_httpsApp);
