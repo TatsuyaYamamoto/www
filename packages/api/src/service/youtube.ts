@@ -1,9 +1,9 @@
-import { google } from "googleapis";
+import { google, youtube_v3 } from "googleapis";
 
 import { firestore } from "./firebase";
 import config from "../config";
 
-// const CHANNEL_ID = "UCf-Z2GqqJs6-Sy7rpy0GHsg";
+const CHANNEL_ID = "UCf-Z2GqqJs6-Sy7rpy0GHsg";
 
 const youtubeClient = google.youtube({
   version: "v3",
@@ -63,6 +63,32 @@ export const cacheCommentResources = async () => {
     // flatten
     .reduce((acc, value) => acc.concat(value), []);
 
+  const youtubeCommentThreadsWithReplies = youtubeCommentThreads.map(thread => {
+    const parentCommentId = thread.id;
+
+    const replies = youtubeComments.filter(comment => {
+      return comment.snippet?.parentId === parentCommentId;
+    });
+
+    const hasChannelReply = !!replies.find(
+      (reply: youtube_v3.Schema$Comment) => {
+        return CHANNEL_ID === reply.snippet?.authorChannelId.value;
+      }
+    );
+
+    const withReplies: youtube_v3.Schema$CommentThread & {
+      hasChannelReply: boolean;
+    } = {
+      ...thread,
+      replies: {
+        comments: replies
+      },
+      hasChannelReply
+    };
+
+    return withReplies;
+  });
+
   let commentThreadsBatch = firestore.batch();
 
   let commentThreadsColRef = firestore
@@ -70,7 +96,7 @@ export const cacheCommentResources = async () => {
     .doc("youtube_data_api")
     .collection("commentThreads");
 
-  youtubeCommentThreads.map(thread => {
+  youtubeCommentThreadsWithReplies.map(thread => {
     if (thread.id) {
       const docRef = commentThreadsColRef.doc(thread.id);
       commentThreadsBatch.set(docRef, thread);
@@ -103,4 +129,34 @@ export const cacheCommentResources = async () => {
     youtubeCommentThreads,
     youtubeComments
   };
+};
+
+export const getCommentsRepliedByChannel = async (
+  videoId: string,
+  maxResult = 10,
+  cursorDocId?: string
+) => {
+  let commentThreadsColRef = firestore
+    .collection("external")
+    .doc("youtube_data_api")
+    .collection("commentThreads");
+
+  let query = commentThreadsColRef
+    .where("snippet.videoId", "==", videoId)
+    .where("hasChannelReply", "==", true)
+    .orderBy("snippet.topLevelComment.snippet.publishedAt", "desc")
+    .limit(maxResult);
+
+  if (cursorDocId) {
+    const cursorDocRef = firestore.collection("cities").doc("SF");
+    const cursorSnap = await cursorDocRef.get();
+    query.startAt(cursorSnap);
+  }
+
+  const threadSnap = await query.get();
+  const threadDocs = threadSnap.docs;
+
+  return threadDocs.map(doc => {
+    return doc.data() as youtube_v3.Schema$CommentThread;
+  });
 };

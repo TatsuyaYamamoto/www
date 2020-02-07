@@ -1,6 +1,9 @@
 import * as express from "express";
 
-import { cacheCommentResources } from "../service/youtube";
+import {
+  cacheCommentResources,
+  getCommentsRepliedByChannel
+} from "../service/youtube";
 
 const youtubeRouter = express.Router();
 
@@ -19,11 +22,19 @@ youtubeRouter.post("/comments/cache", (req, res, next) => {
   })().catch(next);
 });
 
-youtubeRouter.get("/comments", (req, res) => {
-  res.json([
-    { message: "youtube.ts resource" },
-    { message: "youtube.ts resource" }
-  ]);
+youtubeRouter.get("/comments", (req, res, next) => {
+  const { videoId } = req.query;
+
+  if (!videoId) {
+    res.status(400).json({ message: `no video id is provided.` });
+    return;
+  }
+
+  (async () => {
+    const result = await getCommentsRepliedByChannel(videoId);
+
+    res.json(result);
+  })().catch(next);
 });
 
 export default youtubeRouter;
