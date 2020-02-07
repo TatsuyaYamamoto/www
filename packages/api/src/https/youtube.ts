@@ -1,8 +1,22 @@
 import * as express from "express";
 
+import { cacheCommentResources } from "../service/youtube";
+
 const youtubeRouter = express.Router();
-youtubeRouter.get("/", (req, res) => {
-  res.json({ message: "youtube resource" });
+
+youtubeRouter.post("/comments/cache", (req, res, next) => {
+  (async () => {
+    const result = await cacheCommentResources();
+
+    res.json({
+      youtubeCommentThreads: {
+        size: result.youtubeCommentThreads.length
+      },
+      youtubeComments: {
+        size: result.youtubeComments.length
+      }
+    });
+  })().catch(next);
 });
 
 youtubeRouter.get("/comments", (req, res) => {
