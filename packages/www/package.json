@@ -4,7 +4,7 @@
   "description": "sokontokoro factory web site",
   "private": true,
   "scripts": {
-    "start": "parcel serve src/{index,landing,404}.pug",
+    "start": "NODE_ENV=local parcel serve src/{index,landing,404}.pug",
     "clean": "rm -rf dist",
     "deploy-dev": "yarn clean && yarn build-dev && yarn copy-ogp && firebase deploy --only hosting:w3-dev --project sokontokoro-factory-develop",
     "deploy-pro": "yarn clean && yarn build-pro && yarn copy-ogp && firebase deploy --only hosting:w3     --project sokontokoro-factory",

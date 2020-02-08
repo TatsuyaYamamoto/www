@@ -255,9 +255,9 @@ const CommunicationPage: React.FC = () => {
 // @ts-ignore
 import HuiFontP from "../../../../cdn/public/fonts/HuiFontP29.ttf";
 const huiFontPrl =
-  process.env.NODE_ENV === "production"
-    ? "https://cdn.sokontokoro-factory.net/fonts/HuiFontP29.ttf"
-    : HuiFontP;
+  process.env.NODE_ENV === "local"
+    ? HuiFontP
+    : "https://cdn.sokontokoro-factory.net/fonts/HuiFontP29.ttf";
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'Hui';
