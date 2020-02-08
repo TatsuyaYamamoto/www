@@ -10,6 +10,32 @@ const CommentRoot = styled.div`
   margin: 30px;
 `;
 
+const VideoThumbnail = styled.div`
+  position: relative;
+`;
+
+const Tape = styled.div`
+  width: 40px;
+
+  position: absolute;
+  top: -20px;
+
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(139, 198, 202, 0.3),
+    rgba(139, 198, 202, 0.3) 10px,
+    #fff 0,
+    #fff 20px
+  );
+  transform: rotate(-10deg);
+  padding: 0.8em;
+  color: #65513f;
+`;
+
+const VideoImage = styled.img`
+  width: 70px;
+`;
+
 const UserComment = styled.div`
   position: relative;
   font-family: "Hui";
@@ -56,9 +82,10 @@ const ChannelCommentText = styled.span`
 
 interface CommentProps {
   comment: youtube_v3.Schema$CommentThread;
+  showThumbnail: boolean;
 }
 
-const Comment: React.FC<CommentProps> = ({ comment }) => {
+const Comment: React.FC<CommentProps> = ({ comment, showThumbnail }) => {
   const channelComment = comment.replies.comments.find(comment => {
     return comment.snippet.authorChannelId.value === CHANNEL_ID;
   });
@@ -69,8 +96,20 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
   const userName = comment.snippet.topLevelComment.snippet.authorDisplayName;
   const channelCommentText = channelComment.snippet.textDisplay;
 
+  const videoId = comment.snippet.videoId;
+  const videoThumbnailUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+  const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
   return (
     <CommentRoot>
+      {showThumbnail && (
+        <a href={videoUrl} target="__blank">
+          <VideoThumbnail>
+            <Tape />
+            <VideoImage src={videoThumbnailUrl} />
+          </VideoThumbnail>
+        </a>
+      )}
       <UserComment>
         <CommentDate>{dateText}</CommentDate>
         <CommentText dangerouslySetInnerHTML={{ __html: userComment }} />
@@ -120,12 +159,36 @@ interface NoteProps {
   comments: youtube_v3.Schema$CommentThread[];
 }
 
-const Note: React.FC<NoteProps> = ({ comments }) => {
+const Note: React.FC<NoteProps> = props => {
+  const comments = React.useMemo(() => {
+    const _comments = [];
+    let prevVideoId: string | null = null;
+
+    for (const comment of props.comments) {
+      const videoId = comment.snippet.videoId;
+      const showThumbnail = prevVideoId !== videoId;
+      prevVideoId = videoId;
+
+      _comments.push({
+        comment,
+        showThumbnail
+      });
+    }
+
+    return _comments;
+  }, [props.comments]);
+
   return (
     <NoteRoot>
       <Sen>
-        {comments.map(comment => {
-          return <Comment key={comment.id} comment={comment} />;
+        {comments.map(({ comment, showThumbnail }) => {
+          return (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              showThumbnail={showThumbnail}
+            />
+          );
         })}
       </Sen>
     </NoteRoot>
