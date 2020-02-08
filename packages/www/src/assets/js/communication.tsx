@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { youtube_v3 } from "googleapis";
 
@@ -12,16 +12,22 @@ const CommentRoot = styled.div`
 
 const UserComment = styled.div`
   position: relative;
+  font-family: "Hui";
+  font-size: 20px;
 `;
 
 const CommentDate = styled.span`
-  position: absolute;
-  top: -1px;
   transform: rotate(-2deg);
+
+  ::after {
+    content: "\\A";
+    white-space: pre;
+  }
 `;
 
 const CommentText = styled.span`
-  margin-left: 80px;
+  margin-left: 50px;
+  box-decoration-break: clone;
 `;
 
 const UserName = styled.span`
@@ -30,9 +36,13 @@ const UserName = styled.span`
 `;
 
 const ChannelComment = styled.div`
-  text-align: right;
+  font-family: "Hui", Sans-Serif;
+  font-size: 15px;
 
-  margin-top: -10px;
+  line-height: 1em;
+
+  text-align: right;
+  margin-top: 2px;
 `;
 
 const ChannelCommentText = styled.span`
@@ -104,7 +114,6 @@ const Sen = styled.div`
       #646464 100%
     );
   background-size: 8px 100%, 100% 2em;
-  line-height: 2em;
   padding: 2em 1em 0.2em 1em;
 `;
 interface NoteProps {
@@ -179,8 +188,27 @@ const CommunicationPage: React.FC = () => {
   );
 };
 
+// TODO
+// @ts-ignore
+import HuiFontP from "../../../../cdn/public/fonts/HuiFontP29.ttf";
+const huiFontPrl =
+  process.env.NODE_ENV === "production"
+    ? "https://cdn.sokontokoro-factory.net/fonts/HuiFontP29.ttf"
+    : HuiFontP;
+const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: 'Hui';
+        src: url(${huiFontPrl}) format("truetype");
+    }
+`;
+
 const App = () => {
-  return <CommunicationPage />;
+  return (
+    <>
+      <GlobalStyle />
+      <CommunicationPage />
+    </>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("app"));
