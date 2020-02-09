@@ -5,6 +5,32 @@ import config from "../config";
 
 const CHANNEL_ID = "UCf-Z2GqqJs6-Sy7rpy0GHsg";
 
+// TODO: load ID list from youtube data api.
+const TARGET_VIDEO_IDS = [
+  // 海沿いのセブンイレブンの近くで、梨子ちゃんが歌ってた【桜内梨子 レンジでふわもち！サンドイッチ】
+  "tSrIcSGTK60",
+  // Cafe Aqours Vol. 1 君のこころは輝いてるかい？ ラブライブ！サンシャイン!! アコースティックアレンジメドレー
+  "IKrST1ZwIvE",
+  // 【MV / Arrange / Remix】Marine Border Parasol【高海千歌 / 桜内梨子 / 渡辺 曜】
+  "-ZN5tigIe-E",
+  // 【Arrange / MV】ぶる～べりぃ♡とれいん 【南ことり】
+  "671qsGdUuUE",
+  // (T28＾ω＾つ静岡県道17号沼津土肥線上のシンデレラ【G線上のシンデレラ / Arrange / MV】
+  "g8qJsZ8Lbx4",
+  // (T28＾ω＾つ僕は毎日が告白日和【、です！ / arrange】
+  "peMCKpKCTlY",
+  // 【MV / Arrange】Awaken the power【Saint Aqours Snow】
+  "ooKG_LTfSDM",
+  // 【MV / Arrange】Snow halation【μ’s / 南ことり】
+  "D6HZrIEa-nc",
+  // (T28＾ω＾つ今週のwkwk決まったかな【Waku-Waku-Week! / Arrange】
+  "aj99WR-uKRA",
+  // (T28＾ω＾つ僕も海岸通りで待ってる【よ / Arrange】
+  "kOywGc4JW8Q",
+  // 【MV / Arrange】ジングルベルがとまらない【Aqours】
+  "eIMIxFKIv3M"
+];
+
 const youtubeClient = google.youtube({
   version: "v3",
   auth: config.youtube_data_api.api_key
@@ -16,15 +42,9 @@ function notUndefined<T>(item: T | undefined): item is T {
 
 // TODO: performance tuning!
 export const cacheCommentResources = async () => {
-  const targetVideoIds = [
-    // (T28＾ω＾つ静岡県道17号沼津土肥線上のシンデレラ【G線上のシンデレラ / Arrange / MV】
-    "g8qJsZ8Lbx4"
-  ];
-
-  // TODO: load threads recursively
   const youtubeCommentThreads = (
     await Promise.all(
-      targetVideoIds.map(videoId => {
+      TARGET_VIDEO_IDS.map(videoId => {
         return youtubeClient.commentThreads.list({
           part: "snippet",
           videoId: videoId,
@@ -132,8 +152,8 @@ export const cacheCommentResources = async () => {
 };
 
 export const getCommentsRepliedByChannel = async (
-  videoId: string,
-  maxResult = 10,
+  videoId?: string,
+  maxResult = 20,
   cursorDocId?: string
 ) => {
   let commentThreadsColRef = firestore
@@ -142,10 +162,13 @@ export const getCommentsRepliedByChannel = async (
     .collection("commentThreads");
 
   let query = commentThreadsColRef
-    .where("snippet.videoId", "==", videoId)
     .where("hasChannelReply", "==", true)
     .orderBy("snippet.topLevelComment.snippet.publishedAt", "desc")
     .limit(maxResult);
+
+  if (cursorDocId) {
+    query.where("snippet.videoId", "==", videoId);
+  }
 
   if (cursorDocId) {
     const cursorDocRef = firestore.collection("cities").doc("SF");

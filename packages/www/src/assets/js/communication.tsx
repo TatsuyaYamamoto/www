@@ -236,7 +236,7 @@ const CommunicationPage: React.FC = () => {
 
   React.useEffect(() => {
     fetch(
-      "https://api-dev.sokontokoro-factory.net/youtube/comments?videoId=g8qJsZ8Lbx4"
+      "https://api-dev.sokontokoro-factory.net/youtube/comments"
     )
       .then(res => res.json())
       .then(data => {

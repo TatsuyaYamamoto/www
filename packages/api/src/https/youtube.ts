@@ -23,12 +23,7 @@ youtubeRouter.post("/comments/cache", (req, res, next) => {
 });
 
 youtubeRouter.get("/comments", (req, res, next) => {
-  const { videoId } = req.query;
-
-  if (!videoId) {
-    res.status(400).json({ message: `no video id is provided.` });
-    return;
-  }
+  const videoId: string | undefined = req.query.videoId;
 
   (async () => {
     const result = await getCommentsRepliedByChannel(videoId);
