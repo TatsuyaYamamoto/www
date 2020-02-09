@@ -58,6 +58,8 @@ const CommentText = styled.span`
 
 const UserName = styled.span`
   margin-left: 20px;
+
+  vertical-align: middle;
   transform: rotate(1deg);
 `;
 
@@ -68,7 +70,7 @@ const ChannelComment = styled.div`
   line-height: 1em;
 
   text-align: right;
-  margin-top: 2px;
+  margin-top: 5px;
 `;
 
 const ChannelCommentText = styled.span`
