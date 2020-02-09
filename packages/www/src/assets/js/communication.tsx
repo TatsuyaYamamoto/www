@@ -237,9 +237,14 @@ const CommunicationPage: React.FC = () => {
   >([]);
 
   React.useEffect(() => {
-    fetch(
-      "https://api-dev.sokontokoro-factory.net/youtube/comments"
-    )
+    const url =
+      process.env.NODE_ENV === "production"
+        ? "https://api.sokontokoro-factory.net/youtube/comments"
+        : process.env.NODE_ENV === "development"
+        ? "https://api-dev.sokontokoro-factory.net/youtube/comments"
+        : "http://localhost:5000/youtube/comments";
+
+    fetch(url)
       .then(res => res.json())
       .then(data => {
         setComments(data);

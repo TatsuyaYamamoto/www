@@ -6,8 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=local parcel serve src/{index,landing,404}.pug",
     "clean": "rm -rf dist",
-    "deploy-dev": "yarn clean && yarn build-dev && yarn copy-ogp && firebase deploy --only hosting:w3-dev --project sokontokoro-factory-develop",
-    "deploy-pro": "yarn clean && yarn build-pro && yarn copy-ogp && firebase deploy --only hosting:w3     --project sokontokoro-factory",
+    "deploy-dev": "yarn clean && yarn build-dev && yarn copy-ogp && firebase deploy --only hosting:w3 --project sokontokoro-factory-develop",
+    "deploy-pro": "yarn clean && yarn build-pro && yarn copy-ogp && firebase deploy --only hosting:w3 --project sokontokoro-factory",
     "build-dev": "NODE_ENV=development yarn parcel build src/{index,landing,404}.pug",
     "build-pro": "NODE_ENV=production  yarn parcel build src/{index,landing,404}.pug",
     "copy-ogp": "mkdir -p dist/__ogp && cp src/assets/__ogp/* dist/__ogp"

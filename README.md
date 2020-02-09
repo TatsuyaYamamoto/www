@@ -34,3 +34,27 @@ $ firebase target:apply hosting api-dev api-dev-sokontokoro-factory
 _Why is the target name and hosting identifier "w3" instead of "www"?_
 
 => www を含む文字列を firebase hosting の識別子に使えなかったから...
+
+### config
+
+_dev or pro on firebase_
+
+```bash
+$ firebase functions:config:get
+{
+  "youtube_data_api": {
+    "api_key": "***"
+  }
+}
+
+```
+
+_local_
+
+[Ref.](https://firebase.google.com/docs/functions/local-shell?hl=ja)
+
+```bash
+// "project root"に設置する!
+// 理由: https://github.com/firebase/firebase-functions/blob/edcb35dd042cf350d50dfb618d60d0a5686e06fd/src/config.ts#L72
+$ firebase functions:config:get > .runtimeconfig.json
+```

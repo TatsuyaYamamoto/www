@@ -1,12 +1,12 @@
 {
   "hosting": [
     {
-      "target": "w3-dev",
+      "target": "w3",
       "public": "packages/www/dist",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
     {
-      "target": "api-dev",
+      "target": "api",
       "public": "packages/api/public",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
