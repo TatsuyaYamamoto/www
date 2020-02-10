@@ -1,0 +1,22 @@
+include _string
+
+block vars
+    - var lang = "ja"
+    - var pageName = "communication"
+
+doctype html
+html(lang=`${lang}`)
+    head
+        include components/_head
+        block cssDependency
+            link(rel="stylesheet" href=`./assets/css/game.scss`)
+
+    body
+        header
+            include components/_toolbar
+        div#app
+        footer
+            include components/_footer
+
+        block jsDependency
+            script(src=`./assets/js/communication.tsx`)

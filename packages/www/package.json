@@ -1,0 +1,40 @@
+{
+  "name": "www",
+  "version": "1.19.0",
+  "description": "sokontokoro factory web site",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=local parcel serve src/{index,landing,404}.pug",
+    "clean": "rm -rf dist",
+    "deploy-dev": "yarn clean && yarn build-dev && yarn copy-ogp && firebase deploy --only hosting:w3 --project sokontokoro-factory-develop",
+    "deploy-pro": "yarn clean && yarn build-pro && yarn copy-ogp && firebase deploy --only hosting:w3 --project sokontokoro-factory",
+    "build-dev": "NODE_ENV=development yarn parcel build src/{index,landing,404}.pug",
+    "build-pro": "NODE_ENV=production  yarn parcel build src/{index,landing,404}.pug",
+    "copy-ogp": "mkdir -p dist/__ogp && cp src/assets/__ogp/* dist/__ogp"
+  },
+  "sass": {
+    "includePaths": [
+      "../../node_modules"
+    ]
+  },
+  "dependencies": {
+    "material-components-web": "^0.34.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "reset-css": "^3.0.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/styled-components": "^4.4.2",
+    "autoprefixer": "^9.7.1",
+    "jstransformer-markdown-it": "^2.1.0",
+    "marked": "^0.6.2",
+    "node-sass": "^4.13.1",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1",
+    "pug": "^2.0.3"
+  }
+}

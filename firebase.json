@@ -1,12 +1,35 @@
 {
-  "hosting": {
-    "target": "w3-dev",
-    "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  },
+  "hosting": [
+    {
+      "target": "w3",
+      "public": "packages/www/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "api",
+      "public": "packages/api/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "httpsApp"
+        }
+      ]
+    }
+  ],
   "emulators": {
     "hosting": {
       "port": 5000
+    },
+    "functions": {
+      "port": 5001
     }
+  },
+  "functions": {
+    "source": "packages/api",
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run lint",
+      "npm --prefix \"$RESOURCE_DIR\" run build"
+    ]
   }
 }
