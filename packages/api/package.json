@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "run-p dev serve",
     "dev": "tsc -w",
-    "serve": "firebase serve --only hosting:api-dev,functions",
+    "serve": "firebase serve --only hosting:api,functions",
     "shell": "npm run build && firebase functions:shell",
     "deploy-dev": "firebase deploy --only hosting:api,functions --project sokontokoro-factory-develop",
     "deploy-pro": "firebase deploy --only hosting:api,functions --project sokontokoro-factory",
@@ -20,13 +20,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
-    "googleapis": "^47.0.0"
+    "googleapis": "^47.0.0",
+    "jwks-rsa": "^1.7.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.2",
+    "@types/express-jwt": "^0.0.42",
+    "body-parser": "^1.19.0",
     "firebase-functions-test": "^0.1.6",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2"
