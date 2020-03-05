@@ -9,7 +9,6 @@ export interface Config {
   };
   auth0: {
     domain: string;
-    identifier: string;
     clientId: {
       default: string;
       games_sokontokoro_factory_net: string;

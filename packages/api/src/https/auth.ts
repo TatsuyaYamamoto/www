@@ -39,7 +39,7 @@ authRouter.post("/token", jwtCheck, (req, res, next) => {
   if (getClientIdBy(scope) !== audience) {
     res
       .status(400)
-      .json({ message: `provided scope is different from aud in JWT.`});
+      .json({ message: `provided scope is different from aud in JWT.` });
     return;
   }
 
