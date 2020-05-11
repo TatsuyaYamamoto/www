@@ -11,5 +11,16 @@ httpsApp.use(bodyParser.urlencoded({ extended: true }));
 httpsApp.use(bodyParser.json());
 httpsApp.use("/youtube", youtubeRouter);
 httpsApp.use("/auth", authRouter);
+httpsApp.use(
+  (
+    err: Error,
+    _: express.Request,
+    res: express.Response,
+    __: express.NextFunction
+  ) => {
+    console.error(err);
+    res.status(500).json(err);
+  }
+);
 
 export default httpsApp;

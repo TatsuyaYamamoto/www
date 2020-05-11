@@ -51,12 +51,7 @@ authRouter.post("/token", jwtCheck, (req, res, next) => {
       domain: config.auth0.domain,
       token
     });
-  })().catch(error => {
-    res.status(500).send({
-      message: "unexpected firebase auth error.",
-      error
-    });
-  });
+  })().catch(next);
 });
 
 export default authRouter;
