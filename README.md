@@ -1,8 +1,16 @@
-# Sokontokoro Factory WWW
+# Sokontokoro Factory Apps
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-hosted at [https://www.sokontokoro-factory.net/](https://www.sokontokoro-factory.net/).
+## Apps
+
+### www
+
+website hosted at [https://www.sokontokoro-factory.net/](https://www.sokontokoro-factory.net/).
+
+### api
+
+functions used across projects in "そこんところ工房".
 
 ## Scripts
 
@@ -35,17 +43,32 @@ _Why is the target name and hosting identifier "w3" instead of "www"?_
 
 => www を含む文字列を firebase hosting の識別子に使えなかったから...
 
-### config
+### firebase functions config for api package
 
-_dev or pro on firebase_
+_dev_
 
-```bash
-$ firebase functions:config:get
-{
-  "youtube_data_api": {
-    "api_key": "***"
-  }
-}
+```shell script
+$ firebase functions:config:get --project sokontokoro-factory-develop
+```
+
+```shell script
+$ KEY=youtube_data_api                  ; firebase functions:config:set $KEY="$(cat .runtimeconfig.json | jq ".$KEY")" --project sokontokoro-factory-develop
+$ KEY=cert.games_sokontokoro_factory_net; firebase functions:config:set $KEY="$(cat .runtimeconfig.json | jq ".$KEY")" --project sokontokoro-factory-develop
+$ KEY=cert.dl_code_web_app              ; firebase functions:config:set $KEY="$(cat .runtimeconfig.json | jq ".$KEY")" --project sokontokoro-factory-develop
+$ KEY=auth0                             ; firebase functions:config:set $KEY="$(cat .runtimeconfig.json | jq ".$KEY")" --project sokontokoro-factory-develop
+```
+
+_pro_
+
+```shell script
+$ firebase functions:config:get --project sokontokoro-factory
+```
+
+```shell script
+$ KEY=youtube_data_api                  ; firebase functions:config:set $KEY="$(cat .runtimeconfig.pro.json | jq ".$KEY")" --project sokontokoro-factory
+$ KEY=cert.games_sokontokoro_factory_net; firebase functions:config:set $KEY="$(cat .runtimeconfig.pro.json | jq ".$KEY")" --project sokontokoro-factory
+$ KEY=cert.dl_code_web_app              ; firebase functions:config:set $KEY="$(cat .runtimeconfig.pro.json | jq ".$KEY")" --project sokontokoro-factory
+$ KEY=auth0                             ; firebase functions:config:set $KEY="$(cat .runtimeconfig.pro.json | jq ".$KEY")" --project sokontokoro-factory
 
 ```
 

@@ -1,3 +1,5 @@
+.runtimeconfig.json
+.runtimeconfig.pro.json
 dist/
 
 
