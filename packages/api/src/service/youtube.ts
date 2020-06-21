@@ -1,9 +1,11 @@
 import { google, youtube_v3 } from "googleapis";
 
-import { firestore } from "./firebase";
+import { apps } from "./firebase";
 import config from "../config";
 
 const CHANNEL_ID = "UCf-Z2GqqJs6-Sy7rpy0GHsg";
+
+const firestore = apps.default.firestore();
 
 // TODO: load ID list from youtube data api.
 const TARGET_VIDEO_IDS = [

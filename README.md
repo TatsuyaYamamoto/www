@@ -72,6 +72,17 @@ $ KEY=auth0                             ; firebase functions:config:set $KEY="$(
 
 ```
 
+```bash
+// cert.games_sokontokoro_factory_net
+$ firebase functions:config:set --project sokontokoro-factory-develop cert.games_sokontokoro_factory_net="$(cat .runtimeconfig.json | jq '.cert.games_sokontokoro_factory_net')"
+
+// cert.dl_code_web_app
+$ firebase functions:config:set --project sokontokoro-factory-develop cert.dl_code_web_app="$(cat .runtimeconfig.json | jq '.cert.dl_code_web_app')"
+
+// auth0
+$ firebase functions:config:set --project sokontokoro-factory-develop auth0="$(cat .runtimeconfig.json | jq '.auth0')"
+```
+
 _local_
 
 [Ref.](https://firebase.google.com/docs/functions/local-shell?hl=ja)
